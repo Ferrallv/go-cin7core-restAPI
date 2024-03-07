@@ -14,8 +14,10 @@
 |`500 Internal Server Error`|The object passed to the API could not be parsed or some unexpected error occurred in Cin7 Core while processing API request|
 |`503 Service Unavailable`|You reached 60 calls per minute API limit|
 ## Date Format
+
 ## Previous API version
 # Group Attribute Set
+
 ### Available Fields for Attribute Set
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -25,12 +27,18 @@
 | `Attribute#Type`  | String         | 50        | Yes* | Attribute Set attribute type. # - int(1-10). Attribute1Type is required for POST, PUT. Available values are `Not used`, `Text`, `Checkbox`, `List`.            |
 | `Attribute#Values`  | String          |         | Yes* | Attribute Set attribute values. Delimiter ",". # - int(1-10). Attribute1Values is required for POST, PUT.             |
 | `Attributes`  | <a href="#AttributeSetLineModel"><b>[] Attribute Set Line Model</b></a>          |         |       | Array with attributes. Read-only. |
+
 ## Attribute Set [/ref/attributeset]
+
 ### GET [GET /ref/attributeset?ID={ID}&Page={Page}&Limit={Limit}&Name={Name}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /ref/attributeset?ID={ID}]
 # Group Bank Accounts
+
 ### Available Fields for Bank Accounts
 | Property           | Type     | Length | Required | Notes                 |
 |:-------------------|----------|--------|----------|-----------------------|
@@ -43,31 +51,46 @@
 | `StatementBalance` | Decimal  |        |          | Statement balance     |
 | `BalanceInDear`    | Decimal  |        |          | Cin7 Core balance          |
 | `InitialBalance`   | String   |        |          | Initial balance       |
+
 ## Bank Accounts [/ref/account/bank]
+
 ### GET [GET /ref/account/bank?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}&Bank={Bank}]
 # Group Brand
+
 ### Available Fields for Brand
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
 | `ID`  | Guid           |         |          |Required for PUT, Ignored for POST operations          |
 | `Name`  | String             | 50        | Yes         |Brand name       |
+
 ## Brand [/ref/brand]
+
 ### GET [GET /ref/brand?Page={Page}&Limit={Limit}&Name={Name}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /ref/brand?ID={ID}]
 # Group Carrier
+
 ### Available Fields for Carrier
 | Property      | Type      | Length    | Required  | Notes                 |
 |:--------------|-----------|-----------|-----------|-----------------------|
 | `CarrierID`   | Guid      |           |           | Unique Carrier ID.    |
 | `Description` | String    | 256       | Yes       | Name of Carrier.      |
+
 ## Carrier [/ref/carrier]
+
 ### GET [GET /ref/carrier?Page={Page}&Limit={Limit}&CarrierID={CarrierID}&Description={Description}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /ref/carrier?ID={ID}]
 # Group Chart of Accounts
+
 ### Available Fields for Chart of Accounts
 | Property | Type           | Length | Required | Notes          |
 |:---------|----------------|--------|----------|----------------|
@@ -85,12 +108,18 @@
 | `BankAccountNumber` | String |     |          | Bank Account Number. Only for PUT and POST. Required if Account `Type` is `BANK`. |
 | `BankAccountId` | Guid    |        |          | Bank Account ID to which the Account is linked. Read-only  |
 | `Currency`     | String   |        |          | Currency. Read-only.     |
+
 ## Chart of Accounts [/ref/account]
+
 ### GET [GET /ref/account?Page={Page}&Limit={Limit}&Code={Code}&Name={Name}&Type={Type}&Status={Status}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /ref/account?Code={Code}]
 # Group Customer
+
 ### Available Fields for Customer
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -118,46 +147,23 @@
 | `ProductPrices`       |<a href="#ProductPriceModel"><b>[] Product Price Model</b></a>||| Customer specific Product Prices.         |
 | `Addresses`           |<a href="#SupplierAddressModel"><b>[] Customer Address Model</b></a>||| List of addresses.         |
 | `Contacts`            |<a href="#SupplierContactModel"><b>[] Customer Contact Model</b></a>||| List of contacts.          |
+
 ## Customer [/customer]  
+
 ### GET [GET /customer?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}&ModifiedSince={ModifiedSince}&IncludeDeprecated={IncludeDeprecated}&IncludeProductPrices={IncludeProductPrices}&ContactFilter={ContactFilter}]
+
 ### POST [POST]
+
 ### PUT [PUT]
 # Group Disassembly
+
 ## Disassembly List [/disassemblyList]
-### Available fields for Disassembly List
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |          |  Unique ID.        |
-| `DisassemblyNumber`  | String           |         |          |Disassembly Number        |
-| `ProductID`  | Guid           |         |          |Product ID        |
-| `ProductCode`  | String           |         |          |Product Code        |
-| `ProductName`  | String           |         |          |Product Name         |
-| `Quantity`  | Decimal           |         |          |Quantity          |
-| `LocationID`  | Guid           |         |          |Location ID    |
-| `Location`  | Decimal           |         |          |Location Name     |
-| `Date`  | DateTime           |         |          |Date         |
-| `Status`  | String           |         |          |Disassembly Task Status. Available values are `DRAFT`,`WORK IN PROGRESS`,`COMPLETED`,`VOIDED`         |
+
+
 ### GET [GET /disassemblyList?Page={Page}&Limit={Limit}&Status={Status}&Search={Search}]
+
 ## Disassembly [/disassembly]
-### Available fields for Disassembly
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |          |  Unique ID.        |
-| `DisassemblyNumber`  | String           |         |          |Disassembly Number        |
-| `Status`  | String           |         |          |Disassembly Task Status. Available values are `DRAFT`,`WORK IN PROGRESS`,`COMPLETED`,`VOIDED`         |
-| `ProductID`  | Guid           |         |          |Product ID        |
-| `ProductCode`  | String           |         |          |Product Code        |
-| `ProductName`  | String           |         |          |Product Name         |
-| `LocationID`  | Guid           |         |          |Location ID    |
-| `Location`  | Decimal           |         |          |Location Name     |
-| `WIPAccount`  | String           |         |          |Work in Progress Account          |
-| `Quantity`  | Decimal           |         |          |Quantity          |
-| `AssemblyInstructionURL`  | String           |         |          |Assembly Instruction URL     |
-| `PickLines`  |<a href="#DisassemblyPickLineModel"><b>[] Disassembly Pick Line Model</b></a>|         |          |        |
-| `OrderLines`  |<a href="#DisassemblyOrderLineModel"><b>[] Disassembly Order Line Model</b></a>|         |          |        |
-| `OrderServiceLines`  |<a href="#DisassemblyOrderServiceLineModel"><b>[] Disassembly Order Service Line Model</b></a>|         |          |        |
-| `Transactions`  |<a href="#TransactionStockLineModel"><b>[] Transaction Stock Line Model</b></a>|         |          |        |
-| `Errors`  |<a href="#ErrorModel"><b>[] Error Model</b></a>|         |          |If While processing `POST` method, some errors occurred, but task was created, this property will contain array of error messages.    |
+
 ### Available fields for POST method
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -168,90 +174,35 @@
 | `Location`  | Decimal           |         | Yes*         |Location Name. Required if `LocationID` is empty     |
 | `WIPAccount`  | String           |         |    Yes      |Work in Progress Account          |
 | `Quantity`  | Decimal           |         |    Yes      |Quantity          |
+
 ### POST method Statuses meanings
 | Status |Action |
 |:-------|----------|
 |`WORK IN PROGRESS`|New Disassembly task will be created, system will try to automatically add pick items.|
 |`COMPLETED`|New Disassembly task will be created, system will try to automatically add pick items, order items, and Complete the task.|
+
 ### GET [GET /disassembly?TaskID={TaskID}]
+
 ### POST [POST]
+
 ### Delete [DELETE /disassembly?ID={ID}&Void={Void}]
+
 ## Disassembly Order [/disassembly/order]
-### Available fields for Disassembly Order
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |          |  Unique ID.        |
-| `Status`  | String           |         |          |Disassembly Task Status. Available values are `DRAFT`,`WORK IN PROGRESS`,`COMPLETED`,`VOIDED`. Available values for `POST` are `WORK IN PROGRESS` and `COMPLETED`.|
-| `OrderLines`  |<a href="#DisassemblyOrderLineModel"><b>[] Disassembly Order Line Model</b></a>|         |        |
+
+
 ### GET [GET /disassembly/order?TaskID={TaskID}]
+
 ### POST [POST]
 # Group Finished Goods
+
 ## Finished Goods List [/finishedGoodsList]
-### Available fields for Finished Goods List
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |          |  Unique ID.        |
-| `AssemblyNumber`  | String           |         |          |Assembly Number        |
-| `BatchSN`  | String           |         |          |Batch serial number       |
-| `ExpiryDate`  | DateTime           |         |          |Batch Expiry Date          |
-| `ProductID`  | Guid           |         |          |Product ID        |
-| `ProductCode`  | String           |         |          |Product Code        |
-| `ProductName`  | String           |         |          |Product Name         |
-| `Quantity`  | Decimal           |         |          |Quantity          |
-| `LocationID`  | Guid           |         |          |Location ID    |
-| `Location`  | Decimal           |         |          |Location Name     |
-| `Date`  | DateTime           |         |          |Date         |
-| `Status`  | String           |         |          |Finished Goods Task Status. Available values are `DRAFT`,`AUTHORISED`,`IN PROGRESS`,`COMPLETED`,`VOIDED`         |
-| `UnitCost`  | Decimal           |         |          |Unit Cost         |
-| `Notes`  | String           |         |          |Notes        |
-|`CustomField1`|String|||Value of Finished Goods additional attribute 1|
-|`CustomField2`|String|||Value of Finished Goods additional attribute 2|
-|`CustomField3`|String|||Value of Finished Goods additional attribute 3|
-|`CustomField4`|String|||Value of Finished Goods additional attribute 4|
-|`CustomField5`|String|||Value of Finished Goods additional attribute 5|
-|`CustomField6`|String|||Value of Finished Goods additional attribute 6|
-|`CustomField7`|String|||Value of Finished Goods additional attribute 7|
-|`CustomField8`|String|||Value of Finished Goods additional attribute 8|
-|`CustomField9`|String|||Value of Finished Goods additional attribute 9|
-|`CustomField10`|String|||Value of Finished Goods additional attribute 10|
+
+
 ### GET [GET /finishedGoodsList?Page={Page}&Limit={Limit}&Status={Status}&Search={Search}&SaleID={SaleID}]
+
 ## Finished Goods [/finishedGoods]
-### Available fields for Finished Goods
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |          |  Unique ID.        |
-| `AssemblyNumber`  | String           |         |          |Assembly Number        |
-| `Status`  | String           |         |          |Finished Goods Task Status. Available values are `DRAFT`,`AUTHORISED`,`IN PROGRESS`,`COMPLETED`,`VOIDED`         |
-| `ProductID`  | Guid           |         |          |Product ID        |
-| `ProductCode`  | String           |         |          |Product Code        |
-| `ProductName`  | String           |         |          |Product Name         |
-| `LocationID`  | Guid           |         |          |Location ID    |
-| `Location`  | Decimal           |         |          |Location Name     |
-| `BinID`  | Guid           |         |          |Bin ID    |
-| `Bin`  | Decimal           |         |          |Bin Name     |
-| `WIPAccount`  | String           |         |          |Work in Progress Account          |
-| `WIPDate`  | DateTime           |         |          |Work in Progress Date          |
-| `Account`  | String           |         |          |Finished Goods Account          |
-| `Quantity`  | Decimal           |         |          |Quantity          |
-| `AssemblyInstructionURL`  | String           |         |          |Assembly Instruction URL     |
-| `CompletionDate`  | DateTime           |         |          |Completion Date         |
-| `BatchSN`  | String           |         |          |Batch serial number       |
-| `ExpiryDate`  | DateTime           |         |          |Batch Expiry Date          |
-| `Notes`  | String           |         |          |Notes        |
-| `OrderLines`  |<a href="#FinishedGoodsOrderLineModel"><b>[] Finished Goods Order Line Model</b></a>|         |          |        |
-| `PickLines`  |<a href="#FinishedGoodsPickLineModel"><b>[] Finished Goods Pick Line Model</b></a>|         |          |        |
-| `Transactions`  |<a href="#TransactionStockLineModel"><b>[] Transaction Stock Line Model</b></a>|         |          |        |
-| `Errors`  |<a href="#ErrorModel"><b>[] Error Model</b></a>|         |          |If While processing `POST` method, some errors occurred, but task was created, this property will contain array of error messages.    |
-|`CustomField1`|String|||Value of Finished Goods additional attribute 1|
-|`CustomField2`|String|||Value of Finished Goods additional attribute 2|
-|`CustomField3`|String|||Value of Finished Goods additional attribute 3|
-|`CustomField4`|String|||Value of Finished Goods additional attribute 4|
-|`CustomField5`|String|||Value of Finished Goods additional attribute 5|
-|`CustomField6`|String|||Value of Finished Goods additional attribute 6|
-|`CustomField7`|String|||Value of Finished Goods additional attribute 7|
-|`CustomField8`|String|||Value of Finished Goods additional attribute 8|
-|`CustomField9`|String|||Value of Finished Goods additional attribute 9|
-|`CustomField10`|String|||Value of Finished Goods additional attribute 10|
+
+
 ### Available fields for POST method
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -280,6 +231,7 @@
 |`CustomField8`|String|||Value of Finished Goods additional attribute 8|
 |`CustomField9`|String|||Value of Finished Goods additional attribute 9|
 |`CustomField10`|String|||Value of Finished Goods additional attribute 10|
+
 ### POST method Statuses meanings
 | Status |Action |
 |:-------|----------|
@@ -287,6 +239,7 @@
 |`AUTHORISED`|New Finished Goods task will be created and system will try to automatically add order items.|
 |`IN PROGRESS`|New Finished Goods task will be created, system will try to automatically add order items and Pick items.|
 |`COMPLETED`|New Finished Goods task will be created, system will try to automatically add order items, Pick items and Complete the task.|
+
 ### Available fields for PUT method
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -315,33 +268,29 @@
 |`CustomField8`|String|||Value of Finished Goods additional attribute 8|
 |`CustomField9`|String|||Value of Finished Goods additional attribute 9|
 |`CustomField10`|String|||Value of Finished Goods additional attribute 10|
+
 ### GET [GET /finishedGoods?TaskID={TaskID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### Delete [DELETE /finishedGoods?ID={ID}&Void={Void}]
+
 ## Finished Goods Order [/finishedGoods/order]
-### Available fields for Finished Goods Order
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |          |  Unique ID.        |
-| `Status`  | String           |         |          |Finished Goods Task Status. Available values are `DRAFT`,`AUTHORISED`,`IN PROGRESS`,`COMPLETED`,`VOIDED`. Available values for `POST` are `DRAFT` and `AUTHORISED`.|
-| `OrderLines`  |<a href="#FinishedGoodsOrderLineModel"><b>[] Finished Goods Order Line Model</b></a>|         |        |
+
+
 ### GET [GET /finishedGoods/order?TaskID={TaskID}]
+
 ### POST [POST]
+
 ## Finished Goods Pick [/finishedGoods/pick]
-### Available fields for Finished Goods Pick
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |          |  Unique ID.        |
-| `Status`  | String           |         |          |Finished Goods Task Status. Available values are `DRAFT`,`AUTHORISED`,`IN PROGRESS`,`COMPLETED`,`VOIDED`. Available values for `POST` are `AUTHORISED`, `IN PROGRESS` and `COMPLETED`.|
-| `WIPAccount`  | String           |         |          |Work in Progress Account. Read-only if current `Status` is not `AUTHORISED`|
-| `WIPDate`  | DateTime           |         |          |Work in Progress Date. If `Status` is `COMPLETED` but task's `WIPDate` is empty, current date will be set. Read-only if current `Status` is not `AUTHORISED`|
-| `Account`  | String           |         |          |Finished Goods Account. Read-only if current `Status` is not `AUTHORISED` or `IN PROGRESS`|
-| `CompletionDate`  | DateTime           |         |   Yes       |Completion Date. If `Status` is `COMPLETED` but task's `CompletionDate` is empty, current date will be set. Read-only if current `Status` is not `AUTHORISED` or `IN PROGRESS`|
-| `PickLines`  |<a href="#FinishedGoodsPickLineModel"><b>[] Finished Goods Pick Line Model</b></a>|         |          |        |
+
 ### GET [GET /finishedGoods/pick?TaskID={TaskID}]
+
 ### POST [POST]
 # Group Fixed Asset Type
+
 ### Available Fields for Fixed Asset Types
 | Property              | Type     | Length | Required | Notes                 |
 |:----------------------|----------|--------|----------|-----------------------|
@@ -356,38 +305,22 @@
 | `AssetAccountName`    | String   |        |          | `DisplayName` of the linked ChartOfAccount. Read-only. |
 | `AccumulatedDepreciationAccountName` | String ||     | `DisplayName` of the linked ChartOfAccount. Read-only. |
 | `DepreciationExpenseAccountName` | String   ||       | `DisplayName` of the linked ChartOfAccount. Read-only. |
+
 ## Fixed Asset Type [/ref/fixedassettype]
+
 ### GET [GET /ref/fixedassettype?Page={Page}&Limit={Limit}&ID={FixedAssetTypeID}&Name={Name}]
+
 ### POST [POST]
+
 ### PUT [PUT]
 # Group Inventory Write-Off
+
 ## Inventory Write-Off List [/inventoryWriteOffList]
-### Available fields for Inventory Write-Off List
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |          |  Unique ID.        |
-| `InventoryWriteOffNumber`  | String           |         |          |Inventory Write-Off Number        |
-| `Status`  | String           |         |          |Inventory Write-Off Task Status. Available values are `DRAFT`, `COMPLETED`, `VOIDED`         |
-| `LocationID`  | Guid           |         |          |Location ID    |
-| `Location`  | Decimal           |         |          |Location Name     |
-| `Date`  | DateTime           |         |          |Date  When Task Created.  |
-| `Notes`  | String           |         |          |Notes        |
+
 ### GET [GET /inventoryWriteOffList?Page={Page}&Limit={Limit}&Status={Status}&Search={Search}]
+
 ## Inventory Write-Off [/inventoryWriteOff]
-### Available fields for Inventory Write-Off
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |          |  Unique ID.        |
-| `InventoryWriteOffNumber`  | String           |         |          |Inventory Write-Off Number        |
-| `Status`  | String           |         |          |Inventory Write-Off Task Status. Available values are `DRAFT`, `COMPLETED`, `VOIDED`         |
-| `LocationID`  | Guid           |         |          |Location ID    |
-| `Location`  | Decimal           |         |          |Location Name     |
-| `Account`  | String           |         |          |Expense Account         |
-| `EffectiveDate`  | DateTime           |         |          |Effective Date         |
-| `Notes`  | String           |         |          |Notes        |
-| `Lines`  |<a href="#InventoryWriteOffLineModel"><b>[] Inventory Write-Off Line Model</b></a>|         |          |        |
-| `Transactions`  |<a href="#TransactionStockLineModel"><b>[] Transaction Stock Line Model</b></a>|         |          |        |
-| `Errors`  |<a href="#ErrorModel"><b>[] Error Model</b></a>|         |          |If While processing `POST` or `PUT` method, some errors occurred, but task was created, this property will contain array of error messages.    |
+
 ### Available fields for POST/PUT method
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -399,30 +332,27 @@
 | `EffectiveDate`  | DateTime           |         |       Yes*   |Effective Date. Required if `Status` = `COMPLETED`.     |
 | `Notes`  | String           |         |          |Notes        |
 | `Lines`  |<a href="#InventoryWriteOffLineModel"><b>[] Inventory Write-Off Line Model</b></a>|         |          |   
+
 ### GET [GET /inventoryWriteOff?TaskID={TaskID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### Delete [DELETE /inventoryWriteOff?ID={ID}&Void={Void}]
 # Group Journal
+
 ## Jorunal [/journal]
-### Available fields for Jorunal
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |Yes*|  Unique ID. Required for PUT       |
-| `Status`  | String           |         |    Yes      |Jorunal Status. Available values are `DRAFT`, `COMPLETED`, `VOIDED`         |
-| `JournalNumber`  | String           |         |          |Jorunal Number. Read-only.        |
-| `Currency`  | String           |         |    Yes  |Currency code.        |
-| `CurrencyConversionRate` | Decimal |     |       Yes   | Conversion rate between tenant currency and `Currency` currency.|
-| `EffectiveDate`  | DateTime           |         |       Yes   |Effective Date. |
-| `Narration`  | String           |         |          |Narration        |
-| `Notes`  | String           |         |          |Notes        |
-|`Lines`|<a href="#JournalLineModel"><b>[] Journal Line Model</b></a>||||
-|`Attachments`|<a href="#AttachmentLineModel"><b>[] Attachment Line Model</b></a>||||
+
 ### GET [GET /journal?Page={Page}&Limit={Limit}&TaskID={TaskID}&Status={Status}&Search={Search}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### Delete [DELETE /journal?ID={ID}&Void={Void}]
 # Group Location
+
 ### Available Fields for Location
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -444,13 +374,20 @@
 | `IsShopfloor`  | Bool             |         |          | Points that location is shopfloor|
 | `IsCoMan`  | Bool             |         |          | Points that location is location of co-manufacturer |
 | `IsStaging`  | Bool             |         |          | Points that location is staging. It is used only for Bins. |
+
 ## Location [/ref/location]
+
 ### GET [GET /ref/location?ID={ID}&Page={Page}&Limit={Limit}&Deprecated={Deprecated}&Name={Name}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /ref/location?ID={ID}]
 # Group Me
+
 ## Me [/me]
+
 ### Available Fields for ME
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -469,6 +406,7 @@
 | `DiscountRule`  | String             |         | Discount, Price      | This will let the system process any available discount by either amending the sale price of the item or recalculating the discount % in the sale order line for the eligible item    |
 | `AutomaticallyApplyDiscounts`  | Bool             |         |          |Enable this option to allow Cin7 Core to automatically apply discounts and deals on authorisation         |
 |`RoundingTable`|<a href="#RoundingTableModel"><b>[] Rounding Table Model</b></a>|||The calculated price will be rounded to the specified value and adjusted as per specified rule to let you implement your special price ending/charm pricing strategy|
+
 ### Available Fields for Rounding Table Model <a name="RoundingTableModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -476,8 +414,11 @@
 | `RoundToNearest`     | Decimal      |       | |                         |
 | `AdjustmentRule`        | String        |           | N, S, A     | No Ajustment (N), Add (A), Subtract (S)                      |
 | `AdjustmentValue`        | String        |           |      |                       |
+
 ### GET [GET]
+
 ## Me Address [/me/addresses]
+
 ### Available Fields for Me Address
 | Property          | Type      | Length    | Required  | Notes                 |
 |:------------------|-----------|-----------|-----------|-----------------------|
@@ -490,11 +431,17 @@
 | `Country`         | String    |           | Yes       | Country name          |
 | `Type`            | String    |           | Yes       | Address Type.  Should be one of the following values: `Billing`, `Business` or `Shipping`. |
 | `DefaultForType`  | Bool      |           |           | Points that Address is used as default for chosen Type. `False` as default. |
+
 ### GET [GET /me/addresses?Page={Page}&Limit={Limit}&ID={ID}&Type={Type}&DefaultForType={DefaultForType}&Country={Country}&StateProvince={StateProvince}&CitySuburb={CitySuburb}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /me/addresses?ID={ID}]
+
 ## Me Contact [/me/contacts]
+
 ### Available Fields for Me Contact
 | Property          | Type      | Length    | Required  | Notes                 |
 |:------------------|-----------|-----------|-----------|-----------------------|
@@ -507,12 +454,18 @@
 | `Comment`         | String    | 256       |           | Comment               |
 | `Type`            | String    | 50        |           | MeContact Type. Should be one of the following values: `Billing`, `Business`, `Sale`, `Shipping` or `Employee`. |
 | `DefaultForType`  | Bool      |           |           | Points that MeContact is used as default for chosen Type. `False` as default. |
+
 ### GET [GET /me/contacts?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}&Type={Type}&DefaultForType={DefaultForType}&Phone={Phone}&Fax={Fax}&Email={Email}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /me/contacts?ID={ID}]
 # Group Money Task
+
 ## Money Task List [/moneyTaskList]
+
 ### Available fields for Money Task List
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -525,75 +478,56 @@
 | `CustomerID`  | Guid           |         |          |Customer ID   |
 | `Reference`  | Decimal           |         |          |Custom reference    |
 | `TotalAmount`  | String           |         |          |Operation total amount.     |
+
 ### GET [GET /moneyTaskList?Page={Page}&Limit={Limit}&Status={Status}&Search={Search}&TaskType={TaskType}]
+
 ## Money Operation [/moneyOperation]
-### Available fields for Money Task List
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |Yes*|  Unique ID. Required for PUT       |
-| `TaskType`  | String           |         |     Yes     |Task Type. Available values are `Spend Money`, `Receive Money`, `Transfer Money`         |
-| `Status`  | String           |         |    Yes      |Money Task Status. Available values are `DRAFT`, `COMPLETED`, `VOIDED`         |
-| `BankAccount` | String |     |     Yes     | Bank Account Number.|
-| `CurrencyConversionRate` | Decimal |     |          | Conversion rate between `BankAccount` currency and base currency. If not passed, will be calculated automatically as base currency / bank account currency.|
-| `SupplierCustomerName`  | String           |         |          |Customer or Supplier who recive/spend money.      |
-| `SupplierID`  | Guid           |         |          |Supplier ID. `CustomerID` and `SupplierID` are mutually exclusive.   |
-| `CustomerID`  | Guid           |         |          |Customer ID. `CustomerID` and `SupplierID` are mutually exclusive.  |
-| `Reference`  | String           |         |          |Custom reference    |
-| `Date`  | DateTime           |         |     Yes     |Date  of money operation.  |
-| `TaxInclusive`  | Boolean           |         |          |`true` if inclusive. Default false.  |
-| `Note`  | String           |         |          |Custom note.  |
-| `Lines`  |<a href="#MoneyTaskLineModel"><b>[] Money Task Line Model</b></a>|         |          |        |
-| `Transactions`  |<a href="#TransactionStockLineModel"><b>[] Transaction Stock Line Model</b></a>|         |          |        |
-|`Attachments`|<a href="#AttachmentLineModel"><b>[] Attachment Line Model</b></a>|||Sale Attachments|
+
+
 ### GET [GET /moneyOperation?TaskID={TaskID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### Delete [DELETE /moneyOperation?ID={ID}&Void={Void}]
+
 ## Bank Transfer [/bankTransfer]
-### Available fields for Money Task List
-| Property | Type           | Length | Required |Notes       |
-|:-------|----------------------|---------|----------|----------|
-| `TaskID`  | Guid           |         |Yes*|  Unique ID. Required for PUT       |
-| `Status`  | String           |         |    Yes      |Bank Transfer Status. Available values are `DRAFT`, `COMPLETED`, `VOIDED`         |
-| `FromAccount` | String |     |     Yes     |From Bank Account Number.|
-| `ToAccount` | String |     |     Yes     |To Bank Account Number.|
-| `FromAmount` | Decimal |     |     Yes     |From Amount. In `From Bank Account` currency.|
-| `ToAmount` | Decimal |     |     Yes     | To Amount. In `To Bank Account` currency.|
-| `CurrencyConversionRate` | Decimal |     |          | Conversion rate between `BankAccount` currency and base currency. Will be calculated automatically as `From Bank Account` currency / `To Bank Account` currency.|
-| `Reference`  | String           |         |          |Custom reference    |
-| `Date`  | DateTime           |         |     Yes     |Date of Bank Transfer.  |
-| `Note`  | String           |         |          |Custom note.  |
-| `Transactions`  |<a href="#TransactionStockLineModel"><b>[] Transaction Stock Line Model</b></a>|         |          |        |
-|`Attachments`|<a href="#AttachmentLineModel"><b>[] Attachment Line Model</b></a>|||Sale Attachments|
+
 ### GET [GET /bankTransfer?TaskID={TaskID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### Delete [DELETE /bankTransfer?ID={ID}&Void={Void}]
 # Group Payment Term
-### Available Fields for Payment Term
-| Property      | Type      | Length    | Required  | Notes                                 |
-|:--------------|-----------|-----------|-----------|---------------------------------------|
-| `ID`          | Guid      |           |           | Unique Payment Term ID.               |
-| `Name`        | String    | 256       | Yes       | Name of Payment Term.                 |
-| `Duration`    | Int       |           |           | Minimum Payment Term duration in days |
-| `Method`      | String    |           |           | Method of Payment Term. Should be one of the following values: `number of days`, `day of next month`, `last day of next month`, `days since the end of the month` |
-| `IsActive`    | Bool      |           |           | Points that Payment Term is Active. `True` as default for POST. |
-| `IsDefault`   | Bool      |           |           | Points that Payment Term is Default. `False` as default for POST. |
+
+
 ## Payment Term [/ref/paymentterm]
+
 ### GET [GET /ref/paymentterm?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}&Method={Method}&IsActive={IsActive}&IsDefault={IsDefault}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /ref/paymentterm?ID={ID}]
 # Group Price Tiers
+
 ### Available Fields for Price Tier
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
 | `Code`  | Integer           |         |          |Code number of Price Tier         |
 | `Name`  | String             |         |          |Price Tier name       |
+
 ## Price Tiers [/ref/priceTier]
+
 ### GET [GET /ref/priceTier]
 # Group Product
+
 ## Product [/product]
+
 ### Available Fields for Product
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -677,10 +611,15 @@
 | `Movements`  | <a href="#ProductMovementModel"><b>[] Product Movement Model</b></a>              |         |          ||
 | `Attachments`  | <a href="#AttachmentLineModel"><b>[] Attachment Line Model</b></a>              |         |          ||
 | `CustomPrices`       |<a href="#ProductPriceModel"><b>[] Custom Price Model</b></a>||| Customer specific Product Prices.         |
+
 ### GET [GET /product?ID={ID}&Page={Page}&Limit={Limit}&Name={Name}&Sku={Sku}&ModifiedSince={ModifiedSince}&IncludeDeprecated={IncludeDeprecated}&IncludeBOM={IncludeBOM}&IncludeSuppliers={IncludeSuppliers}&IncludeMovements={IncludeMovements}&IncludeAttachments={IncludeAttachments}&IncludeReorderLevels={IncludeReorderLevels}&IncludeCustomPrices={IncludeCustomPrices}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Product Attachments [/product/attachments]
+
 ### Available fields for POST Methods
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -689,10 +628,15 @@
 | `IsDefault`  | Boolean           |         |         |Set image as default(for images only).|
 | `FileDownloadUrl` | String           |         | No     |URL, where file can be downloaded.|
 | `Content`  | String           |         |    Yes*     |File content converted to base64 string. Required if `FileDownloadUrl` is empty.|
+
 ### GET [GET /product/attachments?ProductID={ProductID}]
+
 ### POST [POST]
+
 ### DELETE [DELETE /product/attachments?ID={ID}]
+
 ## Product Availability [/ref/productavailability]
+
 ### Available Fields for Product Availability
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -710,20 +654,29 @@
 | `OnOrder`             | Decimal   |           |           | OnOrder.                                                      |
 | `StockOnHand`         | Decimal   |           |           | StockOnHand.                                                  |
 | `InTransit`           | Decimal   |           |           | In Transit.                                                  |
+
 ### GET [GET /ref/productavailability?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}&Sku={Sku}&Location={Location}&Batch={Batch}&Category={Category}]
 # Group Product Categories
+
 ### Available Fields for Product Category
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
 | `ID`  | Guid           |         |          |Required for PUT, Ignored for POST operations          |
 | `Name`  | String             | 50        | Yes         |Category name for product          |
+
 ## Product Category [/ref/category]
+
 ### GET [GET /ref/category?Page={Page}&Limit={Limit}&Name={Name}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /ref/category?ID={ID}]
 # Group Product Family
+
 ## Product Family [/productFamily]
+
 ### Available Fields for Product Family
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -770,10 +723,15 @@
 | `HSCode`  | String             | 200      |  |Specifies the HS Codes used in the process of product export. It is a numeric value of minimum 6 digits.|
 | `CountryOfOrigin`  | String    |   |  |Specifies the country of manufacture, production, design, or brand origin where a product comes from.|
 | `CountryOfOriginCode`  | String    |   |  |Specifies the country code of manufacture, production, design, or brand origin where a product comes from.|
+
 ### GET [GET /productFamily?ID={ID}&Page={Page}&Limit={Limit}&Name={Name}&Sku={Sku}&ModifiedSince={ModifiedSince}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Product Family Attachments [/productFamily/attachments]
+
 ### Available fields for POST Methods
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -782,27 +740,25 @@
 | `IsDefault`  | Boolean           |         |         |Set image as default(for images only).|
 | `FileDownloadUrl` | String           |         | No     |URL, where file can be downloaded.|
 | `Content`  | String           |         |    Yes      |File content converted to base64 string. Required if `FileDownloadUrl` is empty.|
+
 ### GET [GET /productFamily/attachments?FamilyID={FamilyID}]
+
 ### POST [POST]
+
 ### DELETE [DELETE /productFamily/attachments?ID={ID}]
 # Group Product Markup Prices
-## Markup Prices Model
-|Property|Type|Length|Required|Notes|
-|:-------|----|------|--------|-----|
-|`ProductID`|GUID||Yes|Identifier of a product to which these markup prices belong to|
-|`MarkupPrices`|<a href="#MarkupPriceLineModel"><b>[] Markup Price Line Model</b></a>||Yes|Array of markup price lines for each price tier. If price tier has no markup line, `MarkupType` will be set to `D`.|
-## Markup Price Line Model <a name="MarkupPriceLineModel" />
-|Property|Type|Length|Required|Notes|
-|:-------|----|------|--------|-----|
-|`TierNumber`|Small Integer||Yes|Price Tier index as it appears in Product management page. Valid values are from 1 up to 10 inclusively|
-|`MarkupType`|String||Yes|Markup calculation type. Possible values are: `P` - new price will equal to start price increased by `MarkupValue` %, `A` - new price will be a sum of start price and `MarkupValue`, 'D' - if markup price not defined or should be deleted in <b>PUT</b> operation|
-|`UsePriceType`|String||Yes, except when `MarkupType` is equal to 'D'|Source type for start price. Possible values are: `A` - average cost for product, `F` - latest fixed supplier cost for product, `L` - latest supplier cost for product,`V` - `MarkupValue` field is used as calculated price as is|
-|`MarkupValue`|Decimal||Yes, except when `MarkupType` is equal to 'D'| Value is equal to or greater than 0. It is used in according with `MarkupType`. If UsePriceType is equal to `V`, it is used as calculated markup price|
+
+
+
 ## Markup Prices [/ref/markupprices]
+
 ### GET [GET /product/markupprices?ProductID={ProductID}]
+
 ### PUT [PUT /product/markupprices]
 # Group Production
+
 ## Factory Calendar [/production/factoryCalendar?Year={Year}]
+
 ### Available Fields for FactoryCalendar
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -810,6 +766,7 @@
 | `WeekStart`  | String             | 50        | Yes* | Required for POST. Possible values are <a href="#DayOfWeekList"><b>values</b></a>.|
 | `FactoryCalendarDays`  | Array             |         |    Yes*  | Required for POST. There should be data for each days in a week (7 items). |
 | `FactoryCalendarSpecialDays`  | Array             |         |          | Data will be deleted if received collection is empty. |
+
 ### Available Fields for FactoryCalendarDay
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -820,6 +777,7 @@
 | `BreakStartTime`  | Short             |         |      | In minutes. Should be in the range 0 - 1440 (from 0 minutes to 24h*60m). |
 | `BreakEndTime`  | Short             |         |      | In minutes. Should be in the range 0 - 1440 (from 0 minutes to 24h*60m). |
 | `Capacity`  | Int             |         |          | Readonly. |
+
 ### Available Fields for FactoryCalendarSpecialDay
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -832,10 +790,15 @@
 | `BreakEndTime`  | Short             |         |      | In minutes. Should be in the range 0 - 1440 (from 0 minutes to 24h*60m). |
 | `Capacity`  | Int             |         |          | Readonly. |
 | `Comment`  | String             |  512       |          |  |
+
 ### GET [GET /production/factoryCalendar?Year={Year}]
+
 ### POST [POST /production/factoryCalendar]
+
 ### PUT [PUT /production/factoryCalendar]
+
 ## Product Production BOM [/production/productionBOM]
+
 ### Available Fields for Production BOM <a name="ProductionBOM" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -859,6 +822,7 @@
 |`MaxQuantity`        | Decimal    |           |    No       | Maximum Quantity to Produce Per Production Order defines the maximum quantity threshold to split the Production Order while creating. If this quantity is met, Production Order is split into several Production Orders based on Max Quantity To Produce Per Production Order.|
 |`DeviationPercent`        | Decimal    |           |    No       | Order Quantity Deviation % defines the deviation from Min/Max Quantity to Produce Per Production Order. If Order Quantity Deviation % is set to 0, the Min/Max Quantity to Produce Per Production Order is a fixed quantity.|
 |`RunSize`        | Decimal    |           |    No       | Run Size defines the multiplicity factor for Production Run.|
+
 ### Available Fields for Production BOM Operation Type <a name="ProductionBOMOperationType" />
 |Operation Type|
 |:-------|
@@ -866,11 +830,13 @@
 |Setup|
 |QA|
 |CoManufacturing|
+
 ### Available Fields for Production BOM Resource cost calculation type <a name="ResourceCostCalculationType" />
 |Resource Cost Calculation Type|
 |:-------|
 |CostPerUnitTime|
 |CostPerFinishedProduct|
+
 ### Available Fields for Production BOM Operation <a name="ProductionBOMOperation" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -896,6 +862,7 @@
 |`OutputProducts`|<a href="#ProductionBOMOperationProduct"><b>[] Output Product Model</b></a>||||
 |`FinishedProducts`|<a href="#ProductionBOMOperationProduct"><b>[] Finished Product Model</b></a>||||
 |`IsBackflush`|Bool||No| Used only when IssueMethodComponent = Backflush and IssueMethodParameter = BackflushForOperation|
+
 ### Available Fields for Production BOM Resource <a name="ProductionBOMResource" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -908,6 +875,7 @@
 |`CycleTime`|Integer|||Readonly|
 |`Position`|Integer||Yes||
 |`CostCalculationType`|String||Yes|Available <a href="#ResourceCostCalculationType"><b>values</b></a>.|
+
 ### Available Fields for Production BOM Component <a name="ProductionBOMComponent" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -924,6 +892,7 @@
 |`Position`|Integer||Yes||
 |`SalePriceTier`|Integer|1 - 10||Used only in Buy/Sell co-man operation.|
 |`IsBackflush`|Bool||No| Used only when IssueMethodComponent = Backflush and IssueMethodParameter = BackflushForComponent|
+
 ### Available Fields for Production BOM Attachment <a name="ProductionBOMAttachment" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -933,12 +902,14 @@
 |`ContentType`|String||Yes||
 |`Content`|String||Yes|Base64 string of binary file content.|
 |`Position`|Integer||Yes||
+
 ### Available Fields for Production BOM Note <a name="ProductionBOMNote" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`NoteID`|Guid||Yes when updating|Identifier of a Production BOM Note.|
 |`Note`|String|4000||Yes|
 |`Position`|Integer||Yes||
+
 ### Available Fields for Production BOM Operation Link <a name="ProductionBOMOperationLink" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -946,6 +917,7 @@
 |`RelatedOperationID`|Guid||Yes when RelatedOperationName is not set.||
 |`RelatedOperationName`|String|200|Yes when RelatedOperationID is not set.||
 |`RelationType`|Integer|0+|Yes|Possible value: 1|
+
 ### Available Fields for Production BOM InputProducts, OutputProducts, FinishedProducts <a name="ProductionBOMOperationProduct" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -964,16 +936,24 @@
 |`WastageCost`|Integer||||
 |`DeliveryTo`|Guid|||DeliveryTo location identifier. |
 |`DeliveryToName`|String|256||DeliveryTo location name.|
+
 ### GET [GET /production/productionBOM?ProductID={ProductID}&ReturnAttachmentsContent={ReturnAttachmentsContent}]
+
 ### POST [POST /production/productionBOM]
+
 ### PUT [PUT /production/productionBOM]
+
 ### DELETE [DELETE /production/productionBOM?ProductID={ProductID}&BOMID={BOMID}]
+
 ## Product Family Production BOM [/production/productionBOM/]
+
 ### Available Fields for Production BOM
+
 ### Available Fields for Production BOM Operation
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`VariationComponents`|<a href="#ProductionBOMVariationComponent"><b>[] Variation Component Model</b></a>||||
+
 ### Available Fields for Production BOM Variation Component <a name="ProductionBOMVariationComponent" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -988,17 +968,29 @@
 |`Unit`|String|||Readonly|
 |`Position`|Integer||Yes||
 |`SalePriceTier`|Integer|1 - 10|||
+
 ### Available Fields for Production BOM Resource
+
 ### Available Fields for Production BOM Component
+
 ### Available Fields for Production BOM Attachment
+
 ### Available Fields for Production BOM Note
+
 ### Available Fields for Production BOM Operation Link
+
 ### Available Fields for Production BOM InputProducts, OutputProducts, FinishedProducts
+
 ### GET [GET /production/productionBOM?ProductFamilyID={ProductFamilyID}&ReturnAttachmentsContent={ReturnAttachmentsContent}]
+
 ### POST [POST /production/productionBOM]
+
 ### PUT [PUT /production/productionBOM]
+
 ### DELETE [DELETE /production/productionBOM?ProductFamilyID={ProductFamilyID}&BOMID={BOMID}]
+
 ## Production Order [/production/order]
+
 ### Available Fields for Production Order 
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1055,7 +1047,9 @@
 |`IssueMethodParameter`|String|||Readonly. Ignored when IssueMethodComponent = Manual. Possible values: BackflushForBOM = 1, BackflushForOperation = 2, BackflushForComponent = 3 |
 |`SourceTasks`|ProductionOrderSourceTask[] |||Readonly. Data of Sale Tasks that produced the current Production Order record. |
 |`RunSize`|Decimal||No|Readonly. Run Size specified in Production BOM |
+
 #### Notes:
+
 ### Available Fields for Production Order Operation
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1082,6 +1076,7 @@
 | `OutputProducts`| <a href="#ProductionOrderOperationProduct"><b>[] OperationProduct Model</b></a>    |           |           |                     |
 | `FinishedProducts`| <a href="#ProductionOrderOperationProduct"><b>[] OperationProduct Model</b></a>    |           |           |                     |
 | `IsBackflush`| Bool  || | No | Readonly|
+
 ### Available Fields for Production Order Operation Attachment <a name="ProductionOrderOperationAttachment" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1091,6 +1086,7 @@
 | `ContentType`         | String    |  256         |   Yes| |
 | `Position`         | Integer    |           |  Yes   ||
 | `Content`          | String    |           |  Yes*   |Base64 string of binary file content. Required when attachment is being created.|
+
 ### Available Fields for Production Order Operation Component <a name="ProductionOrderComponent" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1112,12 +1108,14 @@
 | `ProductType`          | String    |           |  |Readonly.|
 | `SalePriceTier`          | Integer    |           |  |Used only in Buy/Sell co-man operation. |
 | `IsBackflush`| Bool  || | No | Readonly|
+
 ### Available Fields for Production Order Operation Note <a name="ProductionOrderOperationNote" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
 | `NoteID`   | Guid       |        |    Yes*    | Unique identifier of Production Order Operation Note. Required for Update action.                                             |
 | `Note`            | String    |   4000        |||
 | `Position`         | Integer    |           |  Yes   ||
+
 ### Available Fields for Production Order Operation Resource <a name="ProductionOrderResource" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1132,12 +1130,14 @@
 | `ResourceCost`          | Decimal    |    0+       |  |Readonly.|
 | `CycleTime`          | Integer    |           |  |In seconds.|
 |`CostCalculationType`|String||Yes|Available <a href="#ResourceCostCalculationType"><b>values</b></a>.|
+
 ### Available Fields for Production Order Operation Link. This is a readonly entity. <a name="ProductionOrderOperationLink" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
 | `ID`   | Guid       |        |        | Unique identifier of Production Order Operation Link. Readonly
 | `RelatedOperationID`            | Guid    |          ||Related Production Order Operation Identifier|
 | `Position`         | Integer    |           |  Yes   ||
+
 ### Available Fields for Production Order Operation Product. This is a readonly entity (only deletion is allowed). <a name="ProductionOrderOperationProduct" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1158,24 +1158,39 @@
 | `CostingMethod`          | String    |           |  ||
 | `Unit`          | String    |           |  ||
 | `WastageCost`          | Decimal    |           |  ||
+
 ### Available Fields for Production Order Source Task <a name="ProductionOrderSourceTask" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
 | `SourceTaskID`| Guid    |           |           | Unique identifier of Sale Task that produced the current Production Order record.                    |
 | `SourceTaskNumber`      | String    |           |           |Number of Sale Task that produced the current Production Order record.                                    |
+
 ### GET [GET /production/order?ProductionOrderID={ProductionOrderID}&returnAttachmentsContent={ReturnAttachmentsContent}]
+
 ### POST [POST /production/order?RecalculateDates={RecalculateDates}]
+
 ### PUT [PUT /production/order?AllowRecalculateDates={AllowRecalculateDates}&AllowRecalculateCyclesAndQuantities={AllowRecalculateCyclesAndQuantities}]
+
 ### Authorize [POST /production/order/authorize]
+
 ### Release [POST /production/order/release]
+
 ### Undo [POST /production/order/undo]
+
 ### Post Attachment [POST /production/order/attachment?ProductionOrderID={ProductionOrderID}]
+
 ### Put Attachment [PUT /production/order/attachment]
+
 ### Delete Attachment [DELETE /production/order/attachment?ProductionOrderAttachmentID={ProductionOrderAttachmentID}]
+
 ### Get Production Order Attachments [GET /production/order/attachment?ProductionOrderID={ProductionOrderID}&ReturnAttachmentsContent={ReturnAttachmentsContent}]
+
 ### Void [POST /production/order/void]
+
 ### Get Production Order Reference Data [GET /production/order/referenceData]
+
 ## Production Order List [/production/orderList]
+
 ### Available Fields for Production Order List Item
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1215,6 +1230,7 @@
 |`CustomField9`|String|||Value of Production Order's additional attribute 9|
 |`CustomField10`|String|||Value of Production Order's additional attribute 10|
 |`SourceTasks`|ProductionOrderListSourceTask[] |||Readonly. Data of Sale Tasks that produced the current Production Order record. |
+
 ### Available Fields for Production Order List Source Task <a name="ProductionOrderListSourceTask" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1222,8 +1238,11 @@
 | `SourceTaskNumber`      | String    |           |           |Number of Sale Task that produced the current Production Order record.                                    |
 | `SourceTaskType`           |Integer||| Type of Sale Task that produced the current Production Order record. Available values are `0` - Simple and `1` - Master  |
 | `IsSourceTaskVoided`            |Boolean||| True if source Sale Task is voided.          |
+
 ### GET [GET /production/orderList?Page={Page}&Limit={Limit}&Status={Status}&Search={Search}&LocationID={LocationID}&RequiredByDateFrom={RequiredByDateFrom}&RequiredByDateTo={RequiredByDateTo}&CompletionDateFrom={CompletionDateFrom}&CompletionDateTo={CompletionDateTo}&SourceTaskID={SourceTaskID}]
+
 ## Production Run [/production/order/run]
+
 ### Available Statuses for Production Run
 | Status              |
 |:----------------------|
@@ -1232,6 +1251,7 @@
 | OPERATION_COMPLETED   |
 | COMPLETED   |
 | VOIDED   |
+
 ### Available Statuses for Production Run Operation
 | Status              |
 |:----------------------|
@@ -1239,6 +1259,7 @@
 | IN PROGRESS   |
 | SUSPENDED   |
 | COMPLETED   |
+
 ### Available Fields for Production Run
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1259,6 +1280,7 @@
 | `ManualJournals`            | Array <a href="#ProductionRunManualJournal">items<a/>       |           |           | Manual Journals of Production Run. Readonly for PUT request. Use special url to update Manual Journals
 | `Traceability`            | Array <a href="#ProductionRunTraceability">items<a/>       |           |           | Traceability of Production Run.
 |`IssueMethodParameter`|String|||Ignored when IssueMethodComponent = Manual. Possible values: BackflushForBOM = 1, BackflushForOperation = 2, BackflushForComponent = 3 |
+
 ### Available Fields for Production Run Operation <a name="ProductionRunOperation"/>
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1291,6 +1313,7 @@
 | `IsBackflush`        | bool    |           |           | It is used only when IssueMethodComponent = Backflush and IssueMethodParameter = BackflushForOperation|
 | `ManualStartDate`        | Date|           |           | Is used only when Backdated Transaction is enabled in General Settings. Can be updated only when operation has status = 'PLANNED'. This overrides date of written off components.|
 | `ManualEndDate`        | Date|           |           | Is used when Backdated Transaction is enabled in General Settings. Can be updated only when operation has status = 'IN PROGRESS'. This overrides the date of transaction for service products.|
+
 ### Available Fields for Production Run Operation Component <a name="ProductionRunOperationComponent"/>
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1314,6 +1337,7 @@
 | `ReservedQuantity`            | Decimal       |           |           |Readonly. Quantity of reserved components. |
 | `IsReserved`            | Bool       |           |           | Set 'true' to reserve current component with Quantity > 0 and Quantity <= Available.   |
 | `IsBackflush`        | bool    |           |           | It is used only when IssueMethodComponent = Backflush and IssueMethodParameter = BackflushForComponent|
+
 ### Available Fields for Production Run Operation Resource <a name="ProductionRunOperationResource"/>
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1325,6 +1349,7 @@
 | `Quantity`         | Decimal    |           |        | Actual quantity                                         |
 | `Cost`         | Decimal    |           |        | Readonly.         |
 | `CycleTime`         | Decimal    |           |        | Readonly|
+
 ### Available Fields for Production Run Operation Resource Cost <a name="ProductionRunOperationResourceCost"/>
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1335,6 +1360,7 @@
 | `ExpenseAccount`            | String    |     50      |        | Code account                                  |
 | `Comments`         | String    |           |    256    |                                       |
 | `Cost`         | Decimal    |           |   Yes     |         |
+
 ### Available Fields for Production Run Operation Product <a name="ProductionRunOperationProduct"/>
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1349,6 +1375,7 @@
 | `ExpiryDate`          | DateTime    |           |        |Readonly. Nullable.                                               |
 | `LocationID`        | Guid    |           |           |    Readonly. Nullable.                                        |
 | `LocationName`        | String    |           |           | Readonly.  |
+
 ### Available Fields for Production Run Operation CoMan Task <a name="ProductionRunOperationCoManTask"/>
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1356,6 +1383,7 @@
 | `Type`              | String    |           |        |Readonly. Available values 'PurchaseTask', 'SaleTask', 'TransferTask'  |
 | `TaskStatus`            | String    |           |        | Readonly.                                  |
 | `TaskNumber`            | String    |           |           | Readonly.|   
+
 ### Available Fields for Production Run Operation CoMan Line <a name="ProductionRunOperationCoManLine"/>
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1371,6 +1399,7 @@
 | `LocationID`        | Guid    |           |           |    Readonly. Nullable.                                        |
 | `LocationName`        | String    |           |           | Readonly.  |
 | `ReceivedDate`          | DateTime    |           |        |Readonly. Nullable.                                               |
+
 ### Available Fields for Production Run Operation Attachment <a name="ProductionRunOperationAttachment" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1380,12 +1409,14 @@
 | `ContentType`         | String    |  256         |   | Readonly. | 
 | `Position`         | Integer    |           |  Yes   ||
 | `Content`          | String    |           |  Yes*   |Base64 string of binary file content. Required when attachment is being created.|
+
 ### Available Fields for Production Run Operation Note <a name="ProductionRunOperationNote" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
 | `NoteID`   | Guid       |        |    Yes*    | Unique identifier of Production Run Operation Note. Required for Update action.                                             |
 | `Note`            | String    |   4000        |||
 | `Position`         | Integer    |           |  Yes   ||
+
 ### Available Fields for Production Run Pending Output <a name="ProductionRunPendingOutput" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1396,6 +1427,7 @@
 | `CostingMethod`            | String    |           |           | Readonly.  |
 | `BatchSN`          | String    |      50     |        | Pending batch/serial number.                                            |
 | `ExpiryDate`          | DateTime    |           |        |Required for folowing product's CostingMethod: FEBATCH, FESN.                                         |
+
 ### Available Fields for Production Run Pending Output <a name="ProductionRunOutput" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1413,6 +1445,7 @@
 | `Received`          | Boolean    |           |    Yes    ||
 | `LocationID`        | Guid    |           |           | Location identifier.                                                |
 | `LocationName`        | String    |           |           | Also can be used as location identifier. Using format: <b>LocationName:BinName</b>.                                              |
+
 ### Available Fields for Production Run Manual Journal <a name="ProductionRunManualJournal" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1424,6 +1457,7 @@
 | `Credit`            | String    |     50      |     Yes      | Account code.  |
 | `OperationID`          | Guid    |           |        | Nullable, Operation identifier.                                          |
 | `OperationName`          | String    |           |        |Readonly. |
+
 ### Available Fields for Production Run Traceability <a name="ProductionRunTraceability" />
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -1434,26 +1468,42 @@
 | `UsedProductID`   | Guid       |       |  Yes      |  Identifier of Used Component           |
 | `UsedProductBatchSN`              | String    |    50       |    Yes    |Batch/Serial Number of Used Component  |
 | `UsedProductExpiryDate`            | DateTime    |           |   No     | Expiry Date of Used Component |
+
 ### POST [POST /production/order/run]
+
 ### GET [GET /production/order/run?ProductionOrderID={ProductionOrderID}&IncludeAttachmentContent={IncludeAttachmentContent}]
+
 ### PUT [PUT /production/order/run?ProductionOrderID={ProductionOrderID}&IncreaseOrderQuantity={IncreaseOrderQuantity}]
+
 ### Complete Run [PUT /production/order/run/complete]
+
 ### Undo Run [PUT /production/order/run/undo]
+
 ### Void Run [PUT /production/order/run/void]
+
 ### Update Manual Journals [PUT /production/order/run/manualJournal?ProductionOrderID={ProductionOrderID}]
+
 ### Start Run Operation [PUT /production/order/run/operation/start]
+
 ### Suspend Run Operation [PUT /production/order/run/operation/suspend]
+
 ### Resume Run Operation [PUT /production/order/run/operation/resume]
+
 ### Complete Run Operation [PUT /production/order/run/operation/complete]
+
 ## Resource List [/production/resourceList?Page={Page}&Limit={Limit}&Name={Name}&OnlyActive={OnlyActive}]
+
 ### GET [GET /production/resourceList?Page={Page}&Limit={Limit}&Name={Name}&OnlyActive={OnlyActive}]
+
 ## Resource [/production/resource?ResourceID={ResourceID}&IncludeAttachments={IncludeAttachments}]
+
 ### Available Resource Types
 |Type|Description|
 |:-----|-----------|
 |`Labor`||
 |`Machine`||
 |`Other`||
+
 ### Available DayOfWeek values
 |Value|Description|
 |:-----|-----------|
@@ -1464,6 +1514,7 @@
 |`Friday`||
 |`Saturday`||
 |`Sunday`||
+
 ### Available Fields for Resource
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -1482,6 +1533,7 @@
 | `ResourceCosts`  | Array             |         |          | |
 | `ResourceRemarks`  | Array             |         |          | |
 | `ResourceAttachments`  | Array             |         |          | |
+
 ### Available Fields for ResourceCapacity
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -1492,6 +1544,7 @@
 | `NonOperationalTo`  | DateTime             |         |          |   Nulluble        |
 | `CustomWorkingDays`  | Array             |         |          | |
 | `ResourceUnits`  | Array             |         |          | |
+
 ### Available Fields for CustomWorkingDay
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -1501,6 +1554,7 @@
 | `BreakStartTime`  | Short             |         |    | Range 0 - 1440 |
 | `BreakEndTime`  | Short             |         |    | Range 0 - 1440 |
 |`Capacity`|Int | | | Readonly  |
+
 ### Available Fields for ResourceUnit
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -1509,6 +1563,7 @@
 | `NonOperationalTo`  | DateTime             |         |    | Nullable |
 | `OperationalFrom`  | DateTime             |         |   | Nullable|
 | `OperationalTo`  | DateTime             |         |    | Nullable |
+
 ### Available Fields for ResourceCost
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -1521,12 +1576,14 @@
 | `PlannedDowntimePriceTier`  | Int             |         |   | Nullable. Range 1-10 |
 | `NotPlannedDowntimeCost`  | Decimal             |         |   | Readonly|
 | `NotPlannedDowntimePriceTier`  | Int             |         |    | Nullable. Range 1-10 |
+
 ### Available Fields for ResourceRemark
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
 | `RemarkID`  | Guid           |         |  | Readonly  |
 | `Remark`  | String             |    1024     | Yes   | |
 | `CreatedDate`  | DateTime             |         |    | Readonly |
+
 ### Available Fields for ResourceAttachment
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -1535,20 +1592,30 @@
 | `Date`  | DateTime             |         |    | Readonly |
 | `ContentType`  | String             | 256        |   | Readonly|
 | `Content`  | String             |   32 Mb      |  Yes  | Base64 encoded string |
+
 ### GET [GET /production/resource?ResourceID={ResourceID}&IncludeAttachments={IncludeAttachments}]
+
 ### POST [POST /production/resource]
+
 ### PUT [PUT /production/resource]
+
 ### DELETE [DELETE /production/resource?ResourceID={ResourceID}]
+
 ## Suspend Reason [/production/suspendReason]
+
 ### GET [GET /production/suspendReason?Page={Page}&Limit={Limit}&WorkcenterID={WorkcenterID}]
+
 ### PUT [PUT /production/suspendReason]
+
 ### Available Fields for SuspendReason
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
 | `SuspendReasonID`  | Guid           |         | Yes* | If it is empty, then will add new Suspend Reason, otherwise it will be modified |
 | `Reason`  | String             |         | Yes*  | Only for new entity |
 | `Workcenters`  | Guid Array             |         |    |  |
+
 ## Work Centers [/production/workcenters]
+
 ### Available Fields for WorkCenter
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1563,6 +1630,7 @@
 |`CoManProcurementType`|String|10|Yes*|It may be 'Transfer' or 'Buysell' or 'Purchase'. Required for Co-man workcenters only.|
 |`WorkCenterLocations`|<a href="#WorkCenterLocation"><b>[] WorkCenter Location Model</b></a>|||Empty when components are picked directly from a shopfloor location.|
 |`WorkCenterSuppliers`|<a href="#WorkCenterSupplier"><b>[] WorkCenter Supplier Model</b></a>||Yes*|Required when IsCoMan = false and IsCoManPurchase = true|
+
 ### Available Fields for WorkCenter Location <a name="WorkCenterLocation" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1571,16 +1639,22 @@
 |`Type`|String|256|Yes|Consumption, Output|
 |`ParentLocationID`|Guid|||Parent location ID when current location is Bin|
 |`LocationName`|String||Yes||
+
 ### Available Fields for WorkCenter Supplier <a name="WorkCenterSupplier" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`SupplierID`|Guid||Yes*|Is required when SupplierName is empty.|
 |`SupplierName`|String||Yes*|Is required if SupplierID is empty|
+
 ### GET [GET /production/workcenters?Page={Page}&Limit={Limit}&Name={Name}]
+
 ### POST [POST /production/workcenters]
+
 ### PUT [PUT /production/workcenters]
+
 ### DELETE [DELETE /production/workcenters?WorkCenterId={WorkCenterId}]
 # Group Purchase
+
 ### Available Purchase Statuses
 |Status|Description|
 |:-----|-----------|
@@ -1596,7 +1670,9 @@
 |`RECEIVED / CREDITED`|Combined Stock Status = `FULLY RECEIVED`, RestockReceivedStatus = `AUTHORISED`|
 |`PARTIALLY INVOICED`|Combined Invoice Status = `PARTIALLY INVOICED`|
 |`COMPLETED`|InvoiceStatus = `AUTHORISED`, RestockReceivedStatus = `AUTHORISED`|
+
 ## Purchase List [/purchaseList?Page={Page}&Limit={Limit}&Search={Search}&RequiredBy={RequiredBy}&UpdatedSince={UpdatedSince}&OrderStatus={OrderStatus}&RestockReceivedStatus={RestockReceivedStatus}&InvoiceStatus={InvoiceStatus}&CreditNoteStatus={CreditNoteStatus}&UnstockStatus={UnstockStatus}&Status{Status}&DropShipTaskID={DropShipTaskID}]
+
 ### Available Fields for Purchase List
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -1628,8 +1704,11 @@
 | `Type`  | String | 20        | Yes         | Type of Purchase. Possible Values are `Simple Purchase`, `Advanced Purchase` , `Service Purchase`        |
 | `IsServiceOnly`  | Boolean             |         |          |Specifies, if Purchase is a `Service Purchase`         |
 | `DropShipTaskID`  | Guid             |         |          |ID of sale which created drop ship pruchase         |
+
 ### GET [GET]
+
 ## Purchase Credit Note List [/purchaseCreditNoteList?Page={Page}&Limit={Limit}&Search={Search}&UpdatedSince={UpdatedSince}&CreditNoteStatus={CreditNoteStatus}&Status{Status}]
+
 ### Available Fields for Purchase Credit Note List
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -1661,8 +1740,11 @@
 | `Type`  | String | 20        | Yes         | Type of Purchase. Possible Values are `Simple Purchase`, `Advanced Purchase` , `Service Purchase`, `Purchase Credit Note`, `Credit Note`        |
 | `IsServiceOnly`  | Boolean             |         |          |Specifies, if Purchase is a `Service Purchase`         |
 | `DropShipTaskID`  | Guid             |         |          |ID of sale which created drop ship pruchase         |
+
 ### GET [GET]
+
 ## Purchase [/purchase]
+
 ### Available Fields for Purchase
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1697,6 +1779,7 @@
 |`AdditionalAttributes`|<a href="#AdditionalAttributeModel"><b>Additional Attribute Model</b></a>|||Purchase Additional Attributes|
 |`Attachments`|<a href="#AttachmentLineModel"><b>[] Attachment Line Model</b></a>|||Purchase Attachments|
 |`InventoryMovements`|<a href="#InventoryMovementLineModel"><b>Inventory Movement Line Model</b></a>|||Purchase Inventory Movements|
+
 ### Additional fields
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1716,6 +1799,7 @@
 |`ProductCustomField8`|String|||Value of Product's additional attribute 8|
 |`ProductCustomField9`|String|||Value of Product's additional attribute 9|
 |`ProductCustomField10`|String|||Value of Product's additional attribute 10|
+
 ### Purchase POST/PUT Attributes
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1736,11 +1820,17 @@
 |`Note`|String|1024||Custom Purchase note|
 |`CurrencyRate`|Decimal|||Conversion Rate expressed as number of Base currency units for one Supplier currency unit|
 |`AdditionalAttributes`|<a href="#AdditionalAttributeModel"><b>Additional Attribute Model</b></a>|||Purchase Additional Attributes|
+
 ### GET[GET /purchase?ID={ID}&CombineAdditionalCharges={CombineAdditionalCharges}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /purchase?ID={ID}&Void={Void}]
+
 ## Purchase Order [/purchase/order]
+
 ### Available Fields for Purchase Order
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1753,18 +1843,26 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges without taxes. Not required for POST.|
 |`Tax`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges taxes. Not required for POST.|
 |`Total`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges with taxes. Not required for POST.|
+
 ### GET [GET /purchase/order?TaskID={TaskID}&CombineAdditionalCharges={CombineAdditionalCharges}]
+
 ### POST [POST]
+
 ## Purchase Stock Received [/purchase/stock]
+
 ### Available Fields for Purchase Stock Received
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`TaskID`|Guid||Yes|Unique Cin7 Core Purchase Task ID|
 |`Status`|string||Yes|Purchase Stock Received Status. Possible Values are `NOT AVAILABLE`,`DRAFT`,`AUTHORISED`,`VOIDED`. For POST only `DRAFT` and `AUTHORISED` values accepted|
 |`Lines`|<a href="#PurchaseStockLineModel"><b>[] Purchase Stock Line Model</b></a>||Yes||
+
 ### GET [GET /purchase/stock?TaskID={TaskID}]
+
 ### POST [POST]
+
 ## Purchase Invoice [/purchase/invoice]
+
 ### Available Fields for Purchase Invoice
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1781,9 +1879,13 @@
 |`Total`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges with taxes. Not required for POST.|
 |`InvoiceTotalAmount`|Decimal with up to 4 decimal places|||Not required for POST.|
 |`InvoiceTotalTaxAmount`|Decimal with up to 4 decimal places|||Not required for POST.|
+
 ### GET [GET /purchase/invoice?TaskID={TaskID}&CombineAdditionalCharges={CombineAdditionalCharges} ]
+
 ### POST [POST]
+
 ## Purchase Credit Note [/purchase/creditnote]
+
 ### Available Fields for Purchase Credit Note
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1798,9 +1900,13 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges without taxes. Not required for POST.|
 |`Tax`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges taxes. Not required for POST.|
 |`Total`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges with taxes. Not required for POST.|
+
 ### GET [GET /purchase/creditnote?TaskID={TaskID}&CombineAdditionalCharges={CombineAdditionalCharges}]
+
 ### POST [POST]
+
 ## Purchase Payments [/purchase/payment]
+
 ### Available Fields for Purchase Payments
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1813,25 +1919,36 @@
 |`Account`|String||Yes|Account Code of the bank/payment account from Chart of accounts. Available for POST/PUT|
 |`CurrencyRate`|Decimal with up to 4 decimal places||Yes|Currency Conversion rate expressed as number of Base currency units for one Customer currency unit. Available for POST/PUT|
 |`DateCreated`|DateTime|||Date of creation payment record.|
+
 ### GET [GET /purchase/payment?TaskID={TaskID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /purchase/payment?ID={ID}]
+
 ## Purchase Manual Journals [/purchase/manualJournal]
+
 ### Available field for Purchase Manual Journal
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`TaskID`|Guid||Yes|Unique Cin7 Core Purchase ID|
 |`Status`|String||Yes|Manual Journal Status. Available values are `NOT AVAILABLE`, `DRAFT`, `AUTHORISED`. Available values for POST are `DRAFT`, `AUTHORISED`|
 |`Lines`|<a href="#PurchaseManualJournalLineModel"><b>[] Purchase Manual Journal Line Model</b></a>||||
+
 ### GET [GET /purchase/manualJournal?TaskID={TaskID}]
+
 ### POST [POST]
+
 ## Purchase Attachments [/purchase/attachment]
+
 ### Available fields for Purchase Attachments
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`TaskID`|Guid||Yes|Unique Cin7 Core Purchase ID|
 |`Lines`|<a href="#AttachmentLineModel"><b>[] Attachment Line Model</b></a>||||
+
 ### Available fields for POST Methods
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -1839,10 +1956,15 @@
 | `FileName`  | String           |         |    Yes      |File Name.|
 | `FileDownloadUrl` | String           |         | No     |URL, where file can be downloaded.|
 | `Content`  | String           |         |    Yes*     |File content converted to base64 string. Required if `FileDownloadUrl` is empty.|
+
 ### GET [GET /purchase/attachment?TaskID={TaskID}]
+
 ### POST [POST]
+
 ### DELETE [DELETE /purchase/attachment?ID={ID}]
+
 ## Advanced Purchase [/advanced-purchase]
+
 ### Available Fields for Purchase
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1884,6 +2006,7 @@
 |`AdditionalAttributes`|<a href="#AdditionalAttributeModel"><b>Additional Attribute Model</b></a>|||Purchase Additional Attributes|
 |`Attachments`|<a href="#AttachmentLineModel"><b>[] Attachment Line Model</b></a>|||Purchase Attachments|
 |`InventoryMovements`|<a href="#InventoryMovementLineModel"><b>Inventory Movement Line Model</b></a>|||Purchase Inventory Movements|
+
 ### Additional fields
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1903,6 +2026,7 @@
 |`ProductCustomField8`|String|||Value of Product's additional attribute 8|
 |`ProductCustomField9`|String|||Value of Product's additional attribute 9|
 |`ProductCustomField10`|String|||Value of Product's additional attribute 10|
+
 ### Purchase POST/PUT Attributes
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1925,11 +2049,17 @@
 |`IsServiceOnly`|Boolean|||`True` if purchase is Service-Only Purchase. `False` is for Simple and Advanced purchases|
 |`CurrencyRate`|Decimal|||Conversion Rate expressed as number of Base currency units for one Supplier currency unit|
 |`AdditionalAttributes`|<a href="#AdditionalAttributeModel"><b>Additional Attribute Model</b></a>|||Purchase Additional Attributes|
+
 ### GET[GET /advanced-purchase?ID={ID}&CombineAdditionalCharges={CombineAdditionalCharges}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /advanced-purchase?ID={ID}&Void={Void}]
+
 ## Advanced Purchase Stock Received [/advanced-purchase/stock] 
+
 ### Available Fields for Purchase Stock Received
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1937,11 +2067,17 @@
 |`TaskID`|Guid||Yes|Unique Cin7 Core Purchase Stock Receiving Task ID|
 |`Status`|string||Yes|Purchase Stock Received Status. Possible Values are `NOT AVAILABLE`,`DRAFT`,`AUTHORISED`,`VOIDED`. For POST and PUT only `DRAFT` and `AUTHORISED` values accepted|
 |`Lines`|<a href="#AdvancedPurchaseStockLineModel"><b>[] Advanced Purchase Stock Line Model</b></a>||Yes||
+
 ### GET [GET /advanced-purchase/stock?PurchaseID={PurchaseID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /advanced-purchase/stock?TaskID={TaskID}&Void={Void}]
+
 ## Advanced Purchase Put Away [/advanced-purchase/put-away] 
+
 ### Available Fields for Purchase Put Away
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1949,14 +2085,15 @@
 |`TaskID`|Guid||Yes|Unique Cin7 Core Purchase Put Away Task ID|
 |`Status`|string||Yes|Purchase Put Away Status. Possible Values are `NOT AVAILABLE`,`DRAFT`,`AUTHORISED`,`VOIDED`. For POST only `DRAFT` and `AUTHORISED` values accepted|
 |`Lines`|<a href="#AdvancedPurchasePutAwayLineModel"><b>[] Advanced Purchase Put Away Line Model</b></a>||Yes||
+
 ### GET [GET /advanced-purchase/put-away?PurchaseID={PurchaseID}]
+
 ### POST [POST]
+
 ## Advanced Purchase Invoice [/advanced-purchase/invoice] 
+
 ### Available Fields for Purchase Invoice
-|Property|Type|Length|Required|Notes|
-|:-------|----|------|--------|-----|
-|`PurchaseID`|Guid||Yes|Unique Cin7 Core Purchase Master Task ID|
-|`Invoices`|<a href="#AdvancedPurchasePartialInvoiceModel"><b>[] Advanced Purchase Invoice Model</b></a>||Yes||
+
 ### Advanced purchase invoice partial model
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1973,15 +2110,21 @@
 |`Total`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges with taxes. Not required for POST.|
 |`InvoiceTotalAmount`|Decimal with up to 4 decimal places|||Not required for POST.|
 |`InvoiceTotalTaxAmount`|Decimal with up to 4 decimal places|||Not required for POST.|
+
 ### GET [GET /advanced-purchase/invoice?PurchaseID={PurchaseID}&CombineAdditionalCharges={CombineAdditionalCharges} ]
+
 ### POST [POST]
+
 ### DELETE [DELETE /advanced-purchase/invoice?TaskID={TaskID}&Void={Void}]
+
 ## Advanced Purchase Credit Note [/advanced-purchase/creditnote]
+
 ### Available Fields for Purchase Credit Note
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`PurchaseID`|Guid||Yes|Unique Cin7 Core Purchase Master Task ID|
 |`CreditNotes`|<a href="#AdvancedPurchasePartialCreditNoteModel"><b>[] Advanced Purchase Credit Note Model</b></a>||Yes||
+
 ### Advanced purchase credit note partial model
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -1997,10 +2140,15 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges without taxes. Not required for POST.|
 |`Tax`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges taxes. Not required for POST.|
 |`Total`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges with taxes. Not required for POST.|
+
 ### GET [GET /advanced-purchase/creditnote?PurchaseID={PurchaseID}&CombineAdditionalCharges={CombineAdditionalCharges}]
+
 ### POST [POST]
+
 ### DELETE [DELETE /advanced-purchase/creditnote?TaskID={TaskID}]
+
 ## Advanced Purchase Payments [/advanced-purchase/payment]
+
 ### Available Fields for Purchase Payments
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2013,30 +2161,45 @@
 |`Account`|String||Yes|Account Code of the bank/payment account from Chart of accounts. Available for POST/PUT|
 |`CurrencyRate`|Decimal with up to 4 decimal places||Yes|Currency Conversion rate expressed as number of Base currency units for one Customer currency unit. Available for POST/PUT|
 |`DateCreated`|DateTime|||Date of creation payment record.|
+
 ### GET [GET /advanced-purchase/payment?PurchaseID={PurchaseID}&OrderNumber={OrderNumber}&InvoiceNumber={InvoiceNumber}&CreditNoteNumber={CreditNoteNumber}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /purchase/payment?ID={ID}]
+
 ## Advanced Purchase Manual Journals [/advanced-purchase/manualJournal]
+
 ### Available field for Purchase Manual Journal
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`PurchaseID`|Guid||Yes|Unique Cin7 Core Purchase Master Task ID|
 |`ManualJournals`|<a href="#AdvancedPurchasePartialMAnJModel"><b>[] Advanced Purchase Manual Journal Model</b></a>||Yes||
+
 ### Advanced purchase manual journal partial model
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`TaskID`|Guid||Yes|Unique Cin7 Core Purchase Invoice Task ID|
 |`Status`|String||Yes|Manual Journal Status. Available values are `NOT AVAILABLE`, `DRAFT`, `AUTHORISED`. Available values for POST are `DRAFT`, `AUTHORISED`|
 |`Lines`|<a href="#PurchaseManualJournalLineModel"><b>[] Purchase Manual Journal Line Model</b></a>||||
+
 ### GET [GET /advanced-purchase/manualJournal?PurchaseID={PurchaseID}]
+
 ### POST [POST]
 # Group Reference Books
+
 ## Custom Prices [/custom-prices]
+
 ### POST [POST /custom-prices]
+
 ### PUT [PUT /custom-prices]
+
 ### DELETE [DELETE /custom-prices?ProductID={ProductID}&CustomerID={CustomerID}]
+
 ## Deals [/reference/deals]
+
 ### Available Fields for Product Deal <a name="ProductDeal" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -2052,17 +2215,20 @@
 |`DealCustomers`|<a href="#ProductDealCustomerModel"><b>[] Customer Model</b></a>||||
 |`DealCustomerTags`|<a href="#ProductDealTagModel"><b>[] Customer Tag Model</b></a>||||
 |`DealDiscounts`|<a href="#ProductDealDiscountsModel"><b>[] Deal Discount Model</b></a>||||
+
 ### Available Fields for Product Deal Customer <a name="ProductDealCustomerModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
 | `ID`              | Guid      |       | Yes*      |                       |
 | `CustomerName`     | String      |       | Yes*      |                         |
 | `CustomerID`        | Guid        |           | Yes*     |                       |
+
 ### Available Fields for Product Deal Customer Tag <a name="ProductDealTagModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
 | `ID`              | Guid      |       | Yes*      |                       |
 | `TagName`         | String    |       | Yes*      |                       |
+
 ### Available Fields for Product Deal Discount <a name="ProductDealDiscountModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -2084,6 +2250,7 @@
 |`DealDiscountCategories`|<a href="#ProductDealDiscountCategoryModel"><b>[] Deal Discount Category Model</b></a>||||
 |`DealDiscountTags`|<a href="#ProductDealDiscountTagModel"><b>[] Deal Discount Tag Model</b></a>||||
 |`DealDiscountProducts`|<a href="#ProductDealDiscountProductModel"><b>[] Deal Discount Product Model</b></a>||||
+
 ### Available Fields for Product Deal Discount Brand <a name="ProductDealDiscountBrandModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -2091,6 +2258,7 @@
 | `BrandName`       | String    |       | Yes*      |                       |
 | `BrandID`         | Guid      |       | Yes*      |                       |
 | `Type`            | String    |       | Yes       | Buy or Get            |
+
 ### Available Fields for Product Deal Discount Product <a name="ProductDealDiscountProductModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -2100,22 +2268,29 @@
 | `ProductName`     | String    |       |           |      Readonly         |
 | `IsFamily`        | Bool      |       | Yes       |                       |
 | `Type`            | String    |       | Yes       | Buy or Get            |
+
 ### Available Fields for Product Deal Discount Tag <a name="ProductDealDiscountTagModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
 | `ID`              | Guid      |       | Yes*      |                       |
 | `TagName`         | String    |       | Yes*      |                       |
 | `Type`            | String    |       | Yes       | Buy or Get            |
+
 ### Available Fields for Product Deal Discount Category <a name="ProductDealDiscountCategoryModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
 | `ID`              | Guid      |       | Yes*      |                       |
 | `CategoryName`    | String    |       | Yes*      |                       |
 | `Type`            | String    |       | Yes       | Buy or Get            |
+
 ### GET [GET /reference/deals?ID={ID}&Page={Page}&Limit={Limit}&Search={Search}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Product Discounts [/reference/discount]
+
 ### Available Fields for Product Discount Rule <a name="ProductDiscountRuleModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -2124,6 +2299,7 @@
 | `IsActive`          | Bool    |     | Yes      |                        |
 | `Type`             | String    |       |    Yes       | Simple, QuantityBased, FreeShipping |
 |`DiscountLines`|<a href="#DiscountLineModel"><b>[] Discount Line Model</b></a>||||
+
 ### Available Fields for Discount Line Model <a name="DiscountLineModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -2133,18 +2309,31 @@
 | `DiscountType`     | String    |       |           | DiscountAmount, DiscountPercent, MarkupAmount, MarkupPercent, PriceOverride, FlatAmount, FreeShipping |
 | `Amount`          | Decimal    |     | Yes*      |                        |
 | `OrderExceeds`          | Decimal    |     | Yes*      | Required when DiscountType = FreeShipping      |
+
 ### GET [GET /reference/discount?ID={ID}&Page={Page}&Limit={Limit}&Search={Search}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Product Suppliers [/product-suppliers]
+
 ### Available Fields for Product Supplier
+
 ### Available Fields for Product Supplier Options Model
+
 ### Available Fields for Product Supplier Options Interval Model
+
 ### GET [GET /product-suppliers?ProductID={ProductID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /product-suppliers?ProductID={ProductID}&SupplierID={SupplierID}]
+
 ## Ship Zones [/reference/shipZones]
+
 ### Available Fields for Shipping Zone <a name="ShippingZoneModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -2159,6 +2348,7 @@
 | `TaxRuleName`        | String    |  255   | Yes*      |                        |
 |`AppliesTo`|<a href="#ShipZoneAppliesToModel"><b>[] Applies To Model</b></a>||||
 |`Conditions`|<a href="#ShipZoneConditionsModel"><b>[] Condition Model</b></a>||||
+
 ### Available Fields for Applies To Model <a name="ShipZoneAppliesToModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -2170,6 +2360,7 @@
 | `PostCodeTo`    | String    |  100   |       |                        |
 | `PostCodesList`    | String    |     |       |                        |
 | `ShippingRate`    | Decimal    |     |    Yes   |                        |
+
 ### Available Fields for Condition Model <a name="ShipZoneConditionModel" />
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -2179,15 +2370,24 @@
 | `ShippingCost`    | Decimal    |     |    Yes   |                        |
 | `ConditionType`   | String    |       |    Yes       | Price, Weight |
 | `ConditionDescription`    | String    |  128   |       |                        |
+
 ### GET [GET /reference/shipZones?ID={ID}&Page={Page}&Limit={Limit}&Search={Search}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### Delete [DELETE /reference/shipZones?ShipZoneID ={ShipZoneID}]
+
 ## Ship Zones Enabled [/reference/shipZonesEnabled]
+
 ### Get [GET]
+
 ### Update [PUT]
 # Group Sale
+
 ### Sale Types
+
 ### Available Sale Statuses
 |Status|Description|
 |:-----|-----------|
@@ -2207,6 +2407,7 @@
 |`INVOICED`|InvoiceStatus = AUTHORISED or InvoiceStatus = PAID, CreditNoteStatus <> AUTHORISED, TotalInvoice – TotalPaid <> 0, only applicable to simple sale|
 |`CREDITED`|CreditNoteStatus = AUTHORISED, TotalInvoice – TotalPaid <> 0, only applicable to simple sale|
 |`COMPLETED`|InvoiceStatus = PAID, ShipStatus=AUTHORISED, TotalInvoice – TotalPaid = 0|
+
 ### Available Quote Statuses
 |Status|Description|
 |:-----|-----------|
@@ -2214,6 +2415,7 @@
 |`DRAFT`|Contains some lines, ready for processing|
 |`AUTHORISED`|AUTHORISED|
 |`VOIDED`|VOIDED|
+
 ### Available Order Statuses
 |Status|Description|
 |:-----|-----------|
@@ -2224,6 +2426,7 @@
 |`AUTH_NO_ALLOC`|AUTORISED, without stock allocation|
 |`FULFILLED`|The order is FULFILLED, and no further fulfillments are required|
 |`CLOSED`|The Invoice and Shipment stages are completed|
+
 ### Available Invoice Statuses
 |Status|Description|
 |:-----|-----------|
@@ -2232,7 +2435,9 @@
 |`AUTHORISED`|AUTHORISED|
 |`VOIDED`|VOIDED|
 |`PAID`|Fully Paid|
+
 ## Sale List [/saleList]
+
 ### Available Fields for Sale List
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -2267,8 +2472,11 @@
 | `SourceChannel`  | String | 32        |          | Source of the sale. read-only field       |
 | `ExternalID`  | String | 256        |          | Custom field that is only available in API and allows to set arbitrary value for the sale for later search and any custom logic        |
 | `OrderLocationID`  | Guid |         |          | Sale Order Location ID         |
+
 ### GET [GET /saleList?Page={Page}&Limit={Limit}&Search={Search}&CreatedSince={CreatedSince}&UpdatedSince={UpdatedSince}&ShipBy={ShipBy}&QuoteStatus={QuoteStatus}&OrderStatus={OrderStatus}&CombinedPickStatus={CombinedPickStatus}&CombinedPackStatus={CombinedPackStatus}&CombinedShippingStatus={CombinedShippingStatus}&CombinedInvoiceStatus={CombinedInvoiceStatus}&CreditNoteStatus={CreditNoteStatus}&ExternalID={ExternalID}&Status={Status}&ReadyForShipping={ReadyForShipping}&OrderLocationID={OrderLocationID}]
+
 ## Sale Credit Note List [/saleCreditNoteList]
+
 ### Available Fields for Sale Credit Note List
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -2303,8 +2511,11 @@
 | `SourceChannel`  | String | 32        |          | Source of the sale. read-only field       |
 | `ExternalID`  | String | 256        |          | Custom field that is only available in API and allows to set arbitrary value for the sale for later search and any custom logic        |
 | `OrderLocationID`  | Guid |         |          | Sale Order Location ID         |
+
 ### GET [GET /saleCreditNoteList?Page={Page}&Limit={Limit}&Search={Search}&CreatedSince={CreatedSince}&UpdatedSince={UpdatedSince}&CreditNoteStatus={CreditNoteStatus}}&Status={Status}]
+
 ## Sale [/sale]
+
 ### Available Fields for Sale
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2357,6 +2568,7 @@
 |`Attachments`|<a href="#AttachmentLineModel"><b>[] Attachment Line Model</b></a>|||Sale Attachments|
 |`InventoryMovements`|<a href="#InventoryMovementLineModel"><b>[] Inventory Movement Line Model</b></a>|||Sale Inventory Movements|
 |`Transactions`|<a href="#SaleTransactionLineModel"><b>[] Sale Transaction Line Model</b></a>|||Sale Transactions|
+
 ### Additional fields
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2376,6 +2588,7 @@
 |`ProductCustomField8`|String|||Value of Product's additional attribute 8|
 |`ProductCustomField9`|String|||Value of Product's additional attribute 9|
 |`ProductCustomField10`|String|||Value of Product's additional attribute 10|
+
 ### Sale POST/PUT Attributes
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2406,11 +2619,17 @@
 | `ExternalID`  | String | 256        |          | Custom field that is only available in API and allows to set arbitrary value for the sale for later search and any custom logic        |
 |`AdditionalAttributes`|<a href="#AdditionalAttributeModel"><b>Additional Attribute Model</b></a>|||Sale Additional Attributes|
 |`SaleType`|String|50||Available only for POST method. Type of sale, available values are `Simple`, `Advanced`|
+
 ### GET [GET /sale?ID={ID}&CombineAdditionalCharges={CombineAdditionalCharges}&HideInventoryMovements={HideInventoryMovements}&IncludeTransactions={IncludeTransactions}&CountryFormat={CountryFormat}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### Delete [DELETE /sale?ID={ID}&Void={Void}]
+
 ## Sale Quote [/sale/quote]
+
 ### Available Fields for Sale Quote
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2423,9 +2642,13 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places||Yes|Sum of quote lines and additional charges without taxes. Not required for POST.|
 |`Tax`|Decimal with up to 4 decimal places||Yes|Sum of quote lines and additional charges taxes. Not required for POST.|
 |`Total`|Decimal with up to 4 decimal places||Yes|Sum of quote lines and additional charges with taxes. Not required for POST.|
+
 ### GET [GET /sale/quote?SaleID={SaleID}&CombineAdditionalCharges={CombineAdditionalCharges}&IncludeProductInfo={IncludeProductInfo}]
+
 ### POST [POST /sale/quote]
+
 ## Sale Order [/sale/order]
+
 ### Available Fields for Sale Order
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2439,38 +2662,57 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges without taxes. Not required for POST.|
 |`Tax`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges taxes. Not required for POST.|
 |`Total`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges with taxes. Not required for POST.|
+
 ### GET [GET /sale/order?SaleID={SaleID}&CombineAdditionalCharges={CombineAdditionalCharges}&IncludeProductInfo={IncludeProductInfo}]
+
 ### POST [POST]
+
 ## Sale Fulfilment [/sale/fulfilment]
+
 ### Available Fields for Sale Fulfilment
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`SaleID`|Guid||Yes|Unique Cin7 Core Sale ID|
 |`Fulfilments`|<a href="#SaleFulfilmentModel"><b>[] Sale Fulfilment Model</b></a>||||
+
 ### GET [GET /sale/fulfilment?SaleID={SaleID}&IncludeProductInfo={IncludeProductInfo}]
+
 ### POST [POST]         
+
 ### DELETE [DELETE /sale/fulfilment?TaskID={TaskID}&Void={Void}]
+
 ## Sale Fulfilment Pick [/sale/fulfilment/pick]
+
 ### Available Fields for Sale Fulfilment Pick
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`TaskID`|Guid||Yes|Unique Cin7 Core Sale Task ID|
 |`Status`|String||Yes|Pick status. Possible Values are `NOT AVAILABLE`, `DRAFT`, `AUTHORISED`, `VOIDED`. For `POST` available values are `DRAFT`, `AUTHORISED`|
 |`Lines`|<a href="#SaleFulfilmentPickPackLineModel"><b>[] Sale Fulfilment Pick Pack Line Model</b></a>||||
+
 ### GET [GET /sale/fulfilment/pick?TaskID={TaskID}&IncludeProductInfo={IncludeProductInfo}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Sale Fulfilment Pack [/sale/fulfilment/pack]
+
 ### Available Fields for Sale Fulfilment Pack
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`TaskID`|Guid||Yes|Unique Cin7 Core Sale Task ID|
 |`Status`|String||Yes|Pack status. Possible Values are `NOT AVAILABLE`, `DRAFT`, `AUTHORISED`, `VOIDED`. For `POST` available values are `DRAFT`, `AUTHORISED`|
 |`Lines`|<a href="#SaleFulfilmentPickPackLineModel"><b>[] Sale Fulfilment Pick Pack Line Model</b></a>||||
+
 ### GET [GET /sale/fulfilment/pack?TaskID={TaskID}&IncludeProductInfo={IncludeProductInfo}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Sale Fulfilment Ship [/sale/fulfilment/ship]
+
 ### Available Fields for Sale Fulfilment Ship
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2480,15 +2722,21 @@
 |`ShippingAddress`|<a href="#SaleShippingAddressModel"><b>Shipping Address Model</b></a>|||Shipping Address|
 |`ShippingNotes`|String|1024||Shipping Notes|
 |`Lines`|<a href="#SaleFulfilmentShipLineModel"><b>[] Sale Fulfilment Ship Line Model</b></a>||||
+
 ### GET [GET /sale/fulfilment/ship?TaskID={TaskID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Sale Invoice [/sale/invoice]
+
 ### Invoice Available Fields
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`SaleID`|Guid||Yes|Unique Cin7 Core Sale ID|
 |`Invoices`|<a href="#SaleInvoicePartialModel"><b>[] Sale Invoice Partial Model</b></a>||||
+
 ### Sale Invoice Partial Model
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2505,6 +2753,7 @@
 |`LinkedFulfillmentNumber`|Interger|||Number of Fulfilment linked to this invoice|
 |`Lines`|<a href="#SaleInvoiceLineModel"><b>[] Sale Invoice Line Model</b></a>||||
 |`AdditionalCharges`|<a href="#SaleInvoiceAdditionalChargeModel"><b>[] Sale Invoice Additional Charge Model</b></a>||||
+
 ### Sale Invoice POST Model
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2521,16 +2770,23 @@
 |`LinkedFulfillmentNumber`|Integer|||Number of Fulfilment linked to this invoice|
 |`Lines`|<a href="#SaleInvoiceLineModel"><b>[] Sale Invoice Line Model</b></a>||||
 |`AdditionalCharges`|<a href="#SaleInvoiceAdditionalChargeModel"><b>[] Sale Invoice Additional Charge Model</b></a>||||
+
 ### GET [GET /sale/invoice?SaleID={SaleID}&CombineAdditionalCharges={CombineAdditionalCharges}&IncludeProductInfo={IncludeProductInfo}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /sale/invoice?TaskID={TaskID}&Void={Void}]
+
 ## Sale Credit Note [/sale/creditnote]
+
 ### Credit Note Available Fields
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`SaleID`|Guid||Yes|Unique Cin7 Core Sale ID|
 |`CreditNotes`|<a href="#SaleCreditNotePartialModel"><b>[] Sale Credit Note Partial Model</b></a>||||
+
 ### Sale Credit Note Invoice Partial Model
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2544,6 +2800,7 @@
 |`Lines`|<a href="#SaleInvoiceLineModel"><b>[] Sale Invoice Line Model</b></a>||||
 |`AdditionalCharges`|<a href="#SaleInvoiceAdditionalChargeModel"><b>[] Sale Invoice Additional Charge Model</b></a>||||
 |`Restock`|<a href="#SaleFulfilmentPickPackLineModel"><b>[] Sale Fulfilment Pick Pack Line Model</b></a>||||
+
 ### Sale Credit Note POST Model
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2558,10 +2815,15 @@
 |`Lines`|<a href="#SaleInvoiceLineModel"><b>[] Sale Invoice Line Model</b></a>||||
 |`AdditionalCharges`|<a href="#SaleInvoiceAdditionalChargeModel"><b>[] Sale Invoice Additional Charge Model</b></a>||||
 |`Restock`|<a href="#SaleFulfilmentPickPackLineModel"><b>[] Sale Fulfilment Pick Pack Line Model</b></a>||||
+
 ### GET [GET /sale/creditnote?SaleID={SaleID}&CombineAdditionalCharges={CombineAdditionalCharges}&IncludeProductInfo={IncludeProductInfo}&IncludePaymentInfo={IncludePaymentInfo}]
+
 ### POST [POST]
+
 ### DELETE [DELETE /sale/creditnote?TaskID={TaskID}&Void={Void}]
+
 ## Sale Payments [/sale/payment]
+
 ### Sale Payment Line Partial Model
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2579,25 +2841,36 @@
 |`CurrencyRate`|Decimal with up to 4 decimal places||Yes|Currency Conversion rate expressed as number of Base currency units for one Customer currency unit. Available for POST/PUT|
 |`DateCreated`|DateTime|||Date of creation payment record.|
 |`CreditID`|Guid|||Id for Sale Credit entry|
+
 ### GET [GET /sale/payment?SaleID={SaleID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /sale/payment?ID={ID}]
+
 ## Sale Manual Journals [/sale/manualJournal]
+
 ### Available field for Sale Manual Journal
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`SaleID`|Guid||Yes|Unique Cin7 Core Sale ID|
 |`Status`|String||Yes|Manual Journal Status. Available values are `NOT AVAILABLE`, `DRAFT`, `AUTHORISED`. Available values for POST are `DRAFT`, `AUTHORISED`|
 |`Lines`|<a href="#SaleManualJournalLineModel"><b>[] Sale Manual Journal Line Model</b></a>||||
+
 ### GET [GET /sale/manualJournal?SaleID={SaleID}]
+
 ### POST [POST]
+
 ## Sale Attachments [/sale/attachment]
+
 ### Available fields for Sale Attachments
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`SaleID`|Guid||Yes|Unique Cin7 Core Sale ID|
 |`Lines`|<a href="#AttachmentLineModel"><b>[] Attachment Line Model</b></a>||||
+
 ### Available fields for POST Methods
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -2605,10 +2878,14 @@
 | `FileName`  | String           |         |    Yes      |File Name.|
 | `FileDownloadUrl` | String           |         | No     |URL, where file can be downloaded.|
 | `Content`  | String           |         |    Yes*     |File content converted to base64 string. Required if `FileDownloadUrl` is empty.|
+
 ### GET [GET /sale/attachment?SaleID={SaleID}]
+
 ### POST [POST]
+
 ### DELETE [DELETE /sale/attachment?ID={ID}]
 # Group Stock
+
 ### Additional fields
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2628,7 +2905,9 @@
 |`ProductCustomField8`|String|||Value of Product's additional attribute 8|
 |`ProductCustomField9`|String|||Value of Product's additional attribute 9|
 |`ProductCustomField10`|String|||Value of Product's additional attribute 10|
+
 ## Stock Adjustment List [/stockadjustmentList?Page={Page}&Limit={Limit}&Status={Status}]
+
 ### Available fields for Stock Adjustment List
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2638,8 +2917,11 @@
 |`Status`|String|||Status of stock adjustment. Available values are `DRAFT`,`COMPLETED`,`VOIDED`.|
 |`Account`|String|||Expense account for inventory adjustment|
 |`Reference`|String|||Custom reference|
+
 ### GET [GET]
+
 ## Stock Adjustment [/stockadjustment]
+
 ### Available Fields for Stock Adjustment
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2652,6 +2934,7 @@
 |`ExistingStockLines`|<a href="#ExistingStockLineModel"><b>[] Existing Stock Line Model</b></a>|||Changes in non-zero stock|  
 |`NewStockLines`|<a href="#NewStockLineModel"><b>[] New Stock Line Model</b></a>|||Changes in zero stock|  
 |`Transactions`|<a href="#TransactionStockLineModel"><b>[] Transaction Stock Line Model</b></a>|||Created transactions due to stock changes.|      
+
 ### Available Fields for Post/Put
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2662,11 +2945,17 @@
 |`Reference`|String|||Custom reference|  
 |`UpdateOnHand`|Boolean|||If `true`, On hand quantity will be adjusted, otherwise available quantity will be adjusted.|  
 |`Lines`|<a href="#NewStockLineModel"><b>[] New Stock Line Model</b></a>||Yes||  
+
 ### GET [GET /stockadjustment?TaskID={TaskID}]
+
 ### POST [POST]            
+
 ### PUT [PUT]         
+
 ### DELETE [DELETE /stockadjustment?ID={ID}&Void={Void}]
+
 ## Stock Take List [/stockTakeList]
+
 ### Available fields for Stock Take List
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2687,8 +2976,11 @@
 |`CreatedDate`|String|||Date of creation stocktake|
 |`LastUpdatedDate`|String|||Date and time when stocktake was last time modified|
 |`LastUpdatedBy`|String|||User which made last update|
+
 ### GET [GET /stockTakeList?Page={Page}&Limit={Limit}&Status={Status}]
+
 ## Stock Take [/stocktake]
+
 ### Available Fields for Stock Take
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2709,11 +3001,17 @@
 |`NonZeroStockOnHandProducts`|<a href="#ExistingStockLineModel"><b>[] Existing Stock Line Model</b></a>|||Lines will be automaticaly filled with filtered products which have non empty stock.(in POST method or in PUT method if status is changing from `DRAFT` to `IN PROGRESS`. If current `Status` is `IN PROGRESS`, lines can be passed to PUT method (line entry will be found by product, location, batchSN and expiryDate and passed `Adjustment` will be set as new `Adjustment`)|  
 |`ZeroStockOnHandProducts`|<a href="#NewStockLineModel"><b>[] New Stock Line Model</b></a>||||  
 |`Transactions`|<a href="#TransactionStockLineModel"><b>[] Transaction Stock Line Model</b></a>|||Created transactions due to stock changes.|      
+
 ### GET [GET /stocktake?TaskID={TaskID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /stocktake?ID={ID}&Void={Void}]
+
 ## Stock Transfer List [/stockTransferList]
+
 ### Available fields for Stock Transfer List
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2729,8 +3027,11 @@
 |`InTransitAccount`|String|||Asset Account holding stock value while it is in transit.|
 |`DepartureDate`|DateTime|||Date when stock left the From warehouse.|
 |`Reference`|String|||Custom reference|
+
 ### GET [GET /stockTransferList?Page={Page}&Limit={Limit}&Status={Status}&Search={Search}]
+
 ## Stock Transfer [/stockTransfer]
+
 ### Available Fields for Stock Transfer
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -2750,20 +3051,29 @@
 |`SkipOrder`|Boolean|||Skip stock transfer order. Default value `true`.|
 |`Lines`|<a href="#StockTransferLineModel"><b>[] Stock Transfer Line Model</b></a>||Yes||
 |`Order`|<a href="#StockTransferOrderModel"><b>Stock Transfer Order Model</b></a>||||
+
 ### GET [GET /stockTransfer?TaskID={TaskID}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /stockTransfer?ID={ID}&Void={Void}]
+
 ## Stock Transfer Order [/stockTransfer/order]
+
 ### Available Fields for Stock Transfer Order
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`TaskID`|Guid||Yes|Unique Cin7 Core Stock Transfer ID|
 |`Status`|String||Yes|Status of stock transfer order. Available values are `DRAFT`, `AUTHORISED`, `NOT AVAILABLE`.|
 |`Lines`|<a href="#StockTransferOrderLineModel"><b>[] Stock Transfer Order Line Model</b></a>||Yes||
+
 ### GET [GET /stockTransfer/order?TaskID={TaskID}]
+
 ### POST [POST]
 # Group Supplier
+
 ### Available Fields for Supplier
 | Property              | Type      | Length    | Required  | Notes                                                             |
 |:----------------------|-----------|-----------|-----------|-------------------------------------------------------------------|
@@ -2782,11 +3092,16 @@
 | `LastModifiedOn`      | String    |           |           | Date of last modification.                                        |
 | `Addresses`           |<a href="#SupplierAddressModel"><b>[] Supplier Address Model</b></a>||| List of addresses.             |
 | `Contacts`            |<a href="#SupplierContactModel"><b>[] Supplier Contact Model</b></a>||| List of contacts.              |
+
 ## Supplier [/supplier]  
+
 ### GET [GET /supplier?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}&ModifiedSince={ModifiedSince}&IncludeDeprecated={IncludeDeprecated}]
+
 ### POST [POST]
+
 ### PUT [PUT]
 # Group Tax
+
 ### Available Fields for Tax
 | Property              | Type      | Length    | Required  | Notes                 |
 |:----------------------|-----------|-----------|-----------|-----------------------|
@@ -2799,12 +3114,18 @@
 | `IsTaxForSale`        | Bool      |           |           | Points that tax is used for Sale |
 | `IsTaxForPurchase`    | Bool      |           |           | Points that tax is used for Purchase |
 | `Components` |<a href="#TaxComponentModel"><b>[] Tax Component Model</b></a>||||
+
 ## Tax [/ref/tax]
+
 ### GET [GET /ref/tax?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}&IsActive={IsActive}&IsTaxForSale={IsTaxForSale}&IsTaxForPurchase={IsTaxForPurchase}&Account={Account}]
+
 ### POST [POST]
+
 ### PUT [PUT]
 # Group Transactions
+
 ## Transactions [/transactions]
+
 ### Available fields for Transactions
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -2816,20 +3137,29 @@
 |`Reference`|String|||Custom Reference|
 |`Transaction`|String|||Transaction description.|
 |`Type`|String|||Transaction Type. Available values are `Purchase`,`Sale`,`MoneySpend`,`MoneyReceive`,`BankTransfer`,`ExpenseClaimTask`,`FinishedGoods`,`InventoryWriteOff`,`StockTake`,`StockAdjustment`,`Journal`,`Disassembly`,`Depreciation`|
+
 ### GET [GET /transactions?Page={Page}&Limit={Limit}&FromDate={FromDate}&ToDate={ToDate}&Account={Account}]
 # Group Unit of Measure
+
 ### Available Fields for Unit of Measure
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
 | `ID`  | Guid           |         |          |Required for PUT, Ignored for POST operations          |
 | `Name`  | String             | 50        | Yes         |Unit of Measure name       |
+
 ## Unit of Measure [/ref/unit]
+
 ### GET [GET /ref/unit?Page={Page}&Limit={Limit}&Name={Name}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### DELETE [DELETE /ref/unit?ID={ID}]
 # Group  Webhooks
+
 ## Webhooks [/webhooks]
+
 ### Available fields for Webhooks
 | Property | Type           | Length | Required |Notes       |
 |:-------|----------------------|---------|----------|----------|
@@ -2843,6 +3173,7 @@
 | `ExternalPassword`  | String           |         |Yes*|Password. Required if `ExternalAuthorizationType` is `basicauth` |
 | `ExternalBearerToken`  | String           |         |Yes*|Bearer token. Required if `ExternalAuthorizationType` is `bearerauth` |
 | `ExternalHeaders`  | Array of Key and Value objects.|         ||Additional headers.|
+
 ### Available values for Webhook Type 
 | Type     |Description|
 |:-------|----------|
@@ -2866,13 +3197,20 @@
 | `Customer/Updated`  |   |
 | `Supplier/Updated`  |   |
 | `Stock/AvailableStockLevelChanged`  |   |
+
 ### Webhooks payload examples
+
 ### GET [GET]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ### Delete [DELETE /webhooks?ID={ID}]
 # Group CRM
+
 ## Lead [/crm/lead]  
+
 ### Available Fields for Lead
 |Property               |Type       |Length     |Required   |Notes|
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -2890,10 +3228,15 @@
 |`Comments`|string|2000||Additional comments.|
 |`Contacts`|<a href="#SupplierContactModel"><b>[] Lead Contact Model</b></a>|||List of contacts.|
 |`Addresses`|<a href="#SupplierAddressModel"><b>[] Lead Address Model</b></a>|||List of addresses.|
+
 ### GET [GET /crm/lead?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}&ModifiedSince={ModifiedSince}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Opportunity [/crm/opportunity] 
+
 ### Available Fields for Opportunity
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
@@ -2950,43 +3293,68 @@
 |`CustomField10`|string|256||Value of opportunity additional attribute 10.|
 |`Lines`|Opportunity Line[]|||Opportunity line items.|
 |`AdditionalCharges`|Opportunity Additional Charge[]|||Opportunity line additional charges. If true then additional charges lines displayed in Lines array.|
+
 ### Available Fields for Opportunity Line
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
+
 ### Available Fields for Opportunity Opportunity Additional Charge 
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
+
 ### GET [GET /crm/opportunity?Page={Page}&Limit={Limit}&ID={ID}&ModifiedSince={ModifiedSince}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Task [/crm/task] 
+
 ### Available Fields for Task model
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
+
 ### Available Entity types:
+
 ### GET [GET /crm/task?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}&StartDateFrom={StartDateFrom}&StartDateTo={StartDateTo}&EndDateFrom={EndDateFrom}&EndDateTo={EndDateTo}&CompleteDateFrom={CompleteDateFrom}&CompleteDateTo={CompleteDateTo}&AssignedTo={AssignedTo}&Category={Category}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Task Category [/crm/taskcategory] 
+
 ### Available Fields for task Category model
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
+
 ### GET [GET /crm/task?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Workflow [/crm/workflow] 
+
 ### Available Fields for Workflow model
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
+
 ### Available Fields for WorkflowStep model
 | Property              | Type      | Length    | Required  | Notes                                                         |
 |:----------------------|-----------|-----------|-----------|---------------------------------------------------------------|
+
 ### GET [GET /crm/task?Page={Page}&Limit={Limit}&ID={ID}&Name={Name}]
+
 ### POST [POST]
+
 ### PUT [PUT]
+
 ## Start a Workflow [/crm/workflowstart] 
+
 ### POST [POST /crm/workflowstart?ID={ID}&Name={Name}&StartDate={StartDate}&EnityType={EnityType}&EntityID={EntityID}]
 # Group Other Models
+
 ## Dimension Unit Available Values <a name="DimensionUnitAvailableValues" />
 |Property|Type|Abbreviation|Name|
 |:-------|----|------|--------|-----|
@@ -3003,6 +3371,7 @@
 |`DimensionsUnits`|length|ft|foot|
 |`DimensionsUnits`|length|yd|yard|
 |`DimensionsUnits`|length|km|kilometre|
+
 ## Address Model <a name="AddressModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3015,6 +3384,7 @@
 |`State`|String|256||State|
 |`Postcode`|String|20||Post code|
 |`Country`|String|256|Yes|Country|
+
 ## Sale Shipping Address Model <a name="SaleShippingAddressModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3030,6 +3400,7 @@
 |`Company`|String|128||Company Name|
 |`Contact`|String|512||Contact|
 |`ShipToOther`|Boolean|||If false and Customer's address matching Line 1 not found, than new customer shipping address will be created.|
+
 ## Purchase Shipping Address Model <a name="PurchaseShippingAddressModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3043,6 +3414,7 @@
 |`Country`|String|256|Yes|Country|
 |`ShipToOther`|Boolean|||Ship to different company|
 |`Company`|String|128||Company name when ShipToOther is set to True|
+
 ## Additional Attribute Model <a name="AdditionalAttributeModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3056,6 +3428,7 @@
 |`AdditionalAttribute8`|String|256||Additional Attribute 8 value|
 |`AdditionalAttribute9`|String|256||Additional Attribute 9 value|
 |`AdditionalAttribute10`|String|256||Additional Attribute 10 value|
+
 ## Sale Quote Model <a name="SaleQuoteModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3067,6 +3440,7 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places||Yes|Sum of quote lines and additional charges without taxes|
 |`Tax`|Decimal with up to 4 decimal places||Yes|Sum of quote lines and additional charges taxes|
 |`Total`|Decimal with up to 4 decimal places||Yes|Sum of quote lines and additional charges with taxes|
+
 ## Sale Quote Line Model <a name="SaleQuoteLineModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3081,6 +3455,7 @@
 |`TaxRule`|String|50|Yes|Line Tax Rule name.|
 |`Comment`|String|256|Yes|Comment for this line|
 |`Total`|Decimal with up to 4 decimal places|||Line Total.For validation|
+
 ## Sale Order Model <a name="SaleOrderModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3092,6 +3467,7 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges without taxes|
 |`Tax`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges taxes|
 |`Total`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges with taxes|
+
 ## Sale Order Line Model <a name="SaleOrderLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3108,6 +3484,7 @@
 |`DropShip`|Boolean|||Required if product is not a service with “Optional Drop Ship” mode. Otherwise it ignored.|
 |`BackorderQuantity`|Decimal with up to 4 decimal places|||Quantity of the ordered product on backorder. Read Only for POST|
 |`Total`|Decimal with up to 4 decimal places|||Line Total.For validation|
+
 ## Sale Fulfilment Model <a name="SaleFulfilmentModel"/>
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3118,11 +3495,13 @@
 |`Pick`|<a href="#SaleFulfilmentPickPackModel"><b>Sale Fulfilment Pick Pack Model</b></a>||||
 |`Pack`|<a href="#SaleFulfilmentPickPackModel"><b>Sale Fulfilment Pick Pack Model</b></a>||||
 |`Ship`|<a href="#SaleFulfilmentShipModel"><b>Sale Fulfilment Ship Model</b></a>||||
+
 ## Sale Fulfilment Pick Pack Model <a name="SaleFulfilmentPickPackModel"/>
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`Status`|String||Yes|Pick/Pack status. Possible Values are `NOT AVAILABLE`, `DRAFT`, `AUTHORISED`, `VOIDED`|
 |`Lines`|<a href="#SaleFulfilmentPickPackLineModel"><b>[] Sale Fulfilment Pick Pack Line Model</b></a>||||
+
 ## Sale Fulfilment Pick Pack Line Model <a name="SaleFulfilmentPickPackLineModel"/>
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3139,6 +3518,7 @@
 |`WarrantyRegistrationNumber`|string|256||Warranty registration number. This field available only for packing.|
 |`RestockLocation`|String|256|No|Used only for CreditNote. Location name of return of the product.|
 |`RestockLocationID`|GUID||No|Used only for CreditNote. Location ID of return of the product.|
+
 ## Sale Fulfilment Ship Model <a name="SaleFulfilmentShipModel"/>
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3147,6 +3527,7 @@
 |`ShippingAddress`|<a href="#SaleShippingAddressModel"><b>Shipping Address Model</b></a>|||Shipping Address|
 |`ShippingNotes`|String|1024||Shipping Notes|
 |`Lines`|<a href="#SaleFulfilmentShipLineModel"><b>[] Sale Fulfilment Ship Line Model</b></a>||||
+
 ## Sale Fulfilment Ship Line Model <a name="SaleFulfilmentShipLineModel"/>
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3157,6 +3538,7 @@
 |`TrackingNumber`|String|256||Shipment tracking number.|
 |`TrackingURL`|String|512||Shipment tracking URL. Read-only.|
 |`IsShipped`|Boolean|||Is package shipped.|
+
 ## Sale Invoice Model <a name="SaleInvoiceModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3177,6 +3559,7 @@
 |`Tax`|Decimal with up to 4 decimal places|||Sum of Invoice lines and additional charges taxes|
 |`Total`|Decimal with up to 4 decimal places|||Sum of Invoice lines and additional charges with taxes|
 |`Paid`|Decimal with up to 4 decimal places|||Sum of payments.|
+
 ## Sale Additional Charge Model <a name="SaleAdditionalChargeModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3188,6 +3571,7 @@
 |`Total`|Decimal with up to 4 decimal places|||Line Total. For validation|
 |`TaxRule`|String|50|Yes|Line Tax Rule name.|
 |`Comment`|String|1024||Comment|
+
 ## Sale Invoice Additional Charge Model <a name="SaleInvoiceAdditionalChargeModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3200,6 +3584,7 @@
 |`TaxRule`|String|50|Yes|Line Tax Rule name.|
 |`Account`|String|50||Revenue account|
 |`Comment`|String|1024||Comment|
+
 ## Sale Invoice Line Model <a name="SaleInvoiceLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3215,6 +3600,7 @@
 |`TaxRule`|String|50|Yes|Line Tax Rule name.|
 |`Account`|String|50||Revenue account|
 |`Comment`|String|256||Comment for this line|
+
 ## Sale Credit Note Model <a name="SaleCreditNoteModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3232,6 +3618,7 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places|||Sum of Credit Note lines and additional charges without taxes|
 |`Tax`|Decimal with up to 4 decimal places|||Sum of Credit Note lines and additional charges taxes|
 |`Total`|Decimal with up to 4 decimal places|||Sum of Credit Note lines and additional charges with taxes|
+
 ## Sale Payment Line Model <a name="SalePaymentLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3242,11 +3629,13 @@
 |`Account`|String|||Account Code of the bank/payment account from Chart of accounts|
 |`CurrencyRate`|Decimal with up to 4 decimal places|||Currency Conversion rate expressed as number of Base currency units for one Customer currency unit.|
 |`DateCreated`|DateTime|||Date of creation payment record.|
+
 ## Sale Manual Journal Model <a name="SaleManualJournalModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`Status`|String||Yes|Manual Journal Status. Available values are `NOT AVAILABLE`, `DRAFT`, `AUTHORISED`. Available values for POST are `DRAFT`, `AUTHORISED`|
 |`Lines`|<a href="#SaleManualJournalLineModel"><b>[] Sale Manual Journal Line Model</b></a>||||
+
 ## Sale Manual Journal Line Model <a name="SaleManualJournalLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3255,6 +3644,7 @@
 |`Date`|DateTime||Yes|Effective date of manual journal|
 |`Debit`|String||Yes|Debit Account|
 |`Credit`|String||Yes|Credit Account|
+
 ## Attachment Line Model <a name="AttachmentLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3263,6 +3653,7 @@
 |`IsDefault`|Boolean|||Is this attachment will be used as default product image. Is visible only for product Attachment Endpoint.|
 |`FileName`|String|||Attached file name|
 |`DownloadUrl`|String|||Url to download attached File|
+
 ## Product Family Product Line Model <a name="ProductFamilyProductLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3272,6 +3663,7 @@
 |`Option1`|String|256|Yes|The value that corresponds to the Option 1. Should be included in Option1Values.|
 |`Option2`|String|256||The value that corresponds to the Option 2. Should be included in Option2Values. Should be empty if Option 2 wasn’t set.|
 |`Option3`|String|256||The value that corresponds to the Option 2. Should be included in Option3Values. Should be empty if Option 3 wasn’t set.|
+
 ## Inventory Movement Line Model <a name="InventoryMovementLineModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3279,6 +3671,7 @@
 |`ProductID`|GUID|||Product identifier referenced by this Line.|
 |`Date`|DateTime|||Inventory Movement Date|
 |`COGS`|Deciaml|||Inventory Movement Amount|
+
 ## Sale Transaction Line Model <a name="SaleTransactionLineModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3289,11 +3682,13 @@
 |`Description`|String|||Transaction description|
 |`Amount`|Decimal with up to 2 decimal places|||Amount in base currency|
 |`EffectiveDate`|DateTime|||Transaction Date|
+
 ## Purchase Manual Journal Model <a name="PurchaseManualJournalModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`Status`|String||Yes|Manual Journal Status. Available values are `NOT AVAILABLE`, `DRAFT`, `AUTHORISED`. Available values for POST are `DRAFT`, `AUTHORISED`|
 |`Lines`|<a href="#PurchaseManualJournalLineModel"><b>[] Purchase Manual Journal Line Model</b></a>||||
+
 ## Purchase Manual Journal Line Model <a name="PurchaseManualJournalLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3303,6 +3698,7 @@
 |`Debit`|String||Yes|Debit Account|
 |`Credit`|String||Yes|Credit Account|
 |`IsSystem`|Boolean|||Read only. rows with `true` value cannot be deleted or modified.|
+
 ## Purchase Order Model <a name="PurchaseOrderModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3314,6 +3710,7 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges without taxes. Not required for POST.|
 |`Tax`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges taxes. Not required for POST.|
 |`Total`|Decimal with up to 4 decimal places||Yes|Sum of order lines and additional charges with taxes. Not required for POST.|
+
 ## Purchase Order Line Model <a name="PurchaseOrderLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3328,6 +3725,7 @@
 |`SupplierSKU`|String|50||Supplier SKU referenced by this line.|
 |`Comment`|String|256||Comment for this line|
 |`Total`|Decimal with up to 4 decimal places||Yes|Line Total. For validation|
+
 ## Purchase Additional Charge Model <a name="PurchaseAdditionalChargeModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3339,11 +3737,13 @@
 |`Tax`|Decimal with up to 4 decimal places||Yes|Tax|
 |`Total`|Decimal with up to 4 decimal places||Yes|Line Total. For validation|
 |`TaxRule`|String|50|Yes|Line Tax Rule name.|
+
 ## Purchase Stock Model <a name="PurchaseStockModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`Status`|string||Yes|Purchase Stock Received Status. Possible Values are `NOT AVAILABLE`,`DRAFT`,`AUTHORISED`,`VOIDED`. For POST only `DRAFT` and `AUTHORISED` values accepted|
 |`Lines`|<a href="#PurchaseStockLineModel"><b>[] Purchase Stock Line Model</b></a>||Yes||
+
 ## Purchase Stock Line Model <a name="PurchaseStockLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3359,6 +3759,7 @@
 |`SupplierSKU`|String|50||Supplier SKU referenced by this line.|
 |`ExpiryDate`|DateTime|||Date when selected Batch expires|
 |`CardID`|GUID|||Stock Batch ID|
+
 ## Purchase Unstock Line Model <a name="PurchaseUnStockLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3371,6 +3772,7 @@
 |`Location`|String|256||Read-only.Location where the product would be stock to/from|
 |`BatchSN`|String|50||Read-only.Batch Serial Number|
 |`ExpiryDate`|DateTime|||Read-only.Date when selected Batch expires|
+
 ## Purchase Invoice Model <a name="PurchaseInvoiceModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3385,6 +3787,7 @@
 |`Tax`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges taxes. Not required for POST.|
 |`Total`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges with taxes. Not required for POST.|
 |`Paid`|Decimal with up to 4 decimal places|||Invoice Paid Total in Supplier Currency. Not required for POST.|
+
 ## Purchase Credit Note Model <a name="PurchaseCreditNoteModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3398,6 +3801,7 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges without taxes. Not required for POST.|
 |`Tax`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges taxes. Not required for POST.|
 |`Total`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges with taxes. Not required for POST.|
+
 ## Purchase Invoice Line Model <a name="PurchaseInvoiceLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3412,6 +3816,7 @@
 |`Account`|String|50|Yes|Revenue account|
 |`Comment`|String|256||Comment for this line|
 |`Total`|Decimal with up to 4 decimal places||Yes|Line Total. For validation|
+
 ## Purchase Invoice Additional Charge Model <a name="PurchaseInvoiceAdditionalChargeModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3424,6 +3829,7 @@
 |`TaxRule`|String|50|Yes|Line Tax Rule name.|
 |`Account`|String|50|Yes|Revenue account|
 |`Total`|Decimal with up to 4 decimal places|||Line Total. For validation|
+
 ## Existing Stock Line Model <a name="ExistingStockLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3459,6 +3865,7 @@
 |`StockLocator`|String|||Value of Product's StockLocator. Read-only.this field is available for stock take|
 |`Unit`|String|||Value of Product's Default Unit of Measure. Read-only.this field is available for stock take|
 |`CostingMethod`|String|||Value of Product's Costing method. Read-only.this field is available for stock take. Valid values: `FIFO`, `Special - Batch`, `Special - Serial Number`, `FIFO - Serial Number`, `FIFO - Batch`, `FEFO - Batch`, `FEFO - Serial Number` |
+
 ## New Stock Line Model <a name="NewStockLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3494,6 +3901,7 @@
 |`StockLocator`|String|||Value of Product's StockLocator. Read-only.this field is available for stock take|
 |`Unit`|String|||Value of Product's Default Unit of Measure. Read-only.this field is available for stock take|
 |`CostingMethod`|String|||Value of Product's Costing method. Read-only.this field is available for stock take. Valid values: `FIFO`, `Special - Batch`, `Special - Serial Number`, `FIFO - Serial Number`, `FIFO - Batch`, `FEFO - Batch`, `FEFO - Serial Number` |
+
 ## Transaction Stock Line Model <a name="TransactionStockLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3502,6 +3910,7 @@
 |`Credit`|String|||Credit Account.|
 |`Amount`|Decimal|||Amount on which products quantity changed.|
 |`EffectiveDate`|DateTime|||Transaction Date|
+
 ## Stock Transfer Line Model <a name="StockTransferLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3530,10 +3939,12 @@
 |`ProductCustomField8`|String|||Value of Product's additional attribute 8. Read-only.|
 |`ProductCustomField9`|String|||Value of Product's additional attribute 9. Read-only.|
 |`ProductCustomField10`|String|||Value of Product's additional attribute 10. Read-only.|
+
 ## Price Tier Model <a name="PriceTierModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`Price Tier Name`|Decimal|||Product Sale Price used when Price Tier is selected in Sale Task. Up to 4 decimal places.|
+
 ## Product Supplier Model <a name="ProductSupplierModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3551,6 +3962,7 @@
 |`SupplierProductURL`|String|256||Link to supplier product specification.|
 |`LastSupplied`|DateTime|||The latest supplied date of a product.|
 |`ProductSupplierOptions`|<a href="#ProductSupplierOptionsModel"><b>[] Product Supplier Options</b></a>||||
+
 ## Product Supplier Options Model <a name="ProductSupplierOptionsModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3562,6 +3974,7 @@
 |`Safety`|Integer|||Safety.|
 |`MinimumToReorder`|Decimal||Can be set for default options set only.|
 |`SupplyIntervals`|<a href="#ProductSupplierOptionsIntervalModel"><b>[] Product Supplier Options Intervals </b></a>||||
+
 ## Product Supplier Options Interval Model <a name="ProductSupplierOptionsIntervalModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3576,6 +3989,7 @@
 |`IsFriday`|Boolean|||Required when DeliveryMethod = Fixed.|
 |`IsSaturday`|Boolean|||Required when DeliveryMethod = Fixed.|
 |`IsSunday`|Boolean|||Required when DeliveryMethod = Fixed.|
+
 ## Reorder Level Model <a name="ReorderLevelModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3585,6 +3999,7 @@
 |`ReorderQuantity`|Decimal|||Default quantity to put into purchase order when reordering this product. Not applicable to reorder backordered form. Defaults to 0|
 |`StockLocator`|String|256||Location of this product in your warehouse|
 |`PickZones`|String|512|Yes|Comma delimited list of pick zones|
+
 ## Bill Of Material Product Model <a name="BillOfMaterialProductModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3595,6 +4010,7 @@
 |`WastagePercent`|Decimal||| `WastagePercent` and `WastageQuantity` are mutually exclusive.|
 |`WastageQuantity`|Decimal||| `WastagePercent` and `WastageQuantity` are mutually exclusive.|
 |`CostPercentage`|Decimal|||Prorated cost distribution of a product that has been disassembled to current component. If left as zero equal distribution will be used between components.|
+
 ## Bill Of Material Service Model <a name="BillOfMaterialServiceModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3603,6 +4019,7 @@
 |`Quantity`|Decimal||Yes|Quantity|
 |`ExpenseAccount`|String|||Expense Account|
 |`PriceTier`|Integer|||Price Tier Number|
+
 ## Product Movement Model <a name="ProductMovementModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3617,6 +4034,7 @@
 |`BatchSN`|Decimal|||Batch #|
 |`ExpiryDate`|DateTime|||Expiry Date|
 |`FromTo`|String|||Supplier/CustomerName|
+
 ## Product Movement Available Types <a name="ProductMovementTypes" />
 |Type|
 |:-------|
@@ -3648,6 +4066,7 @@
 |`Inventory Write-Off`|
 |`Disassembly Cost Change`|
 |`Disassembly`|
+
 ## Finished Goods Order Line Model <a name="FinishedGoodsOrderLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3661,6 +4080,7 @@
 |`WastageQuantity`|Decimal||| `WastagePercent` and `WastageQuantity` are mutually exclusive.|
 |`TotalQuantity`|Decimal|||Prorated cost distribution of a product that has been disassembled to current component. Read-only.|
 |`TotalCost`|Decimal||Yes*|Total cost. For products with type = Stock this parameter is auto-calculated, for other type’s its required.|
+
 ## Finished Goods Pick Line Model <a name="FinishedGoodsPickLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3674,17 +4094,20 @@
 |`Quantity`|Decimal||Yes|Quantity|
 |`Unit `|String|||Unit of measure. Read-only.|
 |`Cost `|Decimal|||Cost. Read-only.|
+
 ## Error Model <a name="ErrorModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`ErrorCode`|Integer|||Error code|
 |`Exception`|String|||Error text|
+
 ## Attribute Set Line Model <a name="AttributeSetLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`Name`|String|||Attribute name|
 |`Type`|String|||Attribute type. Available values are `Not used`, `Text`, `Checkbox`, `List`. |
 |`Values`|String|||Attribute values|
+
 ## Disassembly Pick Line Model <a name="DisassemblyPickLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3697,6 +4120,7 @@
 |`UnitCost `|Decimal|||Cost.|
 |`Quantity`|Decimal|||Picked Quantity.|
 |`TotalCost `|Decimal|||Total Line Cost.|
+
 ## Disassembly Order Line Model <a name="DisassemblyOrderLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3711,6 +4135,7 @@
 |`Account`|String|||Inventory Account|
 |`Quantity`|Decimal||Yes|Quantity|
 |`Cost`|Decimal||Yes|Cost.|
+
 ## Disassembly Order Service Line Model <a name="DisassemblyOrderServiceLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3719,6 +4144,7 @@
 |`Account`|String||Yes|Expense Account|
 |`Comments`|String|||Comment to line.|
 |`Amount`|Decimal||Yes|Amount.|
+
 ## Inventory Write-Off Line Model <a name="InventoryWriteOffLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3733,6 +4159,7 @@
 |`Quantity`|Decimal||Yes|Quantity|
 |`Cost `|Decimal||Yes*|Cost. Required if product type is `Service`. Default value = 0.|
 |`TotalCost `|Decimal|||`Cost` * `Quantity`. Read-only.|
+
 ## Tax Component Model <a name="TaxComponentModel" />
 |Property           | Type      | Length | Required | Notes                         |
 |:------------------|-----------|--------|----------|-------------------------------|
@@ -3740,6 +4167,7 @@
 |`Percent `         | Decimal   |        | Yes      | Cost. Required if product type is `Service`. Default value = 0.|
 |`AccountCode`      | String    |        | Yes      | ChartOfAccount Code with Class == `LIABILITY` && Status == `ACTIVE` |
 |`ComponentOrder`   | Int       |        | Yes      | The order of sequence taxes components. |
+
 ## Money Task Line Model <a name="MoneyTaskLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3752,6 +4180,7 @@
 |`TaxRule`|String|50|Yes|Line Tax Rule name.|
 |`Account`|String|50|Yes|Revenue account|
 |`Total`|Decimal with up to 4 decimal places||Yes|Line Total. For validation|
+
 ## Supplier/Customer Address Model <a name="SupplierAddressModel" /> 
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -3764,6 +4193,7 @@
 | `Country`         | String    |       | Yes       | Country name          |
 | `Type`            | String    |       | Yes       | Address Type. Should be one of the following values: `Billing`, `Business` or `Shipping`. |
 | `DefaultForType`  | Bool      |       |           | Points that Address is used as default for chosen Type. `False` as default. |
+
 ## Supplier/Customer Contact Model <a name="SupplierContactModel" /> 
 | Property          | Type      | Length    | Required  | Notes                 |
 |:------------------|-----------|-----------|-----------|-----------------------|
@@ -3777,6 +4207,7 @@
 | `Comment`         | String    | 256       |           | Comment               |
 | `Default`         | Bool      |           |           | Points that Contact is used as default. `False` as default. |
 | `IncludeInEmail`  | Bool      |           |           | Points that Contact is included in Email. `false` as default. 
+
 ## Customer specific Product Price Model <a name="ProductPriceModel" /> 
 | Property          | Type      | Length| Required  | Notes                 |
 |:------------------|-----------|-------|-----------|-----------------------|
@@ -3786,6 +4217,7 @@
 | `ProductSKU`      | String    | 50    | Yes*      |                        |
 | `ProductName`     | String    |       |           | Readonly                |
 | `Price`           | Decimal   |       |   Yes     |      |
+
 ## Journal Line Model <a name="JournalLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3794,6 +4226,7 @@
 |`Reference`|String|||Custom Reference|
 |`Amount`|Decimal with up to 2 decimal places||Yes|Amount in selected currency.|
 |`BaseAmount`|Decimal with up to 2 decimal places||Yes|Amount in base currency.|
+
 ## Purchase Payment Line Model <a name="PurchasePaymentLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3806,12 +4239,14 @@
 |`Account`|String|||Account Code of the bank/payment account from Chart of accounts|
 |`CurrencyRate`|Decimal with up to 4 decimal places|||Currency Conversion rate expressed as number of Base currency units for one Customer currency unit.|
 |`DateCreated`|DateTime|||Date of creation payment record.|
+
 ## Advanced Purchase Stock Model <a name="AdvancedPurchaseStockModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`TaskID`|GUID||Yes|Identifier of Purchase Stock Receiving Task|
 |`Status`|string|50|Yes|Purchase Stock Received Status. Possible Values are `NOT AVAILABLE`,`DRAFT`,`AUTHORISED`,`VOIDED`. For POST only `DRAFT` and `AUTHORISED` values accepted|
 |`Lines`|<a href="#AdvancedPurchaseStockLineModel"><b>[] Advanced Purchase Stock Line Model</b></a>||Yes||
+
 ## Advanced Purchase Stock Line Model <a name="AdvancedPurchaseStockLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3826,12 +4261,14 @@
 |`BatchSN`|String|50||Batch Serial Number|
 |`SupplierSKU`|String|50||Supplier SKU referenced by this line.|
 |`ExpiryDate`|DateTime|||Date when selected Batch expires|
+
 ## Advanced Purchase Put Away Model <a name="AdvancedPurchasePutAwayModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`TaskID`|GUID||Yes|Identifier of Purchase Put Away Task|
 |`Status`|string|50|Yes|Purchase Put Away Status. Possible Values are `NOT AVAILABLE`,`DRAFT`,`AUTHORISED`,`VOIDED`. For POST only `DRAFT` and `AUTHORISED` values accepted|
 |`Lines`|<a href="#AdvancedPurchasePutAwayLineModel"><b>[] Advanced Purchase Put Away Line Model</b></a>||Yes||
+
 ## Advanced Purchase Put Away Line Model <a name="AdvancedPurchasePutAwayLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3847,6 +4284,7 @@
 |`SupplierSKU`|String|50||Supplier SKU referenced by this line.|
 |`ExpiryDate`|DateTime|||Date when selected Batch expires|
 |`CardID`|GUID|||Stock Batch ID|
+
 ## Advanced Purchase Invoice Model <a name="AdvancedPurchaseInvoiceModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3862,6 +4300,7 @@
 |`Tax`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges taxes. Not required for POST.|
 |`Total`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges with taxes. Not required for POST.|
 |`Paid`|Decimal with up to 4 decimal places|||Invoice Paid Total in Supplier Currency. Not required for POST.|
+
 ## Advanced Purchase Credit Note Model <a name="AdvancedPurchaseCreditNoteModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
@@ -3876,22 +4315,26 @@
 |`TotalBeforeTax`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges without taxes. Not required for POST.|
 |`Tax`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges taxes. Not required for POST.|
 |`Total`|Decimal with up to 4 decimal places|||Sum of order lines and additional charges with taxes. Not required for POST.|
+
 ## Advanced Purchase Manual Journal Model <a name="'AdvancedPurchaseManualJournalModel" />
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`TaskID`|GUID||Yes|Identifier of Purchase Invoice Task|
 |`Status`|String||Yes|Manual Journal Status. Available values are `NOT AVAILABLE`, `DRAFT`, `AUTHORISED`. Available values for POST are `DRAFT`, `AUTHORISED`|
 |`Lines`|<a href="#PurchaseManualJournalLineModel"><b>[] Purchase Manual Journal Line Model</b></a>||||
+
 ## IDName Model <a name="IDNameModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`ID`|GUID|||Identifier|
 |`Name`|String|||Name|
+
 ## Stock Transfer Order Model <a name="StockTransferOrderModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
 |`Status`|String|50|Yes|Status of stock transfer order. Passible values are `NOT AVAILABLE`, `DRAFT`, `AUTHORISED`|
 |`Lines`|<a href="#StockTransferOrderLineModel"><b>[] Stock Transfer Order Line Model</b></a>||||
+
 ## Stock Transfer Order Line Model <a name="StockTransferOrderLineModel" /> 
 |Property|Type|Length|Required|Notes|
 |:-------|----|------|--------|-----|
