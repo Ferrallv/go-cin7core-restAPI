@@ -43,8 +43,8 @@ type BankAccounts struct {
 	AccountNumber    string  `json:"AccountNumber,omitempty"`
 	AccountCode      string  `json:"AccountCode,omitempty"`
 	Currency         string  `json:"Currency,omitempty"`
-	StatementBalance float32 `json:"StatementBalance,omitempty"`
-	BalanceInDear    float32 `json:"BalanceInDear,omitempty"`
+	StatementBalance float64 `json:"StatementBalance,omitempty"`
+	BalanceInDear    float64 `json:"BalanceInDear,omitempty"`
 	InitialBalance   string  `json:"InitialBalance,omitempty"`
 }
 
@@ -88,10 +88,10 @@ type Customer struct {
 	Carrier               string                 `json:"Carrier,omitempty"`
 	SalesRepresentative   string                 `json:"SalesRepresentative,omitempty"`
 	Location              string                 `json:"Location,omitempty"`
-	Discount              int32                  `json:"Discount,omitempty"`
+	Discount              int                    `json:"Discount,omitempty"`
 	Comments              string                 `json:"Comments,omitempty"`
-	TaxNumber             int32                  `json:"TaxNumber,omitempty"`
-	CreditLimit           int32                  `json:"CreditLimit,omitempty"`
+	TaxNumber             int                    `json:"TaxNumber,omitempty"`
+	CreditLimit           int                    `json:"CreditLimit,omitempty"`
 	Tags                  string                 `json:"Tags,omitempty"`
 	AttributeSet          string                 `json:"AttributeSet,omitempty"`
 	AdditionalAttribute1  string                 `json:"AdditionalAttribute1,omitempty"`
@@ -117,9 +117,9 @@ type DisassemblyList struct {
 	ProductID         string  `json:"ProductID,omitempty"`
 	ProductCode       string  `json:"ProductCode,omitempty"`
 	ProductName       string  `json:"ProductName,omitempty"`
-	Quantity          float32 `json:"Quantity,omitempty"`
+	Quantity          float64 `json:"Quantity,omitempty"`
 	LocationID        string  `json:"LocationID,omitempty"`
-	Location          float32 `json:"Location,omitempty"`
+	Location          float64 `json:"Location,omitempty"`
 	Date              string  `json:"Date,omitempty"`
 	Status            string  `json:"Status,omitempty"`
 }
@@ -132,84 +132,15 @@ type Disassembly struct {
 	ProductCode            string                             `json:"ProductCode,omitempty"`
 	ProductName            string                             `json:"ProductName,omitempty"`
 	LocationID             string                             `json:"LocationID,omitempty"`
-	Location               float32                            `json:"Location,omitempty"`
+	Location               float64                            `json:"Location,omitempty"`
 	WIPAccount             string                             `json:"WIPAccount,omitempty"`
-	Quantity               float32                            `json:"Quantity,omitempty"`
+	Quantity               float64                            `json:"Quantity,omitempty"`
 	AssemblyInstructionURL string                             `json:"AssemblyInstructionURL,omitempty"`
 	PickLines              []DisassemblyPickLineModel         `json:"PickLines,omitempty"`
 	OrderLines             []DisassemblyOrderLineModel        `json:"OrderLines,omitempty"`
 	OrderServiceLines      []DisassemblyOrderServiceLineModel `json:"OrderServiceLines,omitempty"`
 	Transactions           []TransactionStockLineModel        `json:"Transactions,omitempty"`
 	Errors                 []ErrorModel                       `json:"Errors,omitempty"`
-}
-
-type DisassemblyOrder struct {
-	TaskID     string                      `json:"TaskID,omitempty"`
-	Status     string                      `json:"Status,omitempty"`
-	OrderLines []DisassemblyOrderLineModel `json:"OrderLines,omitempty"`
-}
-
-type FinishedGoodsList struct {
-	TaskID         string `json:"TaskID,omitempty"`
-	AssemblyNumber string `json:"AssemblyNumber,omitempty"`
-	BatchSN        string `json:"BatchSN,omitempty"`
-	ExpiryDate     string `json:"ExpiryDate,omitempty"`
-	ProductID      string `json:"ProductID,omitempty"`
-	ProductCode    string `json:"ProductCode,omitempty"`
-	ProductName    string `json:"ProductName,omitempty"`
-	Quantity       string `json:"Quantity,omitempty"`
-	LocationID     string `json:"LocationID,omitempty"`
-	Location       string `json:"Location,omitempty"`
-	Date           string `json:"Date,omitempty"`
-	Status         string `json:"Status,omitempty"`
-	UnitCost       string `json:"UnitCost,omitempty"`
-	Notes          string `json:"Notes,omitempty"`
-	CustomField1   string `json:"CustomField1,omitempty"`
-	CustomField2   string `json:"CustomField2,omitempty"`
-	CustomField3   string `json:"CustomField3,omitempty"`
-	CustomField4   string `json:"CustomField4,omitempty"`
-	CustomField5   string `json:"CustomField5,omitempty"`
-	CustomField6   string `json:"CustomField6,omitempty"`
-	CustomField7   string `json:"CustomField7,omitempty"`
-	CustomField8   string `json:"CustomField8,omitempty"`
-	CustomField9   string `json:"CustomField9,omitempty"`
-	CustomField10  string `json:"CustomField10,omitempty"`
-}
-
-type FinishedGoods struct {
-	TaskID                 string                        `json:"TaskID,omitempty"`
-	AssemblyNumber         string                        `json:"AssemblyNumber,omitempty"`
-	Status                 string                        `json:"Status,omitempty"`
-	ProductID              string                        `json:"ProductID,omitempty"`
-	ProductCode            string                        `json:"ProductCode,omitempty"`
-	ProductName            string                        `json:"ProductName,omitempty"`
-	LocationID             string                        `json:"LocationID,omitempty"`
-	Location               float32                       `json:"Location,omitempty"`
-	BinID                  string                        `json:"BinID,omitempty"`
-	Bin                    float32                       `json:"Bin,omitempty"`
-	WIPAccount             string                        `json:"WIPAccount,omitempty"`
-	WIPDate                string                        `json:"WIPDate,omitempty"`
-	Account                string                        `json:"Account,omitempty"`
-	Quantity               float32                       `json:"Quantity,omitempty"`
-	AssemblyInstructionURL string                        `json:"AssemblyInstructionURL,omitempty"`
-	CompletionDate         string                        `json:"CompletionDate,omitempty"`
-	BatchSN                string                        `json:"BatchSN,omitempty"`
-	ExpiryDate             string                        `json:"ExpiryDate,omitempty"`
-	Notes                  string                        `json:"Notes,omitempty"`
-	OrderLines             []FinishedGoodsOrderLineModel `json:"OrderLines,omitempty"`
-	PickLines              []FinishedGoodsPickLineModel  `json:"PickLines,omitempty"`
-	Transactions           []TransactionStockLineModel   `json:"Transactions,omitempty"`
-	Errors                 []ErrorModel                  `json:"Errors,omitempty"`
-	CustomField1           string                        `json:"CustomField1,omitempty"`
-	CustomField2           string                        `json:"CustomField2,omitempty"`
-	CustomField3           string                        `json:"CustomField3,omitempty"`
-	CustomField4           string                        `json:"CustomField4,omitempty"`
-	CustomField5           string                        `json:"CustomField5,omitempty"`
-	CustomField6           string                        `json:"CustomField6,omitempty"`
-	CustomField7           string                        `json:"CustomField7,omitempty"`
-	CustomField8           string                        `json:"CustomField8,omitempty"`
-	CustomField9           string                        `json:"CustomField9,omitempty"`
-	CustomField10          string                        `json:"CustomField10,omitempty"`
 }
 
 type FinishedGoodsOrder struct {
@@ -233,50 +164,13 @@ type FixedAssetTypes struct {
 	Name                               string  `json:"Name,omitempty"`
 	DepreciationMethod                 string  `json:"DepreciationMethod,omitempty"`
 	AveragingMethod                    string  `json:"AveragingMethod,omitempty"`
-	Rate                               float32 `json:"Rate,omitempty"`
-	EffectiveLife                      float32 `json:"EffectiveLife,omitempty"`
-	AssetAccountCode                   float32 `json:"AssetAccountCode,omitempty"`
+	Rate                               float64 `json:"Rate,omitempty"`
+	EffectiveLife                      float64 `json:"EffectiveLife,omitempty"`
+	AssetAccountCode                   float64 `json:"AssetAccountCode,omitempty"`
 	AccumulatedDepreciationAccountCode string  `json:"AccumulatedDepreciationAccountCode,omitempty"`
 	AssetAccountName                   string  `json:"AssetAccountName,omitempty"`
 	AccumulatedDepreciationAccountName string  `json:"AccumulatedDepreciationAccountName,omitempty"`
 	DepreciationExpenseAccountName     string  `json:"DepreciationExpenseAccountName,omitempty"`
-}
-
-type InventoryWriteOffList struct {
-	TaskID                  string  `json:"TaskID,omitempty"`
-	InventoryWriteOffNumber string  `json:"InventoryWriteOffNumber,omitempty"`
-	Status                  string  `json:"Status,omitempty"`
-	LocationID              string  `json:"LocationID,omitempty"`
-	Location                float32 `json:"Location,omitempty"`
-	Date                    string  `json:"Date,omitempty"`
-	Notes                   string  `json:"Notes,omitempty"`
-}
-
-type InventoryWriteOff struct {
-	TaskID                  string                       `json:"TaskID,omitempty"`
-	InventoryWriteOffNumber string                       `json:"InventoryWriteOffNumber,omitempty"`
-	Status                  string                       `json:"Status,omitempty"`
-	LocationID              string                       `json:"LocationID,omitempty"`
-	Location                float32                      `json:"Location,omitempty"`
-	Account                 string                       `json:"Account,omitempty"`
-	EffectiveDate           string                       `json:"EffectiveDate,omitempty"`
-	Notes                   string                       `json:"Notes,omitempty"`
-	Lines                   []InventoryWriteOffLineModel `json:"Lines,omitempty"`
-	Transactions            []TransactionStockLineModel  `json:"Transactions,omitempty"`
-	Errors                  []ErrorModel                 `json:"Errors,omitempty"`
-}
-
-type Journal struct {
-	TaskID                 string                `json:"TaskID,omitempty"`
-	Status                 string                `json:"Status,omitempty"`
-	JournalNumber          string                `json:"JournalNumber,omitempty"`
-	Currency               string                `json:"Currency,omitempty"`
-	CurrencyConversionRate float32               `json:"CurrencyConversionRate,omitempty"`
-	EffectiveDate          string                `json:"EffectiveDate,omitempty"`
-	Narration              string                `json:"Narration,omitempty"`
-	Notes                  string                `json:"Notes,omitempty"`
-	Lines                  []JournalLineModel    `json:"Lines,omitempty"`
-	Attachments            []AttachmentLineModel `json:"Attachments,omitempty"`
 }
 
 type Location struct {
@@ -287,7 +181,7 @@ type Location struct {
 	Bins                 []Bin  `json:"Bins,omitempty"`
 	FixedAssetsLocation  bool   `json:"FixedAssetsLocation,omitempty"`
 	ParentID             string `json:"ParentID,omitempty"`
-	ReferenceCount       int32  `json:"ReferenceCount,omitempty"`
+	ReferenceCount       int    `json:"ReferenceCount,omitempty"`
 	AddressLine1         string `json:"AddressLine1,omitempty"`
 	AddressLine2         string `json:"AddressLine2,omitempty"`
 	AddressCitySuburb    string `json:"AddressCitySuburb,omitempty"`
@@ -318,7 +212,7 @@ type ME struct {
 	TaxCalculationMethod                      string               `json:"TaxCalculationMethod,omitempty"`
 	DefaultSaleTaxRuleId                      string               `json:"DefaultSaleTaxRuleId,omitempty"`
 	DefaultSaleTaxRuleName                    string               `json:"DefaultSaleTaxRuleName,omitempty"`
-	Maximumfloat32PlacesInQuantity            string               `json:"Maximumfloat32PlacesInQuantity,omitempty"`
+	Maximumfloat64PlacesInQuantity            string               `json:"Maximumfloat32PlacesInQuantity,omitempty"`
 	ApplyCustomerDiscountsAfterOtherDiscounts bool                 `json:"ApplyCustomerDiscountsAfterOtherDiscounts,omitempty"`
 	DiscountRule                              string               `json:"DiscountRule,omitempty"`
 	AutomaticallyApplyDiscounts               bool                 `json:"AutomaticallyApplyDiscounts,omitempty"`
@@ -326,8 +220,8 @@ type ME struct {
 }
 
 type RoundingTableModel struct {
-	RangeTo         float32 `json:"RangeTo,omitempty"`
-	RoundToNearest  float32 `json:"RoundToNearest,omitempty"`
+	RangeTo         float64 `json:"RangeTo,omitempty"`
+	RoundToNearest  float64 `json:"RoundToNearest,omitempty"`
 	AdjustmentRule  string  `json:"AdjustmentRule,omitempty"`
 	AdjustmentValue string  `json:"AdjustmentValue,omitempty"`
 }
@@ -356,24 +250,12 @@ type MeContact struct {
 	DefaultForType bool   `json:"DefaultForType,omitempty"`
 }
 
-type MoneyTaskList struct {
-	TaskID               string  `json:"TaskID,omitempty"`
-	Date                 string  `json:"Date,omitempty"`
-	TaskType             string  `json:"TaskType,omitempty"`
-	Status               string  `json:"Status,omitempty"`
-	SupplierCustomerName string  `json:"SupplierCustomerName,omitempty"`
-	SupplierID           string  `json:"SupplierID,omitempty"`
-	CustomerID           string  `json:"CustomerID,omitempty"`
-	Reference            float32 `json:"Reference,omitempty"`
-	TotalAmount          string  `json:"TotalAmount,omitempty"`
-}
-
 type MoneyOperation struct {
 	TaskID                 string                      `json:"TaskID,omitempty"`
 	TaskType               string                      `json:"TaskType,omitempty"`
 	Status                 string                      `json:"Status,omitempty"`
 	BankAccount            string                      `json:"BankAccount,omitempty"`
-	CurrencyConversionRate float32                     `json:"CurrencyConversionRate,omitempty"`
+	CurrencyConversionRate float64                     `json:"CurrencyConversionRate,omitempty"`
 	SupplierCustomerName   string                      `json:"SupplierCustomerName,omitempty"`
 	SupplierID             string                      `json:"SupplierID,omitempty"`
 	CustomerID             string                      `json:"CustomerID,omitempty"`
@@ -391,9 +273,9 @@ type BankTransfer struct {
 	Status                 string                      `json:"Status,omitempty"`
 	FromAccount            string                      `json:"FromAccount,omitempty"`
 	ToAccount              string                      `json:"ToAccount,omitempty"`
-	FromAmount             float32                     `json:"FromAmount,omitempty"`
-	ToAmount               float32                     `json:"ToAmount,omitempty"`
-	CurrencyConversionRate float32                     `json:"CurrencyConversionRate,omitempty"`
+	FromAmount             float64                     `json:"FromAmount,omitempty"`
+	ToAmount               float64                     `json:"ToAmount,omitempty"`
+	CurrencyConversionRate float64                     `json:"CurrencyConversionRate,omitempty"`
 	Reference              string                      `json:"Reference,omitempty"`
 	Date                   string                      `json:"Date,omitempty"`
 	Note                   string                      `json:"Note,omitempty"`
@@ -404,14 +286,14 @@ type BankTransfer struct {
 type PaymentTerm struct {
 	ID        string `json:"ID,omitempty"`
 	Name      string `json:"Name,omitempty"`
-	Duration  int32  `json:"Duration,omitempty"`
+	Duration  int    `json:"Duration,omitempty"`
 	Method    string `json:"Method,omitempty"`
 	IsActive  bool   `json:"IsActive,omitempty"`
 	IsDefault bool   `json:"IsDefault,omitempty"`
 }
 
 type PriceTier struct {
-	Code int32  `json:"Code,omitempty"`
+	Code int    `json:"Code,omitempty"`
 	Name string `json:"Name,omitempty"`
 }
 
@@ -425,33 +307,33 @@ type Product struct {
 	CostingMethod                string                       `json:"CostingMethod,omitempty"`
 	DropShipMode                 string                       `json:"DropShipMode,omitempty"`
 	DefaultLocation              string                       `json:"DefaultLocation,omitempty"`
-	Length                       float32                      `json:"Length,omitempty"`
-	Width                        float32                      `json:"Width,omitempty"`
-	Height                       float32                      `json:"Height,omitempty"`
-	Weight                       float32                      `json:"Weight,omitempty"`
-	CartonLength                 float32                      `json:"CartonLength,omitempty"`
-	CartonWidth                  float32                      `json:"CartonWidth,omitempty"`
-	CartonHeight                 float32                      `json:"CartonHeight,omitempty"`
-	CartonQuantity               float32                      `json:"CartonQuantity,omitempty"`
-	CartonInnerQuantity          float32                      `json:"CartonInnerQuantity,omitempty"`
+	Length                       float64                      `json:"Length,omitempty"`
+	Width                        float64                      `json:"Width,omitempty"`
+	Height                       float64                      `json:"Height,omitempty"`
+	Weight                       float64                      `json:"Weight,omitempty"`
+	CartonLength                 float64                      `json:"CartonLength,omitempty"`
+	CartonWidth                  float64                      `json:"CartonWidth,omitempty"`
+	CartonHeight                 float64                      `json:"CartonHeight,omitempty"`
+	CartonQuantity               float64                      `json:"CartonQuantity,omitempty"`
+	CartonInnerQuantity          float64                      `json:"CartonInnerQuantity,omitempty"`
 	UOM                          string                       `json:"UOM,omitempty"`
 	WeightUnits                  string                       `json:"WeightUnits,omitempty"`
 	DimensionsUnits              string                       `json:"DimensionsUnits,omitempty"`
 	Barcode                      string                       `json:"Barcode,omitempty"`
-	MinimumBeforeReorder         float32                      `json:"MinimumBeforeReorder,omitempty"`
-	ReorderQuantity              float32                      `json:"ReorderQuantity,omitempty"`
-	PriceTier1                   float32                      `json:"PriceTier1,omitempty"`
-	PriceTier2                   float32                      `json:"PriceTier2,omitempty"`
-	PriceTier3                   float32                      `json:"PriceTier3,omitempty"`
-	PriceTier4                   float32                      `json:"PriceTier4,omitempty"`
-	PriceTier5                   float32                      `json:"PriceTier5,omitempty"`
-	PriceTier6                   float32                      `json:"PriceTier6,omitempty"`
-	PriceTier7                   float32                      `json:"PriceTier7,omitempty"`
-	PriceTier8                   float32                      `json:"PriceTier8,omitempty"`
-	PriceTier9                   float32                      `json:"PriceTier9,omitempty"`
-	PriceTier10                  float32                      `json:"PriceTier10,omitempty"`
+	MinimumBeforeReorder         float64                      `json:"MinimumBeforeReorder,omitempty"`
+	ReorderQuantity              float64                      `json:"ReorderQuantity,omitempty"`
+	PriceTier1                   float64                      `json:"PriceTier1,omitempty"`
+	PriceTier2                   float64                      `json:"PriceTier2,omitempty"`
+	PriceTier3                   float64                      `json:"PriceTier3,omitempty"`
+	PriceTier4                   float64                      `json:"PriceTier4,omitempty"`
+	PriceTier5                   float64                      `json:"PriceTier5,omitempty"`
+	PriceTier6                   float64                      `json:"PriceTier6,omitempty"`
+	PriceTier7                   float64                      `json:"PriceTier7,omitempty"`
+	PriceTier8                   float64                      `json:"PriceTier8,omitempty"`
+	PriceTier9                   float64                      `json:"PriceTier9,omitempty"`
+	PriceTier10                  float64                      `json:"PriceTier10,omitempty"`
 	PriceTiers                   []PriceTierModel             `json:"PriceTiers,omitempty"`
-	AverageCost                  float32                      `json:"AverageCost,omitempty"`
+	AverageCost                  float64                      `json:"AverageCost,omitempty"`
 	ShortDescription             string                       `json:"ShortDescription,omitempty"`
 	Description                  string                       `json:"Description,omitempty"`
 	InternalNote                 string                       `json:"InternalNote,omitempty"`
@@ -482,7 +364,7 @@ type Product struct {
 	BillOfMaterial               bool                         `json:"BillOfMaterial,omitempty"`
 	AutoAssembly                 bool                         `json:"AutoAssembly,omitempty"`
 	AutoDisassembly              bool                         `json:"AutoDisassembly,omitempty"`
-	QuantityToProduce            float32                      `json:"QuantityToProduce,omitempty"`
+	QuantityToProduce            float64                      `json:"QuantityToProduce,omitempty"`
 	AssemblyInstructionURL       string                       `json:"AssemblyInstructionURL,omitempty"`
 	AssemblyCostEstimationMethod string                       `json:"AssemblyCostEstimationMethod,omitempty"`
 	BOMType                      string                       `json:"BOMType,omitempty"`
@@ -507,12 +389,18 @@ type ProductAvailability struct {
 	Bin         string  `json:"Bin,omitempty"`
 	Batch       string  `json:"Batch,omitempty"`
 	ExpiryDate  string  `json:"ExpiryDate,omitempty"`
-	OnHand      float32 `json:"OnHand,omitempty"`
-	Allocated   float32 `json:"Allocated,omitempty"`
-	Available   float32 `json:"Available,omitempty"`
-	OnOrder     float32 `json:"OnOrder,omitempty"`
-	StockOnHand float32 `json:"StockOnHand,omitempty"`
-	InTransit   float32 `json:"InTransit,omitempty"`
+	OnHand      float64 `json:"OnHand,omitempty"`
+	Allocated   float64 `json:"Allocated,omitempty"`
+	Available   float64 `json:"Available,omitempty"`
+	OnOrder     float64 `json:"OnOrder,omitempty"`
+	StockOnHand float64 `json:"StockOnHand,omitempty"`
+	InTransit   float64 `json:"InTransit,omitempty"`
+}
+
+type ProductAvailablityPaginatedResponse struct {
+	Total                   int                   `json:"Total,omitempty"`
+	Page                    int                   `json:"Page,omitempty"`
+	ProductAvailabilityList []ProductAvailability `json:"ProductAvailabilityList,omitempty"`
 }
 
 type ProductCategory struct {
@@ -530,18 +418,18 @@ type ProductFamily struct {
 	CostingMethod        string                          `json:"CostingMethod,omitempty"`
 	DefaultLocation      string                          `json:"DefaultLocation,omitempty"`
 	UOM                  string                          `json:"UOM,omitempty"`
-	MinimumBeforeReorder *float32                        `json:"MinimumBeforeReorder,omitempty"`
-	ReorderQuantity      *float32                        `json:"ReorderQuantity,omitempty"`
-	PriceTier1           float32                         `json:"PriceTier1,omitempty"`
-	PriceTier2           float32                         `json:"PriceTier2,omitempty"`
-	PriceTier3           float32                         `json:"PriceTier3,omitempty"`
-	PriceTier4           float32                         `json:"PriceTier4,omitempty"`
-	PriceTier5           float32                         `json:"PriceTier5,omitempty"`
-	PriceTier6           float32                         `json:"PriceTier6,omitempty"`
-	PriceTier7           float32                         `json:"PriceTier7,omitempty"`
-	PriceTier8           float32                         `json:"PriceTier8,omitempty"`
-	PriceTier9           float32                         `json:"PriceTier9,omitempty"`
-	PriceTier10          float32                         `json:"PriceTier10,omitempty"`
+	MinimumBeforeReorder *float64                        `json:"MinimumBeforeReorder,omitempty"`
+	ReorderQuantity      *float64                        `json:"ReorderQuantity,omitempty"`
+	PriceTier1           float64                         `json:"PriceTier1,omitempty"`
+	PriceTier2           float64                         `json:"PriceTier2,omitempty"`
+	PriceTier3           float64                         `json:"PriceTier3,omitempty"`
+	PriceTier4           float64                         `json:"PriceTier4,omitempty"`
+	PriceTier5           float64                         `json:"PriceTier5,omitempty"`
+	PriceTier6           float64                         `json:"PriceTier6,omitempty"`
+	PriceTier7           float64                         `json:"PriceTier7,omitempty"`
+	PriceTier8           float64                         `json:"PriceTier8,omitempty"`
+	PriceTier9           float64                         `json:"PriceTier9,omitempty"`
+	PriceTier10          float64                         `json:"PriceTier10,omitempty"`
 	ShortDescription     string                          `json:"ShortDescription,omitempty"`
 	Description          string                          `json:"Description,omitempty"`
 	AttributeSet         string                          `json:"AttributeSet,omitempty"`
@@ -572,10 +460,10 @@ type MarkupPricesModel struct {
 }
 
 type MarkupPriceLineModel struct {
-	TierNumber   int32   `json:"TierNumber,omitempty"`
+	TierNumber   int     `json:"TierNumber,omitempty"`
 	MarkupType   string  `json:"MarkupType,omitempty"`
 	UsePriceType string  `json:"UsePriceType,omitempty"`
-	MarkupValue  float32 `json:"MarkupValue,omitempty"`
+	MarkupValue  float64 `json:"MarkupValue,omitempty"`
 }
 
 type FactoryCalendar struct {
@@ -586,34 +474,34 @@ type FactoryCalendar struct {
 }
 
 type FactoryCalendarDay struct {
-	IsWeekend      bool   `json:"IsWeekend,omitempty"`
-	StartTime      int32  `json:"StartTime,omitempty"`
-	EndTime        *int32 `json:"EndTime,omitempty"`
-	BreakStartTime *int32 `json:"BreakStartTime,omitempty"`
-	BreakEndTime   *int32 `json:"BreakEndTime,omitempty"`
-	Capacity       int32  `json:"Capacity,omitempty"`
+	IsWeekend      bool `json:"IsWeekend,omitempty"`
+	StartTime      int  `json:"StartTime,omitempty"`
+	EndTime        *int `json:"EndTime,omitempty"`
+	BreakStartTime *int `json:"BreakStartTime,omitempty"`
+	BreakEndTime   *int `json:"BreakEndTime,omitempty"`
+	Capacity       int  `json:"Capacity,omitempty"`
 }
 
 type FactoryCalendarSpecialDay struct {
 	Date           string `json:"Date,omitempty"`
 	IsHoliday      bool   `json:"IsHoliday,omitempty"`
 	IsWeekend      bool   `json:"IsWeekend,omitempty"`
-	StartTime      int32  `json:"StartTime,omitempty"`
-	EndTime        int32  `json:"EndTime,omitempty"`
-	BreakStartTime *int32 `json:"BreakStartTime,omitempty"`
-	BreakEndTime   *int32 `json:"BreakEndTime,omitempty"`
+	StartTime      int    `json:"StartTime,omitempty"`
+	EndTime        int    `json:"EndTime,omitempty"`
+	BreakStartTime *int   `json:"BreakStartTime,omitempty"`
+	BreakEndTime   *int   `json:"BreakEndTime,omitempty"`
 	Comment        string `json:"Comment,omitempty"`
-	Capacity       int32  `json:"Capacity,omitempty"`
+	Capacity       int    `json:"Capacity,omitempty"`
 }
 
 type ProductionBOM struct {
 	BOMID                       string                   `json:"BOMID,omitempty"`
-	OutputQuantity              float32                  `json:"OutputQuantity,omitempty"`
-	BufferPercent               float32                  `json:"BufferPercent,omitempty"`
+	OutputQuantity              float64                  `json:"OutputQuantity,omitempty"`
+	BufferPercent               float64                  `json:"BufferPercent,omitempty"`
 	InstructionUrl              string                   `json:"InstructionUrl,omitempty"`
 	IgnoreCumulativeLeadTime    bool                     `json:"IgnoreCumulativeLeadTime,omitempty"`
-	ComponentProductionLeadTime int32                    `json:"ComponentProductionLeadTime,omitempty"`
-	Version                     int32                    `json:"Version,omitempty"`
+	ComponentProductionLeadTime int                      `json:"ComponentProductionLeadTime,omitempty"`
+	Version                     int                      `json:"Version,omitempty"`
 	Name                        string                   `json:"Name,omitempty"`
 	IsDefault                   bool                     `json:"IsDefault,omitempty"`
 	IsTracing                   bool                     `json:"IsTracing,omitempty"`
@@ -623,18 +511,18 @@ type ProductionBOM struct {
 	Operations                  []ProductionBOMOperation `json:"Operations,omitempty"`
 	IssueMethodComponent        string                   `json:"IssueMethodComponent,omitempty"`
 	IssueMethodParameter        string                   `json:"IssueMethodParameter,omitempty"`
-	MinQuantity                 float32                  `json:"MinQuantity,omitempty"`
-	MaxQuantity                 float32                  `json:"MaxQuantity,omitempty"`
-	DeviationPercent            float32                  `json:"DeviationPercent,omitempty"`
-	RunSize                     float32                  `json:"RunSize,omitempty"`
+	MinQuantity                 float64                  `json:"MinQuantity,omitempty"`
+	MaxQuantity                 float64                  `json:"MaxQuantity,omitempty"`
+	DeviationPercent            float64                  `json:"DeviationPercent,omitempty"`
+	RunSize                     float64                  `json:"RunSize,omitempty"`
 }
 
 type ProductionBOMOperation struct {
 	OperationID                    string                          `json:"OperationID,omitempty"`
-	Order                          int32                           `json:"Order,omitempty"`
+	Order                          int                             `json:"Order,omitempty"`
 	Name                           string                          `json:"Name,omitempty"`
-	CycleTime                      int32                           `json:"CycleTime,omitempty"`
-	UnitsPerCycle                  float32                         `json:"UnitsPerCycle,omitempty"`
+	CycleTime                      int                             `json:"CycleTime,omitempty"`
+	UnitsPerCycle                  float64                         `json:"UnitsPerCycle,omitempty"`
 	WorkCenterID                   string                          `json:"WorkCenterID,omitempty"`
 	WorkCenterName                 string                          `json:"WorkCenterName,omitempty"`
 	WorkCenterCoManProcurementType string                          `json:"WorkCenterCoManProcurementType,omitempty"`
@@ -659,10 +547,10 @@ type ProductionBOMResource struct {
 	ResourceID          string  `json:"ResourceID,omitempty"`
 	ResourceName        string  `json:"ResourceName,omitempty"`
 	ResourceCode        string  `json:"ResourceCode,omitempty"`
-	Quantity            float32 `json:"Quantity,omitempty"`
-	Cost                float32 `json:"Cost,omitempty"`
-	CycleTime           int32   `json:"CycleTime,omitempty"`
-	Position            int32   `json:"Position,omitempty"`
+	Quantity            float64 `json:"Quantity,omitempty"`
+	Cost                float64 `json:"Cost,omitempty"`
+	CycleTime           int     `json:"CycleTime,omitempty"`
+	Position            int     `json:"Position,omitempty"`
 	CostCalculationType string  `json:"CostCalculationType,omitempty"`
 }
 
@@ -671,14 +559,14 @@ type ProductionBOMComponent struct {
 	ProductID      string  `json:"ProductID,omitempty"`
 	ProductSKU     string  `json:"ProductSKU,omitempty"`
 	ProductName    string  `json:"ProductName,omitempty"`
-	Quantity       float32 `json:"Quantity,omitempty"`
-	WastageQty     float32 `json:"WastageQty,omitempty"`
-	WastagePercent float32 `json:"WastagePercent,omitempty"`
-	Cost           float32 `json:"Cost,omitempty"`
+	Quantity       float64 `json:"Quantity,omitempty"`
+	WastageQty     float64 `json:"WastageQty,omitempty"`
+	WastagePercent float64 `json:"WastagePercent,omitempty"`
+	Cost           float64 `json:"Cost,omitempty"`
 	CostingMethod  string  `json:"CostingMethod,omitempty"`
 	Unit           string  `json:"Unit,omitempty"`
-	Position       int32   `json:"Position,omitempty"`
-	SalePriceTier  int32   `json:"SalePriceTier,omitempty"`
+	Position       int     `json:"Position,omitempty"`
+	SalePriceTier  int     `json:"SalePriceTier,omitempty"`
 	IsBackflush    bool    `json:"IsBackflush,omitempty"`
 }
 
@@ -688,20 +576,20 @@ type ProductionBOMAttachment struct {
 	Date         string `json:"Date,omitempty"`
 	ContentType  string `json:"ContentType,omitempty"`
 	Content      string `json:"Content,omitempty"`
-	Position     int32  `json:"Position,omitempty"`
+	Position     int    `json:"Position,omitempty"`
 }
 
 type ProductionBOMNote struct {
 	NoteID   string `json:"NoteID,omitempty"`
 	Note     string `json:"Note,omitempty"`
-	Position int32  `json:"Position,omitempty"`
+	Position int    `json:"Position,omitempty"`
 }
 
 type ProductionBOMOperationLink struct {
 	ID                   string `json:"ID,omitempty"`
 	RelatedOperationID   string `json:"RelatedOperationID,omitempty"`
 	RelatedOperationName string `json:"RelatedOperationName,omitempty"`
-	RelationType         int32  `json:"RelationType,omitempty"`
+	RelationType         int    `json:"RelationType,omitempty"`
 }
 
 type ProductionBOMOperationProduct struct {
@@ -710,14 +598,14 @@ type ProductionBOMOperationProduct struct {
 	ProductSKU          string  `json:"ProductSKU,omitempty"`
 	ProductName         string  `json:"ProductName,omitempty"`
 	CostCalculationType string  `json:"CostCalculationType,omitempty"`
-	PriceTier           int32   `json:"PriceTier,omitempty"`
-	Ratio               float32 `json:"Ratio,omitempty"`
-	OutputQuantity      float32 `json:"OutputQuantity,omitempty"`
-	Position            int32   `json:"Position,omitempty"`
+	PriceTier           int     `json:"PriceTier,omitempty"`
+	Ratio               float64 `json:"Ratio,omitempty"`
+	OutputQuantity      float64 `json:"OutputQuantity,omitempty"`
+	Position            int     `json:"Position,omitempty"`
 	CostingMethod       string  `json:"CostingMethod,omitempty"`
 	Unit                string  `json:"Unit,omitempty"`
-	AverageCost         float32 `json:"AverageCost,omitempty"`
-	WastageCost         int32   `json:"WastageCost,omitempty"`
+	AverageCost         float64 `json:"AverageCost,omitempty"`
+	WastageCost         int     `json:"WastageCost,omitempty"`
 	DeliveryTo          string  `json:"DeliveryTo,omitempty"`
 	DeliveryToName      string  `json:"DeliveryToName,omitempty"`
 }
@@ -732,74 +620,75 @@ type ProductionBOMVariationComponent struct {
 	QuantityOptionName      string `json:"QuantityOptionName,omitempty"`
 	CostingMethod           string `json:"CostingMethod,omitempty"`
 	Unit                    string `json:"Unit,omitempty"`
-	Position                int32  `json:"Position,omitempty"`
-	SalePriceTier           int32  `json:"SalePriceTier,omitempty"`
+	Position                int    `json:"Position,omitempty"`
+	SalePriceTier           int    `json:"SalePriceTier,omitempty"`
 }
 
-type ProductionOrder struct {
-	ProductionOrderID         string                      `json:"ProductionOrderID,omitempty"`
-	ProductID                 string                      `json:"ProductID,omitempty"`
-	ProductSKU                string                      `json:"ProductSKU,omitempty"`
-	ProductName               string                      `json:"ProductName,omitempty"`
-	OrderNumber               string                      `json:"OrderNumber,omitempty"`
-	LocationID                string                      `json:"LocationID,omitempty"`
-	LocationName              string                      `json:"LocationName,omitempty"`
-	CostingMethod             string                      `json:"CostingMethod,omitempty"`
-	WarehouseName             string                      `json:"WarehouseName,omitempty"`
-	Unit                      string                      `json:"Unit,omitempty"`
-	OrderStatus               string                      `json:"OrderStatus,omitempty"`
-	Status                    string                      `json:"Status,omitempty"`
-	InstructionURL            string                      `json:"InstructionURL,omitempty"`
-	SourceName                string                      `json:"SourceName,omitempty"`
-	SourceTaskID              string                      `json:"SourceTaskID,omitempty"`
-	SourceTaskNumber          string                      `json:"SourceTaskNumber,omitempty"`
-	WIPAccountCode            string                      `json:"WIPAccountCode,omitempty"`
-	FinishedGoodsAccountCode  string                      `json:"FinishedGoodsAccountCode,omitempty"`
-	Quantity                  float32                     `json:"Quantity,omitempty"`
-	BOMQuantity               float32                     `json:"BOMQuantity,omitempty"`
-	CapacityCalculationType   string                      `json:"CapacityCalculationType,omitempty"`
-	StartDate                 string                      `json:"StartDate,omitempty"`
-	ReleaseDate               string                      `json:"ReleaseDate,omitempty"`
-	RequiredByDate            string                      `json:"RequiredByDate,omitempty"`
-	CompletionDate            string                      `json:"CompletionDate,omitempty"`
-	IsIgnoreLeadTime          bool                        `json:"IsIgnoreLeadTime,omitempty"`
-	WarehouseID               string                      `json:"WarehouseID,omitempty"`
-	RetailID                  string                      `json:"RetailID,omitempty"`
-	Comments                  string                      `json:"Comments,omitempty"`
-	ScheduleStart             string                      `json:"ScheduleStart,omitempty"`
-	PlannedBy                 string                      `json:"PlannedBy,omitempty"`
-	ReleasedBy                string                      `json:"ReleasedBy,omitempty"`
-	OrderCycleTime            int32                       `json:"OrderCycleTime,omitempty"`
-	BOMVersion                int32                       `json:"BOMVersion,omitempty"`
-	BOMName                   string                      `json:"BOMName,omitempty"`
-	Tags                      string                      `json:"Tags,omitempty"`
-	CustomField1              string                      `json:"CustomField1,omitempty"`
-	CustomField2              string                      `json:"CustomField2,omitempty"`
-	CustomField3              string                      `json:"CustomField3,omitempty"`
-	CustomField4              string                      `json:"CustomField4,omitempty"`
-	CustomField5              string                      `json:"CustomField5,omitempty"`
-	CustomField6              string                      `json:"CustomField6,omitempty"`
-	CustomField7              string                      `json:"CustomField7,omitempty"`
-	CustomField8              string                      `json:"CustomField8,omitempty"`
-	CustomField9              string                      `json:"CustomField9,omitempty"`
-	CustomField10             string                      `json:"CustomField10,omitempty"`
-	ProductionOrderOperations []ProductionOrderOperation  `json:"ProductionOrderOperations,omitempty"`
-	ProductionRuns            []ProductionRun             `json:"ProductionRuns,omitempty"`
-	ProductionOrderDeliveryTo []ProductionOrderDeliveryTo `json:"ProductionOrderDeliveryTo,omitempty"`
-	IssueMethodComponent      string                      `json:"IssueMethodComponent,omitempty"`
-	IssueMethodParameter      string                      `json:"IssueMethodParameter,omitempty"`
-	SourceTasks               []ProductionOrderSourceTask `json:"SourceTasks,omitempty"`
-	RunSize                   float32                     `json:"RunSize,omitempty"`
-}
+// To be fixed -- Fields are not well defined in API documentation
+// type ProductionOrder struct {
+// 	ProductionOrderID         string                      `json:"ProductionOrderID,omitempty"`
+// 	ProductID                 string                      `json:"ProductID,omitempty"`
+// 	ProductSKU                string                      `json:"ProductSKU,omitempty"`
+// 	ProductName               string                      `json:"ProductName,omitempty"`
+// 	OrderNumber               string                      `json:"OrderNumber,omitempty"`
+// 	LocationID                string                      `json:"LocationID,omitempty"`
+// 	LocationName              string                      `json:"LocationName,omitempty"`
+// 	CostingMethod             string                      `json:"CostingMethod,omitempty"`
+// 	WarehouseName             string                      `json:"WarehouseName,omitempty"`
+// 	Unit                      string                      `json:"Unit,omitempty"`
+// 	OrderStatus               string                      `json:"OrderStatus,omitempty"`
+// 	Status                    string                      `json:"Status,omitempty"`
+// 	InstructionURL            string                      `json:"InstructionURL,omitempty"`
+// 	SourceName                string                      `json:"SourceName,omitempty"`
+// 	SourceTaskID              string                      `json:"SourceTaskID,omitempty"`
+// 	SourceTaskNumber          string                      `json:"SourceTaskNumber,omitempty"`
+// 	WIPAccountCode            string                      `json:"WIPAccountCode,omitempty"`
+// 	FinishedGoodsAccountCode  string                      `json:"FinishedGoodsAccountCode,omitempty"`
+// 	Quantity                  float64                     `json:"Quantity,omitempty"`
+// 	BOMQuantity               float64                     `json:"BOMQuantity,omitempty"`
+// 	CapacityCalculationType   string                      `json:"CapacityCalculationType,omitempty"`
+// 	StartDate                 string                      `json:"StartDate,omitempty"`
+// 	ReleaseDate               string                      `json:"ReleaseDate,omitempty"`
+// 	RequiredByDate            string                      `json:"RequiredByDate,omitempty"`
+// 	CompletionDate            string                      `json:"CompletionDate,omitempty"`
+// 	IsIgnoreLeadTime          bool                        `json:"IsIgnoreLeadTime,omitempty"`
+// 	WarehouseID               string                      `json:"WarehouseID,omitempty"`
+// 	RetailID                  string                      `json:"RetailID,omitempty"`
+// 	Comments                  string                      `json:"Comments,omitempty"`
+// 	ScheduleStart             string                      `json:"ScheduleStart,omitempty"`
+// 	PlannedBy                 string                      `json:"PlannedBy,omitempty"`
+// 	ReleasedBy                string                      `json:"ReleasedBy,omitempty"`
+// 	OrderCycleTime            int                       `json:"OrderCycleTime,omitempty"`
+// 	BOMVersion                int                       `json:"BOMVersion,omitempty"`
+// 	BOMName                   string                      `json:"BOMName,omitempty"`
+// 	Tags                      string                      `json:"Tags,omitempty"`
+// 	CustomField1              string                      `json:"CustomField1,omitempty"`
+// 	CustomField2              string                      `json:"CustomField2,omitempty"`
+// 	CustomField3              string                      `json:"CustomField3,omitempty"`
+// 	CustomField4              string                      `json:"CustomField4,omitempty"`
+// 	CustomField5              string                      `json:"CustomField5,omitempty"`
+// 	CustomField6              string                      `json:"CustomField6,omitempty"`
+// 	CustomField7              string                      `json:"CustomField7,omitempty"`
+// 	CustomField8              string                      `json:"CustomField8,omitempty"`
+// 	CustomField9              string                      `json:"CustomField9,omitempty"`
+// 	CustomField10             string                      `json:"CustomField10,omitempty"`
+// 	ProductionOrderOperations []ProductionOrderOperation  `json:"ProductionOrderOperations,omitempty"`
+// 	ProductionRuns            []ProductionRun             `json:"ProductionRuns,omitempty"`
+// 	ProductionOrderDeliveryTo []ProductionOrderDeliveryTo `json:"ProductionOrderDeliveryTo,omitempty"`
+// 	IssueMethodComponent      string                      `json:"IssueMethodComponent,omitempty"`
+// 	IssueMethodParameter      string                      `json:"IssueMethodParameter,omitempty"`
+// 	SourceTasks               []ProductionOrderSourceTask `json:"SourceTasks,omitempty"`
+// 	RunSize                   float64                     `json:"RunSize,omitempty"`
+// }
 
 type ProductionOrderOperation struct {
 	OperationID                    string                               `json:"OperationID,omitempty"`
-	Order                          int32                                `json:"Order,omitempty"`
+	Order                          int                                  `json:"Order,omitempty"`
 	Name                           string                               `json:"Name,omitempty"`
-	CycleTime                      int32                                `json:"CycleTime,omitempty"`
-	UnitsPerCycle                  float32                              `json:"UnitsPerCycle,omitempty"`
-	TotalCycleTime                 int32                                `json:"TotalCycleTime,omitempty"`
-	TotalUnitsPerCycle             float32                              `json:"TotalUnitsPerCycle,omitempty"`
+	CycleTime                      int                                  `json:"CycleTime,omitempty"`
+	UnitsPerCycle                  float64                              `json:"UnitsPerCycle,omitempty"`
+	TotalCycleTime                 int                                  `json:"TotalCycleTime,omitempty"`
+	TotalUnitsPerCycle             float64                              `json:"TotalUnitsPerCycle,omitempty"`
 	OperationType                  string                               `json:"OperationType,omitempty"`
 	WorkCenterID                   string                               `json:"WorkCenterID,omitempty"`
 	WorkCenterName                 string                               `json:"WorkCenterName,omitempty"`
@@ -823,7 +712,7 @@ type ProductionOrderOperationAttachment struct {
 	FileName     string `json:"FileName,omitempty"`
 	Date         string `json:"Date,omitempty"`
 	ContentType  string `json:"ContentType,omitempty"`
-	Position     int32  `json:"Position,omitempty"`
+	Position     int    `json:"Position,omitempty"`
 	Content      string `json:"Content,omitempty"`
 }
 
@@ -832,26 +721,26 @@ type ProductionOrderComponent struct {
 	ProductID        string  `json:"ProductID,omitempty"`
 	ProductSKU       string  `json:"ProductSKU,omitempty"`
 	ProductName      string  `json:"ProductName,omitempty"`
-	Position         int32   `json:"Position,omitempty"`
-	Available        float32 `json:"Available,omitempty"`
-	Quantity         float32 `json:"Quantity,omitempty"`
-	TotalQuantity    float32 `json:"TotalQuantity,omitempty"`
-	WastageQty       float32 `json:"WastageQty,omitempty"`
-	WastagePercent   float32 `json:"WastagePercent,omitempty"`
-	Cost             float32 `json:"Cost,omitempty"`
-	TotalCost        float32 `json:"TotalCost,omitempty"`
-	ProductCost      float32 `json:"ProductCost,omitempty"`
+	Position         int     `json:"Position,omitempty"`
+	Available        float64 `json:"Available,omitempty"`
+	Quantity         float64 `json:"Quantity,omitempty"`
+	TotalQuantity    float64 `json:"TotalQuantity,omitempty"`
+	WastageQty       float64 `json:"WastageQty,omitempty"`
+	WastagePercent   float64 `json:"WastagePercent,omitempty"`
+	Cost             float64 `json:"Cost,omitempty"`
+	TotalCost        float64 `json:"TotalCost,omitempty"`
+	ProductCost      float64 `json:"ProductCost,omitempty"`
 	CostingMethod    string  `json:"CostingMethod,omitempty"`
 	Unit             string  `json:"Unit,omitempty"`
 	ProductType      string  `json:"ProductType,omitempty"`
-	SalePriceTier    int32   `json:"SalePriceTier,omitempty"`
+	SalePriceTier    int     `json:"SalePriceTier,omitempty"`
 	IsBackflush      bool    `json:"IsBackflush,omitempty"`
 }
 
 type ProductionOrderOperationNote struct {
 	NoteID   string `json:"NoteID,omitempty"`
 	Note     string `json:"Note,omitempty"`
-	Position int32  `json:"Position,omitempty"`
+	Position int    `json:"Position,omitempty"`
 }
 
 type ProductionOrderResource struct {
@@ -859,19 +748,19 @@ type ProductionOrderResource struct {
 	ResourceID          string  `json:"ResourceID,omitempty"`
 	ResourceCode        string  `json:"ResourceCode,omitempty"`
 	ResourceName        string  `json:"ResourceName,omitempty"`
-	Position            int32   `json:"Position,omitempty"`
-	Quantity            float32 `json:"Quantity,omitempty"`
-	Cost                float32 `json:"Cost,omitempty"`
-	TotalCost           float32 `json:"TotalCost,omitempty"`
-	ResourceCost        float32 `json:"ResourceCost,omitempty"`
-	CycleTime           int32   `json:"CycleTime,omitempty"`
+	Position            int     `json:"Position,omitempty"`
+	Quantity            float64 `json:"Quantity,omitempty"`
+	Cost                float64 `json:"Cost,omitempty"`
+	TotalCost           float64 `json:"TotalCost,omitempty"`
+	ResourceCost        float64 `json:"ResourceCost,omitempty"`
+	CycleTime           int     `json:"CycleTime,omitempty"`
 	CostCalculationType string  `json:"CostCalculationType,omitempty"`
 }
 
 type ProductionOrderOperationLink struct {
 	ID                 string `json:"ID,omitempty"`
 	RelatedOperationID string `json:"RelatedOperationID,omitempty"`
-	Position           int32  `json:"Position,omitempty"`
+	Position           int    `json:"Position,omitempty"`
 }
 
 type ProductionOrderOperationProduct struct {
@@ -879,19 +768,19 @@ type ProductionOrderOperationProduct struct {
 	ProductID           string  `json:"ProductID,omitempty"`
 	ProductSKU          string  `json:"ProductSKU,omitempty"`
 	ProductName         string  `json:"ProductName,omitempty"`
-	Position            int32   `json:"Position,omitempty"`
+	Position            int     `json:"Position,omitempty"`
 	CostCalculationType string  `json:"CostCalculationType,omitempty"`
-	PriceTier           int32   `json:"PriceTier,omitempty"`
-	Ratio               float32 `json:"Ratio,omitempty"`
-	OutputQuantity      float32 `json:"OutputQuantity,omitempty"`
-	TotalOutputQuantity float32 `json:"TotalOutputQuantity,omitempty"`
-	Cost                float32 `json:"Cost,omitempty"`
-	TotalCost           float32 `json:"TotalCost,omitempty"`
-	AverageCost         float32 `json:"AverageCost,omitempty"`
-	FixedCost           float32 `json:"FixedCost,omitempty"`
+	PriceTier           int     `json:"PriceTier,omitempty"`
+	Ratio               float64 `json:"Ratio,omitempty"`
+	OutputQuantity      float64 `json:"OutputQuantity,omitempty"`
+	TotalOutputQuantity float64 `json:"TotalOutputQuantity,omitempty"`
+	Cost                float64 `json:"Cost,omitempty"`
+	TotalCost           float64 `json:"TotalCost,omitempty"`
+	AverageCost         float64 `json:"AverageCost,omitempty"`
+	FixedCost           float64 `json:"FixedCost,omitempty"`
 	CostingMethod       string  `json:"CostingMethod,omitempty"`
 	Unit                string  `json:"Unit,omitempty"`
-	WastageCost         float32 `json:"WastageCost,omitempty"`
+	WastageCost         float64 `json:"WastageCost,omitempty"`
 }
 
 type ProductionOrderSourceTask struct {
@@ -911,7 +800,7 @@ type ProductionOrderListItem struct {
 	LocationName             string                          `json:"LocationName,omitempty"`
 	Status                   string                          `json:"Status,omitempty"`
 	OrderStatus              string                          `json:"OrderStatus,omitempty"`
-	Quantity                 float32                         `json:"Quantity,omitempty"`
+	Quantity                 float64                         `json:"Quantity,omitempty"`
 	StartDate                string                          `json:"StartDate,omitempty"`
 	ReleaseDate              string                          `json:"ReleaseDate,omitempty"`
 	RequiredByDate           string                          `json:"RequiredByDate,omitempty"`
@@ -923,7 +812,7 @@ type ProductionOrderListItem struct {
 	FinishedGoodsAccountCode string                          `json:"FinishedGoodsAccountCode,omitempty"`
 	SourceTaskID             string                          `json:"SourceTaskID,omitempty"`
 	SourceTaskNumber         string                          `json:"SourceTaskNumber,omitempty"`
-	SourceTaskType           int32                           `json:"SourceTaskType,omitempty"`
+	SourceTaskType           int                             `json:"SourceTaskType,omitempty"`
 	IsSourceTaskVoided       bool                            `json:"IsSourceTaskVoided,omitempty"`
 	CustomField1             string                          `json:"CustomField1,omitempty"`
 	CustomField2             string                          `json:"CustomField2,omitempty"`
@@ -941,15 +830,15 @@ type ProductionOrderListItem struct {
 type ProductionOrderListSourceTask struct {
 	SourceTaskID       string `json:"SourceTaskID,omitempty"`
 	SourceTaskNumber   string `json:"SourceTaskNumber,omitempty"`
-	SourceTaskType     int32  `json:"SourceTaskType,omitempty"`
+	SourceTaskType     int    `json:"SourceTaskType,omitempty"`
 	IsSourceTaskVoided bool   `json:"IsSourceTaskVoided,omitempty"`
 }
 
 type ProductionRun struct {
 	RunID                string                       `json:"RunID,omitempty"`
-	Number               int32                        `json:"Number,omitempty"`
+	Number               int                          `json:"Number,omitempty"`
 	Status               string                       `json:"Status,omitempty"`
-	Quantity             float32                      `json:"Quantity,omitempty"`
+	Quantity             float64                      `json:"Quantity,omitempty"`
 	WIPAccount           string                       `json:"WIPAccount,omitempty"`
 	StartDate            string                       `json:"StartDate,omitempty"`
 	EndDate              string                       `json:"EndDate,omitempty"`
@@ -968,11 +857,11 @@ type ProductionRun struct {
 type ProductionRunOperation struct {
 	OperationID      string                               `json:"OperationID,omitempty"`
 	Status           string                               `json:"Status,omitempty"`
-	Order            int32                                `json:"Order,omitempty"`
+	Order            int                                  `json:"Order,omitempty"`
 	Name             string                               `json:"Name,omitempty"`
-	PlannedTime      int32                                `json:"PlannedTime,omitempty"`
-	ActualTime       int32                                `json:"ActualTime,omitempty"`
-	UnitsPerCycle    float32                              `json:"UnitsPerCycle,omitempty"`
+	PlannedTime      int                                  `json:"PlannedTime,omitempty"`
+	ActualTime       int                                  `json:"ActualTime,omitempty"`
+	UnitsPerCycle    float64                              `json:"UnitsPerCycle,omitempty"`
 	StartDate        string                               `json:"StartDate,omitempty"`
 	EndDate          string                               `json:"EndDate,omitempty"`
 	DueDate          string                               `json:"DueDate,omitempty"`
@@ -1002,20 +891,20 @@ type ProductionRunOperationComponent struct {
 	ProductID        string  `json:"ProductID,omitempty"`
 	ProductCode      string  `json:"ProductCode,omitempty"`
 	ProductName      string  `json:"ProductName,omitempty"`
-	Quantity         float32 `json:"Quantity,omitempty"`
-	ExpectedQuantity float32 `json:"ExpectedQuantity,omitempty"`
-	WastageQty       float32 `json:"WastageQty,omitempty"`
-	WastagePercent   float32 `json:"WastagePercent,omitempty"`
+	Quantity         float64 `json:"Quantity,omitempty"`
+	ExpectedQuantity float64 `json:"ExpectedQuantity,omitempty"`
+	WastageQty       float64 `json:"WastageQty,omitempty"`
+	WastagePercent   float64 `json:"WastagePercent,omitempty"`
 	BatchSN          string  `json:"BatchSN,omitempty"`
 	ExpiryDate       string  `json:"ExpiryDate,omitempty"`
-	UnitCost         float32 `json:"UnitCost,omitempty"`
+	UnitCost         float64 `json:"UnitCost,omitempty"`
 	LocationID       string  `json:"LocationID,omitempty"`
 	LocationName     string  `json:"LocationName,omitempty"`
 	ProductCost      string  `json:"ProductCost,omitempty"`
-	Available        float32 `json:"Available,omitempty"`
+	Available        float64 `json:"Available,omitempty"`
 	CostingMethod    string  `json:"CostingMethod,omitempty"`
 	Unit             string  `json:"Unit,omitempty"`
-	ReservedQuantity float32 `json:"ReservedQuantity,omitempty"`
+	ReservedQuantity float64 `json:"ReservedQuantity,omitempty"`
 	IsReserved       bool    `json:"IsReserved,omitempty"`
 	IsBackflush      bool    `json:"IsBackflush,omitempty"`
 }
@@ -1025,10 +914,10 @@ type ProductionRunOperationResource struct {
 	ResourceID    string  `json:"ResourceID,omitempty"`
 	ResourceCode  string  `json:"ResourceCode,omitempty"`
 	ResourceName  string  `json:"ResourceName,omitempty"`
-	UnitCost      float32 `json:"UnitCost,omitempty"`
-	Quantity      float32 `json:"Quantity,omitempty"`
-	Cost          float32 `json:"Cost,omitempty"`
-	CycleTime     float32 `json:"CycleTime,omitempty"`
+	UnitCost      float64 `json:"UnitCost,omitempty"`
+	Quantity      float64 `json:"Quantity,omitempty"`
+	Cost          float64 `json:"Cost,omitempty"`
+	CycleTime     float64 `json:"CycleTime,omitempty"`
 }
 
 type ProductionRunOperationResourceCost struct {
@@ -1038,7 +927,7 @@ type ProductionRunOperationResourceCost struct {
 	AccountName    string  `json:"AccountName,omitempty"`
 	ExpenseAccount string  `json:"ExpenseAccount,omitempty"`
 	Comments       string  `json:"Comments,omitempty"`
-	Cost           float32 `json:"Cost,omitempty"`
+	Cost           float64 `json:"Cost,omitempty"`
 }
 
 type ProductionRunOperationProduct struct {
@@ -1046,9 +935,9 @@ type ProductionRunOperationProduct struct {
 	ProductSKU       string  `json:"ProductSKU,omitempty"`
 	ProductName      string  `json:"ProductName,omitempty"`
 	Unit             string  `json:"Unit,omitempty"`
-	OutputQuantity   float32 `json:"OutputQuantity,omitempty"`
-	ExpectedQuantity float32 `json:"ExpectedQuantity,omitempty"`
-	WastageQuantity  float32 `json:"WastageQuantity,omitempty"`
+	OutputQuantity   float64 `json:"OutputQuantity,omitempty"`
+	ExpectedQuantity float64 `json:"ExpectedQuantity,omitempty"`
+	WastageQuantity  float64 `json:"WastageQuantity,omitempty"`
 	BatchSN          string  `json:"BatchSN,omitempty"`
 	ExpiryDate       string  `json:"ExpiryDate,omitempty"`
 	LocationID       string  `json:"LocationID,omitempty"`
@@ -1068,8 +957,8 @@ type ProductionRunOperationCoManLine struct {
 	ProductCode  string  `json:"ProductCode,omitempty"`
 	ProductName  string  `json:"ProductName,omitempty"`
 	Unit         string  `json:"Unit,omitempty"`
-	Quantity     float32 `json:"Quantity,omitempty"`
-	Cost         float32 `json:"Cost,omitempty"`
+	Quantity     float64 `json:"Quantity,omitempty"`
+	Cost         float64 `json:"Cost,omitempty"`
 	BatchSN      string  `json:"BatchSN,omitempty"`
 	ExpiryDate   string  `json:"ExpiryDate,omitempty"`
 	LocationID   string  `json:"LocationID,omitempty"`
@@ -1082,14 +971,14 @@ type ProductionRunOperationAttachment struct {
 	FileName     string `json:"FileName,omitempty"`
 	Date         string `json:"Date,omitempty"`
 	ContentType  string `json:"ContentType,omitempty"`
-	Position     int32  `json:"Position,omitempty"`
+	Position     int    `json:"Position,omitempty"`
 	Content      string `json:"Content,omitempty"`
 }
 
 type ProductionRunOperationNote struct {
 	NoteID   string `json:"NoteID,omitempty"`
 	Note     string `json:"Note,omitempty"`
-	Position int32  `json:"Position,omitempty"`
+	Position int    `json:"Position,omitempty"`
 }
 
 type ProductionRunPendingOutput struct {
@@ -1110,9 +999,9 @@ type ProductionRunOutput struct {
 	CostingMethod   string  `json:"CostingMethod,omitempty"`
 	BatchSN         string  `json:"BatchSN,omitempty"`
 	ExpiryDate      string  `json:"ExpiryDate,omitempty"`
-	UnitCost        float32 `json:"UnitCost,omitempty"`
-	Quantity        float32 `json:"Quantity,omitempty"`
-	WastageQuantity float32 `json:"WastageQuantity,omitempty"`
+	UnitCost        float64 `json:"UnitCost,omitempty"`
+	Quantity        float64 `json:"Quantity,omitempty"`
+	WastageQuantity float64 `json:"WastageQuantity,omitempty"`
 	ReceivedDate    string  `json:"ReceivedDate,omitempty"`
 	Received        bool    `json:"Received,omitempty"`
 	LocationID      string  `json:"LocationID,omitempty"`
@@ -1122,7 +1011,7 @@ type ProductionRunOutput struct {
 type ProductionRunManualJournal struct {
 	JournalID     string  `json:"JournalID,omitempty"`
 	Reference     string  `json:"Reference,omitempty"`
-	Amount        float32 `json:"Amount,omitempty"`
+	Amount        float64 `json:"Amount,omitempty"`
 	Date          string  `json:"Date,omitempty"`
 	Debit         string  `json:"Debit,omitempty"`
 	Credit        string  `json:"Credit,omitempty"`
@@ -1145,7 +1034,7 @@ type Resource struct {
 	Code                    string               `json:"Code,omitempty"`
 	Name                    string               `json:"Name,omitempty"`
 	ResourceType            string               `json:"ResourceType,omitempty"`
-	CycleDuration           int32                `json:"CycleDuration,omitempty"`
+	CycleDuration           int                  `json:"CycleDuration,omitempty"`
 	IsActive                bool                 `json:"IsActive,omitempty"`
 	IsInfinite              bool                 `json:"IsInfinite,omitempty"`
 	IsAllowAllCapacityUsage bool                 `json:"IsAllowAllCapacityUsage,omitempty"`
@@ -1161,7 +1050,7 @@ type Resource struct {
 type ResourceCapacity struct {
 	LocationID         string             `json:"LocationID,omitempty"`
 	LocationName       string             `json:"LocationName,omitempty"`
-	ResourceQuantity   int32              `json:"ResourceQuantity,omitempty"`
+	ResourceQuantity   int                `json:"ResourceQuantity,omitempty"`
 	NonOperationalFrom string             `json:"NonOperationalFrom,omitempty"`
 	NonOperationalTo   string             `json:"NonOperationalTo,omitempty"`
 	CustomWorkingDays  []CustomWorkingDay `json:"CustomWorkingDays,omitempty"`
@@ -1170,11 +1059,11 @@ type ResourceCapacity struct {
 
 type CustomWorkingDay struct {
 	DayOfWeek      string `json:"DayOfWeek,omitempty"`
-	StartTime      int32  `json:"StartTime,omitempty"`
-	EndTime        int32  `json:"EndTime,omitempty"`
-	BreakStartTime int32  `json:"BreakStartTime,omitempty"`
-	BreakEndTime   int32  `json:"BreakEndTime,omitempty"`
-	Capacity       int32  `json:"Capacity,omitempty"`
+	StartTime      int    `json:"StartTime,omitempty"`
+	EndTime        int    `json:"EndTime,omitempty"`
+	BreakStartTime int    `json:"BreakStartTime,omitempty"`
+	BreakEndTime   int    `json:"BreakEndTime,omitempty"`
+	Capacity       int    `json:"Capacity,omitempty"`
 }
 
 type ResourceUnit struct {
@@ -1189,12 +1078,12 @@ type ResourceCost struct {
 	ResourceCostID              string  `json:"ResourceCostID,omitempty"`
 	ProductID                   string  `json:"ProductID,omitempty"`
 	AccountCode                 string  `json:"AccountCode,omitempty"`
-	Cost                        float32 `json:"Cost,omitempty"`
-	PriceTier                   int32   `json:"PriceTier,omitempty"`
-	PlannedDowntimeCost         float32 `json:"PlannedDowntimeCost,omitempty"`
-	PlannedDowntimePriceTier    int32   `json:"PlannedDowntimePriceTier,omitempty"`
-	NotPlannedDowntimeCost      float32 `json:"NotPlannedDowntimeCost,omitempty"`
-	NotPlannedDowntimePriceTier int32   `json:"NotPlannedDowntimePriceTier,omitempty"`
+	Cost                        float64 `json:"Cost,omitempty"`
+	PriceTier                   int     `json:"PriceTier,omitempty"`
+	PlannedDowntimeCost         float64 `json:"PlannedDowntimeCost,omitempty"`
+	PlannedDowntimePriceTier    int     `json:"PlannedDowntimePriceTier,omitempty"`
+	NotPlannedDowntimeCost      float64 `json:"NotPlannedDowntimeCost,omitempty"`
+	NotPlannedDowntimePriceTier int     `json:"NotPlannedDowntimePriceTier,omitempty"`
 }
 
 type ResourceRemark struct {
@@ -1254,8 +1143,8 @@ type PurchaseList struct {
 	Supplier                string  `json:"Supplier,omitempty"`
 	SupplierID              string  `json:"SupplierID,omitempty"`
 	InvoiceNumber           string  `json:"InvoiceNumber,omitempty"`
-	InvoiceAmount           float32 `json:"InvoiceAmount,omitempty"`
-	PaidAmount              float32 `json:"PaidAmount,omitempty"`
+	InvoiceAmount           float64 `json:"InvoiceAmount,omitempty"`
+	PaidAmount              float64 `json:"PaidAmount,omitempty"`
 	InvoiceDueDate          string  `json:"InvoiceDueDate,omitempty"`
 	RequiredBy              string  `json:"RequiredBy,omitempty"`
 	BaseCurrency            string  `json:"BaseCurrency,omitempty"`
@@ -1285,8 +1174,8 @@ type PurchaseCreditNoteList struct {
 	Supplier                string  `json:"Supplier,omitempty"`
 	SupplierID              string  `json:"SupplierID,omitempty"`
 	InvoiceNumber           string  `json:"InvoiceNumber,omitempty"`
-	InvoiceAmount           float32 `json:"InvoiceAmount,omitempty"`
-	PaidAmount              float32 `json:"PaidAmount,omitempty"`
+	InvoiceAmount           float64 `json:"InvoiceAmount,omitempty"`
+	PaidAmount              float64 `json:"PaidAmount,omitempty"`
 	InvoiceDueDate          string  `json:"InvoiceDueDate,omitempty"`
 	RequiredBy              string  `json:"RequiredBy,omitempty"`
 	BaseCurrency            string  `json:"BaseCurrency,omitempty"`
@@ -1306,40 +1195,6 @@ type PurchaseCreditNoteList struct {
 	DropShipTaskID          string  `json:"DropShipTaskID,omitempty"`
 }
 
-type Purchase struct {
-	ID                      string                         `json:"ID,omitempty"`
-	SupplierID              string                         `json:"SupplierID,omitempty"`
-	Supplier                string                         `json:"Supplier,omitempty"`
-	Contact                 string                         `json:"Contact,omitempty"`
-	Phone                   string                         `json:"Phone,omitempty"`
-	InventoryAccount        string                         `json:"InventoryAccount,omitempty"`
-	BlindReceipt            bool                           `json:"BlindReceipt,omitempty"`
-	Approach                string                         `json:"Approach,omitempty"`
-	BillingAddress          []AddressModel                 `json:"BillingAddress,omitempty"`
-	ShippingAddress         []PurchaseShippingAddressModel `json:"ShippingAddress,omitempty"`
-	BaseCurrency            string                         `json:"BaseCurrency,omitempty"`
-	SupplierCurrency        string                         `json:"SupplierCurrency,omitempty"`
-	TaxRule                 string                         `json:"TaxRule,omitempty"`
-	TaxCalculation          string                         `json:"TaxCalculation,omitempty"`
-	Terms                   string                         `json:"Terms,omitempty"`
-	RequiredBy              string                         `json:"RequiredBy,omitempty"`
-	Location                string                         `json:"Location,omitempty"`
-	Note                    string                         `json:"Note,omitempty"`
-	OrderNumber             string                         `json:"OrderNumber,omitempty"`
-	Status                  string                         `json:"Status,omitempty"`
-	RelatedDropShipSaleTask string                         `json:"RelatedDropShipSaleTask,omitempty"`
-	CurrencyRate            float32                        `json:"CurrencyRate,omitempty"`
-	LastUpdatedDate         string                         `json:"LastUpdatedDate,omitempty"`
-	Order                   []PurchaseOrderModel           `json:"Order,omitempty"`
-	StockReceived           []PurchaseStockModel           `json:"StockReceived,omitempty"`
-	Invoice                 []PurchaseInvoiceModel         `json:"Invoice,omitempty"`
-	CreditNote              []PurchaseCreditNoteModel      `json:"CreditNote,omitempty"`
-	ManualJournals          []PurchaseManualJournalModel   `json:"ManualJournals,omitempty"`
-	AdditionalAttributes    []AdditionalAttributeModel     `json:"AdditionalAttributes,omitempty"`
-	Attachments             []AttachmentLineModel          `json:"Attachments,omitempty"`
-	InventoryMovements      []InventoryMovementLineModel   `json:"InventoryMovements,omitempty"`
-}
-
 type PurchaseOrder struct {
 	TaskID                   string                          `json:"TaskID,omitempty"`
 	CombineAdditionalCharges bool                            `json:"CombineAdditionalCharges,omitempty"`
@@ -1347,31 +1202,9 @@ type PurchaseOrder struct {
 	Status                   string                          `json:"Status,omitempty"`
 	Lines                    []PurchaseOrderLineModel        `json:"Lines,omitempty"`
 	AdditionalCharges        []PurchaseAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
-	TotalBeforeTax           float32                         `json:"TotalBeforeTax,omitempty"`
-	Tax                      float32                         `json:"Tax,omitempty"`
-	Total                    float32                         `json:"Total,omitempty"`
-}
-
-type PurchaseStockReceived struct {
-	TaskID string                   `json:"TaskID,omitempty"`
-	Status string                   `json:"Status,omitempty"`
-	Lines  []PurchaseStockLineModel `json:"Lines,omitempty"`
-}
-
-type PurchaseInvoice struct {
-	TaskID                   string                                 `json:"TaskID,omitempty"`
-	CombineAdditionalCharges bool                                   `json:"CombineAdditionalCharges,omitempty"`
-	InvoiceDate              string                                 `json:"InvoiceDate,omitempty"`
-	InvoiceDueDate           string                                 `json:"InvoiceDueDate,omitempty"`
-	InvoiceNumber            string                                 `json:"InvoiceNumber,omitempty"`
-	Status                   string                                 `json:"Status,omitempty"`
-	Lines                    []PurchaseInvoiceLineModel             `json:"Lines,omitempty"`
-	AdditionalCharges        []PurchaseInvoiceAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
-	TotalBeforeTax           float32                                `json:"TotalBeforeTax,omitempty"`
-	Tax                      float32                                `json:"Tax,omitempty"`
-	Total                    float32                                `json:"Total,omitempty"`
-	InvoiceTotalAmount       float32                                `json:"InvoiceTotalAmount,omitempty"`
-	InvoiceTotalTaxAmount    float32                                `json:"InvoiceTotalTaxAmount,omitempty"`
+	TotalBeforeTax           float64                         `json:"TotalBeforeTax,omitempty"`
+	Tax                      float64                         `json:"Tax,omitempty"`
+	Total                    float64                         `json:"Total,omitempty"`
 }
 
 type PurchaseCreditNote struct {
@@ -1383,21 +1216,9 @@ type PurchaseCreditNote struct {
 	Lines                    []PurchaseInvoiceLineModel             `json:"Lines,omitempty"`
 	AdditionalCharges        []PurchaseInvoiceAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
 	Unstock                  []PurchaseUnStockLineModel             `json:"Unstock,omitempty"`
-	TotalBeforeTax           float32                                `json:"TotalBeforeTax,omitempty"`
-	Tax                      float32                                `json:"Tax,omitempty"`
-	Total                    float32                                `json:"Total,omitempty"`
-}
-
-type PurchasePayments struct {
-	TaskID       string  `json:"TaskID,omitempty"`
-	ID           string  `json:"ID,omitempty"`
-	Type         string  `json:"Type,omitempty"`
-	Reference    string  `json:"Reference,omitempty"`
-	Amount       float32 `json:"Amount,omitempty"`
-	DatePaid     string  `json:"DatePaid,omitempty"`
-	Account      string  `json:"Account,omitempty"`
-	CurrencyRate float32 `json:"CurrencyRate,omitempty"`
-	DateCreated  string  `json:"DateCreated,omitempty"`
+	TotalBeforeTax           float64                                `json:"TotalBeforeTax,omitempty"`
+	Tax                      float64                                `json:"Tax,omitempty"`
+	Total                    float64                                `json:"Total,omitempty"`
 }
 
 type Purchase struct {
@@ -1428,7 +1249,7 @@ type Purchase struct {
 	IsServiceOnly           bool                                 `json:"IsServiceOnly,omitempty"`
 	Status                  string                               `json:"Status,omitempty"`
 	RelatedDropShipSaleTask string                               `json:"RelatedDropShipSaleTask,omitempty"`
-	CurrencyRate            float32                              `json:"CurrencyRate,omitempty"`
+	CurrencyRate            float64                              `json:"CurrencyRate,omitempty"`
 	LastUpdatedDate         string                               `json:"LastUpdatedDate,omitempty"`
 	Order                   []PurchaseOrderModel                 `json:"Order,omitempty"`
 	StockReceived           []AdvancedPurchaseStockModel         `json:"StockReceived,omitempty"`
@@ -1455,42 +1276,33 @@ type PurchasePutAway struct {
 	Lines      []AdvancedPurchasePutAwayLineModel `json:"Lines,omitempty"`
 }
 
-type PurchaseInvoice struct {
-	PurchaseID string                                `json:"PurchaseID,omitempty"`
-	Invoices   []AdvancedPurchasePartialInvoiceModel `json:"Invoices,omitempty"`
-}
-
-type PurchaseCreditNote struct {
-	PurchaseID  string                                   `json:"PurchaseID,omitempty"`
-	CreditNotes []AdvancedPurchasePartialCreditNoteModel `json:"CreditNotes,omitempty"`
-}
-
 type PurchasePayments struct {
 	TaskID       string  `json:"TaskID,omitempty"`
 	ID           string  `json:"ID,omitempty"`
 	Type         string  `json:"Type,omitempty"`
 	Reference    string  `json:"Reference,omitempty"`
-	Amount       float32 `json:"Amount,omitempty"`
+	Amount       float64 `json:"Amount,omitempty"`
 	DatePaid     string  `json:"DatePaid,omitempty"`
 	Account      string  `json:"Account,omitempty"`
-	CurrencyRate float32 `json:"CurrencyRate,omitempty"`
+	CurrencyRate float64 `json:"CurrencyRate,omitempty"`
 	DateCreated  string  `json:"DateCreated,omitempty"`
 }
 
-type ProductDeal struct {
-	ID                    string                      `json:"ID,omitempty"`
-	Name                  string                      `json:"Name,omitempty"`
-	DateFrom              string                      `json:"DateFrom,omitempty"`
-	DateTo                string                      `json:"DateTo,omitempty"`
-	IsActive              bool                        `json:"IsActive,omitempty"`
-	AllowCoupons          bool                        `json:"AllowCoupons,omitempty"`
-	SingleCouponCodeUsage bool                        `json:"SingleCouponCodeUsage,omitempty"`
-	CustomersGroup        string                      `json:"CustomersGroup,omitempty"`
-	CouponCodes           string                      `json:"CouponCodes,omitempty"`
-	DealCustomers         []ProductDealCustomerModel  `json:"DealCustomers,omitempty"`
-	DealCustomerTags      []ProductDealTagModel       `json:"DealCustomerTags,omitempty"`
-	DealDiscounts         []ProductDealDiscountsModel `json:"DealDiscounts,omitempty"`
-}
+// TODO: Fields are not well definted in API documentation
+// type ProductDeal struct {
+// 	ID                    string                      `json:"ID,omitempty"`
+// 	Name                  string                      `json:"Name,omitempty"`
+// 	DateFrom              string                      `json:"DateFrom,omitempty"`
+// 	DateTo                string                      `json:"DateTo,omitempty"`
+// 	IsActive              bool                        `json:"IsActive,omitempty"`
+// 	AllowCoupons          bool                        `json:"AllowCoupons,omitempty"`
+// 	SingleCouponCodeUsage bool                        `json:"SingleCouponCodeUsage,omitempty"`
+// 	CustomersGroup        string                      `json:"CustomersGroup,omitempty"`
+// 	CouponCodes           string                      `json:"CouponCodes,omitempty"`
+// 	DealCustomers         []ProductDealCustomerModel  `json:"DealCustomers,omitempty"`
+// 	DealCustomerTags      []ProductDealTagModel       `json:"DealCustomerTags,omitempty"`
+// 	DealDiscounts         []ProductDealDiscountsModel `json:"DealDiscounts,omitempty"`
+// }
 
 type ProductDealCustomerModel struct {
 	ID           string `json:"ID,omitempty"`
@@ -1508,16 +1320,15 @@ type ProductDealDiscountModel struct {
 	DiscountID             string                             `json:"DiscountID,omitempty"`
 	DiscountName           string                             `json:"DiscountName,omitempty"`
 	DiscountType           string                             `json:"DiscountType,omitempty"`
-	Sequence               int32                              `json:"Sequence,omitempty"`
+	Sequence               int                                `json:"Sequence,omitempty"`
 	IsOrderLevel           bool                               `json:"IsOrderLevel,omitempty"`
 	BuyType                string                             `json:"BuyType,omitempty"`
-	BuyValue               float32                            `json:"BuyValue,omitempty"`
+	BuyValue               float64                            `json:"BuyValue,omitempty"`
 	BuyValueType           string                             `json:"BuyValueType,omitempty"`
 	BuyMore                bool                               `json:"BuyMore,omitempty"`
 	GetType                string                             `json:"GetType,omitempty"`
-	GetValue               float32                            `json:"GetValue,omitempty"`
+	GetValue               float64                            `json:"GetValue,omitempty"`
 	GetValueType           string                             `json:"GetValueType,omitempty"`
-	BuyMore                bool                               `json:"BuyMore,omitempty"`
 	DealDiscountBrands     []ProductDealDiscountBrandModel    `json:"DealDiscountBrands,omitempty"`
 	DealDiscountCategories []ProductDealDiscountCategoryModel `json:"DealDiscountCategories,omitempty"`
 	DealDiscountTags       []ProductDealDiscountTagModel      `json:"DealDiscountTags,omitempty"`
@@ -1562,43 +1373,45 @@ type ProductDiscountRuleModel struct {
 
 type DiscountLineModel struct {
 	ID           string  `json:"ID,omitempty"`
-	MinValue     float32 `json:"MinValue,omitempty"`
-	MaxValue     float32 `json:"MaxValue,omitempty"`
+	MinValue     float64 `json:"MinValue,omitempty"`
+	MaxValue     float64 `json:"MaxValue,omitempty"`
 	DiscountType string  `json:"DiscountType,omitempty"`
-	Amount       float32 `json:"Amount,omitempty"`
-	OrderExceeds float32 `json:"OrderExceeds,omitempty"`
+	Amount       float64 `json:"Amount,omitempty"`
+	OrderExceeds float64 `json:"OrderExceeds,omitempty"`
 }
 
-type ShippingZoneModel struct {
-	ZoneID              string                    `json:"ZoneID,omitempty"`
-	Name                string                    `json:"Name,omitempty"`
-	IsRestZone          bool                      `json:"IsRestZone,omitempty"`
-	PricesInclTax       bool                      `json:"PricesInclTax,omitempty"`
-	Negative            bool                      `json:"Negative,omitempty"`
-	DefaultShippingCost float32                   `json:"DefaultShippingCost,omitempty"`
-	ShortDesc           bool                      `json:"ShortDesc,omitempty"`
-	TaxRuleID           string                    `json:"TaxRuleID,omitempty"`
-	TaxRuleName         string                    `json:"TaxRuleName,omitempty"`
-	AppliesTo           []ShipZoneAppliesToModel  `json:"AppliesTo,omitempty"`
-	Conditions          []ShipZoneConditionsModel `json:"Conditions,omitempty"`
-}
+// TODO: Fields are not well defined in API Docs
+// ISSUE: ShipXoneConditionsModel
+// type ShippingZoneModel struct {
+// 	ZoneID              string                    `json:"ZoneID,omitempty"`
+// 	Name                string                    `json:"Name,omitempty"`
+// 	IsRestZone          bool                      `json:"IsRestZone,omitempty"`
+// 	PricesInclTax       bool                      `json:"PricesInclTax,omitempty"`
+// 	Negative            bool                      `json:"Negative,omitempty"`
+// 	DefaultShippingCost float64                   `json:"DefaultShippingCost,omitempty"`
+// 	ShortDesc           bool                      `json:"ShortDesc,omitempty"`
+// 	TaxRuleID           string                    `json:"TaxRuleID,omitempty"`
+// 	TaxRuleName         string                    `json:"TaxRuleName,omitempty"`
+// 	AppliesTo           []ShipZoneAppliesToModel  `json:"AppliesTo,omitempty"`
+// 	Conditions          []ShipZoneConditionsModel `json:"Conditions,omitempty"`
+// }
 
 type ShipZoneAppliesToModel struct {
 	ID            string  `json:"ID,omitempty"`
 	Country2      string  `json:"Country2,omitempty"`
-	StateID       int32   `json:"StateID,omitempty"`
+	StateID       int     `json:"StateID,omitempty"`
 	StateName     string  `json:"StateName,omitempty"`
 	PostCodeFrom  string  `json:"PostCodeFrom,omitempty"`
 	PostCodeTo    string  `json:"PostCodeTo,omitempty"`
 	PostCodesList string  `json:"PostCodesList,omitempty"`
-	ShippingRate  float32 `json:"ShippingRate,omitempty"`
+	ShippingRate  float64 `json:"ShippingRate,omitempty"`
 }
 
 type ShipZoneConditionModel struct {
 	ZoneConditionID      string  `json:"ZoneConditionID,omitempty"`
-	MinValue             float32 `json:"MinValue,omitempty"`
-	MaxValue             float32 `json:"MaxValue,omitempty"`
-	ShippingCost         float32 `json:"ShippingCost,omitempty"`
+	MinValue             float64 `json:"MinValue,omitempty"`
+	MaxValue             float64 `json:"MaxValue,omitempty"`
+	ShippingCost         float64 `json:"ShippingCost,omitempty"`
 	ConditionType        string  `json:"ConditionType,omitempty"`
 	ConditionDescription string  `json:"ConditionDescription,omitempty"`
 }
@@ -1613,8 +1426,8 @@ type SaleList struct {
 	CustomerID              string  `json:"CustomerID,omitempty"`
 	InvoiceNumber           string  `json:"InvoiceNumber,omitempty"`
 	CustomerReference       string  `json:"CustomerReference,omitempty"`
-	InvoiceAmount           float32 `json:"InvoiceAmount,omitempty"`
-	PaidAmount              float32 `json:"PaidAmount,omitempty"`
+	InvoiceAmount           float64 `json:"InvoiceAmount,omitempty"`
+	PaidAmount              float64 `json:"PaidAmount,omitempty"`
 	InvoiceDueDate          string  `json:"InvoiceDueDate,omitempty"`
 	ShipBy                  string  `json:"ShipBy,omitempty"`
 	BaseCurrency            string  `json:"BaseCurrency,omitempty"`
@@ -1647,8 +1460,8 @@ type SaleCreditNoteList struct {
 	CustomerID              string  `json:"CustomerID,omitempty"`
 	InvoiceNumber           string  `json:"InvoiceNumber,omitempty"`
 	CustomerReference       string  `json:"CustomerReference,omitempty"`
-	InvoiceAmount           float32 `json:"InvoiceAmount,omitempty"`
-	PaidAmount              float32 `json:"PaidAmount,omitempty"`
+	InvoiceAmount           float64 `json:"InvoiceAmount,omitempty"`
+	PaidAmount              float64 `json:"PaidAmount,omitempty"`
 	InvoiceDueDate          string  `json:"InvoiceDueDate,omitempty"`
 	ShipBy                  string  `json:"ShipBy,omitempty"`
 	BaseCurrency            string  `json:"BaseCurrency,omitempty"`
@@ -1695,7 +1508,7 @@ type Sale struct {
 	LastModifiedOn          string                       `json:"LastModifiedOn,omitempty"`
 	Note                    string                       `json:"Note,omitempty"`
 	CustomerReference       string                       `json:"CustomerReference,omitempty"`
-	COGSAmount              float32                      `json:"COGSAmount,omitempty"`
+	COGSAmount              float64                      `json:"COGSAmount,omitempty"`
 	Status                  string                       `json:"Status,omitempty"`
 	CombinedPickingStatus   string                       `json:"CombinedPickingStatus,omitempty"`
 	CombinedPackingStatus   string                       `json:"CombinedPackingStatus,omitempty"`
@@ -1705,7 +1518,7 @@ type Sale struct {
 	CombinedPaymentStatus   string                       `json:"CombinedPaymentStatus,omitempty"`
 	CombinedTrackingNumbers string                       `json:"CombinedTrackingNumbers,omitempty"`
 	Carrier                 string                       `json:"Carrier,omitempty"`
-	CurrencyRate            float32                      `json:"CurrencyRate,omitempty"`
+	CurrencyRate            float64                      `json:"CurrencyRate,omitempty"`
 	SalesRepresentative     string                       `json:"SalesRepresentative,omitempty"`
 	Type                    string                       `json:"Type,omitempty"`
 	SourceChannel           string                       `json:"SourceChannel,omitempty"`
@@ -1730,9 +1543,9 @@ type SaleQuote struct {
 	Status                   string                      `json:"Status,omitempty"`
 	Lines                    []SaleQuoteLineModel        `json:"Lines,omitempty"`
 	AdditionalCharges        []SaleAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
-	TotalBeforeTax           float32                     `json:"TotalBeforeTax,omitempty"`
-	Tax                      float32                     `json:"Tax,omitempty"`
-	Total                    float32                     `json:"Total,omitempty"`
+	TotalBeforeTax           float64                     `json:"TotalBeforeTax,omitempty"`
+	Tax                      float64                     `json:"Tax,omitempty"`
+	Total                    float64                     `json:"Total,omitempty"`
 }
 
 type SaleOrder struct {
@@ -1743,9 +1556,9 @@ type SaleOrder struct {
 	Status                   string                      `json:"Status,omitempty"`
 	Lines                    []SaleOrderLineModel        `json:"Lines,omitempty"`
 	AdditionalCharges        []SaleAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
-	TotalBeforeTax           float32                     `json:"TotalBeforeTax,omitempty"`
-	Tax                      float32                     `json:"Tax,omitempty"`
-	Total                    float32                     `json:"Total,omitempty"`
+	TotalBeforeTax           float64                     `json:"TotalBeforeTax,omitempty"`
+	Tax                      float64                     `json:"Tax,omitempty"`
+	Total                    float64                     `json:"Total,omitempty"`
 }
 
 type SaleFulfilment struct {
@@ -1768,7 +1581,7 @@ type SaleFulfilmentPack struct {
 type SaleFulfilmentShip struct {
 	TaskID          string                        `json:"TaskID,omitempty"`
 	Status          string                        `json:"Status,omitempty"`
-	RequireBy       Date                          `json:"RequireBy,omitempty"`
+	RequireBy       string                        `json:"RequireBy,omitempty"`
 	ShippingAddress []SaleShippingAddressModel    `json:"ShippingAddress,omitempty"`
 	ShippingNotes   string                        `json:"ShippingNotes,omitempty"`
 	Lines           []SaleFulfilmentShipLineModel `json:"Lines,omitempty"`
@@ -1839,9 +1652,9 @@ type Supplier struct {
 	AccountPayable        string                 `json:"AccountPayable,omitempty"`
 	TaxRule               string                 `json:"TaxRule,omitempty"`
 	Status                string                 `json:"Status,omitempty"`
-	Discount              int32                  `json:"Discount,omitempty"`
+	Discount              int                    `json:"Discount,omitempty"`
 	Comments              string                 `json:"Comments,omitempty"`
-	TaxNumber             int32                  `json:"TaxNumber,omitempty"`
+	TaxNumber             int                    `json:"TaxNumber,omitempty"`
 	AttributeSet          string                 `json:"AttributeSet,omitempty"`
 	AdditionalAttribute1  string                 `json:"AdditionalAttribute1,omitempty"`
 	AdditionalAttribute2  string                 `json:"AdditionalAttribute2,omitempty"`
@@ -1864,7 +1677,7 @@ type Tax struct {
 	Account          string              `json:"Account,omitempty"`
 	IsActive         bool                `json:"IsActive,omitempty"`
 	TaxInclusive     bool                `json:"TaxInclusive,omitempty"`
-	TaxPercent       float32             `json:"TaxPercent,omitempty"`
+	TaxPercent       float64             `json:"TaxPercent,omitempty"`
 	IsTaxForSale     bool                `json:"IsTaxForSale,omitempty"`
 	IsTaxForPurchase bool                `json:"IsTaxForPurchase,omitempty"`
 	Components       []TaxComponentModel `json:"Components,omitempty"`
@@ -1880,99 +1693,28 @@ type Lead struct {
 	LeadStatus          string                 `json:"LeadStatus,omitempty"`
 	Name                string                 `json:"Name,omitempty"`
 	Currency            string                 `json:"Currency,omitempty"`
-	PaymentTerm         int32                  `json:"PaymentTerm,omitempty"`
+	PaymentTerm         int                    `json:"PaymentTerm,omitempty"`
 	PriceTier           string                 `json:"PriceTier,omitempty"`
 	SalesRepresentative string                 `json:"SalesRepresentative,omitempty"`
 	TaxRule             string                 `json:"TaxRule,omitempty"`
-	Amount              float32                `json:"Amount,omitempty"`
-	CloseChance         int32                  `json:"CloseChance,omitempty"`
+	Amount              float64                `json:"Amount,omitempty"`
+	CloseChance         int                    `json:"CloseChance,omitempty"`
 	CloseDate           string                 `json:"CloseDate,omitempty"`
 	Comments            string                 `json:"Comments,omitempty"`
 	Contacts            []SupplierContactModel `json:"Contacts,omitempty"`
 	Addresses           []SupplierAddressModel `json:"Addresses,omitempty"`
 }
 
-type Opportunity struct {
-	ID                     string
-	CustomerID             string
-	LeadID                 string
-	CustomerName           string
-	Contact                string
-	Phone                  string
-	DefaultAccount         string
-	BillingAddressLine1    string
-	BillingAddressLine2    string
-	Currency               string
-	TaxPercent             float32
-	TaxInclusive           bool
-	TaxRule                string
-	TermDays               int32
-	Terms                  string
-	PriceTier              string
-	ShippingAddressLine1   string
-	ShippingAddressLine2   string
-	OpportunityLocation    string
-	OpportunityNumber      string
-	OpportunityDate        string
-	OpportunityComment     string
-	OpportunityMemo        string
-	OpportunityStatus      string
-	TaxTotal               float32
-	Total                  float32
-	CustomerReference      string
-	CurrencyConversionRate float32
-	CustomerCurrency       string
-	TermMethod             int32
-	SalesRepresentative    string
-	TermDueNextMonth       int32
-	ShipToOther            bool
-	ShipToCompany          string
-	ShipToContact          string
-	ShipToCountry          string
-	ShipToPostCode         string
-	ShipToState            string
-	ShipToCity             string
-	ShipToAddress1         string
-	ShipToAddress2         string
-	CustomField1           string
-	CustomField2           string
-	CustomField3           string
-	CustomField4           string
-	CustomField5           string
-	CustomField6           string
-	CustomField7           string
-	CustomField8           string
-	CustomField9           string
-	CustomField10          string
-	Lines                  []OpportunityLine
-	AdditionalCharges      []OpportunityAdditionalCharge
-}
-
-type OpportunityLine struct {
-	ID          string  `json:"ID,omitempty"`
-	ProductID   string  `json:"ProductID,omitempty"`
-	ProductName string  `json:"ProductName,omitempty"`
-	ProductSKU  string  `json:"ProductSKU,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Price       float32 `json:"Price,omitempty"`
-	Discount    float32 `json:"Discount,omitempty"`
-	Tax         float32 `json:"Tax,omitempty"`
-	Total       float32 `json:"Total,omitempty"`
-	TaxRule     string  `json:"TaxRule,omitempty"`
-	TaxPercent  float32 `json:"TaxPercent,omitempty"`
-	Comment     string  `json:"Comment,omitempty"`
-}
-
 type OpportunityAdditionalCharge struct {
 	ID          string  `json:"ID,omitempty"`
 	Description string  `json:"Description,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Amount      float32 `json:"Amount,omitempty"`
-	Discount    float32 `json:"Discount,omitempty"`
-	Tax         float32 `json:"Tax,omitempty"`
-	Total       float32 `json:"Total,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
+	Amount      float64 `json:"Amount,omitempty"`
+	Discount    float64 `json:"Discount,omitempty"`
+	Tax         float64 `json:"Tax,omitempty"`
+	Total       float64 `json:"Total,omitempty"`
 	TaxRule     string  `json:"TaxRule,omitempty"`
-	TaxPercent  float32 `json:"TaxPercent,omitempty"`
+	TaxPercent  float64 `json:"TaxPercent,omitempty"`
 	Comment     string  `json:"Comment,omitempty"`
 }
 
@@ -2015,51 +1757,11 @@ type WorkflowStep struct {
 	ID          string `json:"ID,omitempty"`
 	Name        string `json:"Name,omitempty"`
 	Category    string `json:"Category,omitempty"`
-	Days        int32  `json:"Days,omitempty"`
+	Days        int    `json:"Days,omitempty"`
 	StartTime   string `json:"StartTime,omitempty"`
 	EndTime     string `json:"EndTime,omitempty"`
 	UserName    string `json:"UserName,omitempty"`
 	SkipHoliday string `json:"SkipHoliday,omitempty"`
-}
-
-type NewStockLineModel struct {
-	ProductID            string                `json:"ProductID,omitempty"`
-	SKU                  string                `json:"SKU,omitempty"`
-	ProductName          string                `json:"ProductName,omitempty"`
-	Quantity             float32               `json:"Quantity,omitempty"`
-	UnitCost             float32               `json:"UnitCost,omitempty"`
-	LocationID           string                `json:"LocationID,omitempty"`
-	Location             string                `json:"Location,omitempty"`
-	BatchSN              string                `json:"BatchSN,omitempty"`
-	ExpiryDate           string                `json:"ExpiryDate,omitempty"`
-	ReceivedDate         string                `json:"ReceivedDate,omitempty"`
-	Comments             string                `json:"Comments,omitempty"`
-	ProductLength        float32               `json:"ProductLength,omitempty"`
-	ProductWidth         float32               `json:"ProductWidth,omitempty"`
-	ProductHeight        float32               `json:"ProductHeight,omitempty"`
-	ProductWeight        float32               `json:"ProductWeight,omitempty"`
-	WeightUnits          string                `json:"WeightUnits,omitempty"`
-	DimensionsUnits      string                `json:"DimensionsUnits,omitempty"`
-	ProductCustomField1  string                `json:"ProductCustomField1,omitempty"`
-	ProductCustomField2  string                `json:"ProductCustomField2,omitempty"`
-	ProductCustomField3  string                `json:"ProductCustomField3,omitempty"`
-	ProductCustomField4  string                `json:"ProductCustomField4,omitempty"`
-	ProductCustomField5  string                `json:"ProductCustomField5,omitempty"`
-	ProductCustomField6  string                `json:"ProductCustomField6,omitempty"`
-	ProductCustomField7  string                `json:"ProductCustomField7,omitempty"`
-	ProductCustomField8  string                `json:"ProductCustomField8,omitempty"`
-	ProductCustomField9  string                `json:"ProductCustomField9,omitempty"`
-	ProductCustomField10 string                `json:"ProductCustomField10,omitempty"`
-	Image                []AttachmentLineModel `json:"Image,omitempty"`
-	Barcode              string                `json:"Barcode,omitempty"`
-	StockLocator         string                `json:"StockLocator,omitempty"`
-	Unit                 string                `json:"Unit,omitempty"`
-	CostingMethod        string                `json:"CostingMethod,omitempty"`
-}
-
-type UnitofMeasure struct {
-	ID   string `json:"ID,omitempty"`
-	Name string `json:"Name,omitempty"`
 }
 
 type Opportunity struct {
@@ -2073,10 +1775,10 @@ type Opportunity struct {
 	BillingAddressLine1    string                        `json:"BillingAddressLine1,omitempty"`
 	BillingAddressLine2    string                        `json:"BillingAddressLine2,omitempty"`
 	Currency               string                        `json:"Currency,omitempty"`
-	TaxPercent             float32                       `json:"TaxPercent,omitempty"`
+	TaxPercent             float64                       `json:"TaxPercent,omitempty"`
 	TaxInclusive           bool                          `json:"TaxInclusive,omitempty"`
 	TaxRule                string                        `json:"TaxRule,omitempty"`
-	TermDays               int32                         `json:"TermDays,omitempty"`
+	TermDays               int                           `json:"TermDays,omitempty"`
 	Terms                  string                        `json:"Terms,omitempty"`
 	PriceTier              string                        `json:"PriceTier,omitempty"`
 	ShippingAddressLine1   string                        `json:"ShippingAddressLine1,omitempty"`
@@ -2087,14 +1789,14 @@ type Opportunity struct {
 	OpportunityComment     string                        `json:"OpportunityComment,omitempty"`
 	OpportunityMemo        string                        `json:"OpportunityMemo,omitempty"`
 	OpportunityStatus      string                        `json:"OpportunityStatus,omitempty"`
-	TaxTotal               float32                       `json:"TaxTotal,omitempty"`
-	Total                  float32                       `json:"Total,omitempty"`
+	TaxTotal               float64                       `json:"TaxTotal,omitempty"`
+	Total                  float64                       `json:"Total,omitempty"`
 	CustomerReference      string                        `json:"CustomerReference,omitempty"`
-	CurrencyConversionRate float32                       `json:"CurrencyConversionRate,omitempty"`
+	CurrencyConversionRate float64                       `json:"CurrencyConversionRate,omitempty"`
 	CustomerCurrency       string                        `json:"CustomerCurrency,omitempty"`
-	TermMethod             int32                         `json:"TermMethod,omitempty"`
+	TermMethod             int                           `json:"TermMethod,omitempty"`
 	SalesRepresentative    string                        `json:"SalesRepresentative,omitempty"`
-	TermDueNextMonth       int32                         `json:"TermDueNextMonth,omitempty"`
+	TermDueNextMonth       int                           `json:"TermDueNextMonth,omitempty"`
 	ShipToOther            bool                          `json:"ShipToOther,omitempty"`
 	ShipToCompany          string                        `json:"ShipToCompany,omitempty"`
 	ShipToContact          string                        `json:"ShipToContact,omitempty"`
@@ -2123,13 +1825,13 @@ type OpportunityLine struct {
 	ProductID   string  `json:"ProductID,omitempty"`
 	ProductName string  `json:"ProductName,omitempty"`
 	ProductSKU  string  `json:"ProductSKU,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Price       float32 `json:"Price,omitempty"`
-	Discount    float32 `json:"Discount,omitempty"`
-	Tax         float32 `json:"Tax,omitempty"`
-	Total       float32 `json:"Total,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
+	Price       float64 `json:"Price,omitempty"`
+	Discount    float64 `json:"Discount,omitempty"`
+	Tax         float64 `json:"Tax,omitempty"`
+	Total       float64 `json:"Total,omitempty"`
 	TaxRule     string  `json:"TaxRule,omitempty"`
-	TaxPercent  float32 `json:"TaxPercent,omitempty"`
+	TaxPercent  float64 `json:"TaxPercent,omitempty"`
 	Comment     string  `json:"Comment,omitempty"`
 }
 
@@ -2192,23 +1894,23 @@ type SaleQuoteModel struct {
 	Prepayments       []SalePaymentLineModel      `json:"Prepayments,omitempty"`
 	Lines             []SaleQuoteLineModel        `json:"Lines,omitempty"`
 	AdditionalCharges []SaleAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
-	TotalBeforeTax    float32                     `json:"TotalBeforeTax,omitempty"`
-	Tax               float32                     `json:"Tax,omitempty"`
-	Total             float32                     `json:"Total,omitempty"`
+	TotalBeforeTax    float64                     `json:"TotalBeforeTax,omitempty"`
+	Tax               float64                     `json:"Tax,omitempty"`
+	Total             float64                     `json:"Total,omitempty"`
 }
 
 type SaleQuoteLineModel struct {
 	ProductID   string  `json:"ProductID,omitempty"`
 	SKU         string  `json:"SKU,omitempty"`
 	Name        string  `json:"Name,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Price       float32 `json:"Price,omitempty"`
-	Discount    float32 `json:"Discount,omitempty"`
-	Tax         float32 `json:"Tax,omitempty"`
-	AverageCost float32 `json:"AverageCost,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
+	Price       float64 `json:"Price,omitempty"`
+	Discount    float64 `json:"Discount,omitempty"`
+	Tax         float64 `json:"Tax,omitempty"`
+	AverageCost float64 `json:"AverageCost,omitempty"`
 	TaxRule     string  `json:"TaxRule,omitempty"`
 	Comment     string  `json:"Comment,omitempty"`
-	Total       float32 `json:"Total,omitempty"`
+	Total       float64 `json:"Total,omitempty"`
 }
 
 type SaleOrderModel struct {
@@ -2217,30 +1919,30 @@ type SaleOrderModel struct {
 	Status            string                      `json:"Status,omitempty"`
 	Lines             []SaleOrderLineModel        `json:"Lines,omitempty"`
 	AdditionalCharges []SaleAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
-	TotalBeforeTax    float32                     `json:"TotalBeforeTax,omitempty"`
-	Tax               float32                     `json:"Tax,omitempty"`
-	Total             float32                     `json:"Total,omitempty"`
+	TotalBeforeTax    float64                     `json:"TotalBeforeTax,omitempty"`
+	Tax               float64                     `json:"Tax,omitempty"`
+	Total             float64                     `json:"Total,omitempty"`
 }
 
 type SaleOrderLineModel struct {
 	ProductID         string  `json:"ProductID,omitempty"`
 	SKU               string  `json:"SKU,omitempty"`
 	Name              string  `json:"Name,omitempty"`
-	Quantity          float32 `json:"Quantity,omitempty"`
-	Price             float32 `json:"Price,omitempty"`
-	Discount          float32 `json:"Discount,omitempty"`
-	Tax               float32 `json:"Tax,omitempty"`
-	AverageCost       float32 `json:"AverageCost,omitempty"`
+	Quantity          float64 `json:"Quantity,omitempty"`
+	Price             float64 `json:"Price,omitempty"`
+	Discount          float64 `json:"Discount,omitempty"`
+	Tax               float64 `json:"Tax,omitempty"`
+	AverageCost       float64 `json:"AverageCost,omitempty"`
 	TaxRule           string  `json:"TaxRule,omitempty"`
 	Comment           string  `json:"Comment,omitempty"`
 	DropShip          bool    `json:"DropShip,omitempty"`
-	BackorderQuantity float32 `json:"BackorderQuantity,omitempty"`
-	Total             float32 `json:"Total,omitempty"`
+	BackorderQuantity float64 `json:"BackorderQuantity,omitempty"`
+	Total             float64 `json:"Total,omitempty"`
 }
 
 type SaleFulfilmentModel struct {
 	TaskID              string                        `json:"TaskID,omitempty"`
-	FulfillmentNumber   int32                         `json:"FulfillmentNumber,omitempty"`
+	FulfillmentNumber   int                           `json:"FulfillmentNumber,omitempty"`
 	LinkedInvoiceNumber string                        `json:"LinkedInvoiceNumber,omitempty"`
 	FulFilmentStatus    string                        `json:"FulFilmentStatus,omitempty"`
 	Pick                []SaleFulfilmentPickPackModel `json:"Pick,omitempty"`
@@ -2259,7 +1961,7 @@ type SaleFulfilmentPickPackLineModel struct {
 	Name                       string  `json:"Name,omitempty"`
 	Location                   string  `json:"Location,omitempty"`
 	LocationID                 string  `json:"LocationID,omitempty"`
-	Quantity                   float32 `json:"Quantity,omitempty"`
+	Quantity                   float64 `json:"Quantity,omitempty"`
 	BatchSN                    string  `json:"BatchSN,omitempty"`
 	ExpiryDate                 string  `json:"ExpiryDate,omitempty"`
 	Box                        string  `json:"Box,omitempty"`
@@ -2294,37 +1996,37 @@ type SaleInvoiceModel struct {
 	Status                  string                             `json:"Status,omitempty"`
 	InvoiceDate             string                             `json:"InvoiceDate,omitempty"`
 	InvoiceDueDate          string                             `json:"InvoiceDueDate,omitempty"`
-	CurrencyConversionRate  float32                            `json:"CurrencyConversionRate,omitempty"`
+	CurrencyConversionRate  float64                            `json:"CurrencyConversionRate,omitempty"`
 	BillingAddressLine1     string                             `json:"BillingAddressLine1,omitempty"`
 	BillingAddressLine2     string                             `json:"BillingAddressLine2,omitempty"`
-	LinkedFulfillmentNumber int32                              `json:"LinkedFulfillmentNumber,omitempty"`
+	LinkedFulfillmentNumber int                                `json:"LinkedFulfillmentNumber,omitempty"`
 	Lines                   []SaleInvoiceLineModel             `json:"Lines,omitempty"`
 	AdditionalCharges       []SaleInvoiceAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
 	Payments                []SalePaymentLineModel             `json:"Payments,omitempty"`
-	TotalBeforeTax          float32                            `json:"TotalBeforeTax,omitempty"`
-	Tax                     float32                            `json:"Tax,omitempty"`
-	Total                   float32                            `json:"Total,omitempty"`
-	Paid                    float32                            `json:"Paid,omitempty"`
+	TotalBeforeTax          float64                            `json:"TotalBeforeTax,omitempty"`
+	Tax                     float64                            `json:"Tax,omitempty"`
+	Total                   float64                            `json:"Total,omitempty"`
+	Paid                    float64                            `json:"Paid,omitempty"`
 }
 
 type SaleAdditionalChargeModel struct {
 	Description string  `json:"Description,omitempty"`
-	Price       float32 `json:"Price,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Discount    float32 `json:"Discount,omitempty"`
-	Tax         float32 `json:"Tax,omitempty"`
-	Total       float32 `json:"Total,omitempty"`
+	Price       float64 `json:"Price,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
+	Discount    float64 `json:"Discount,omitempty"`
+	Tax         float64 `json:"Tax,omitempty"`
+	Total       float64 `json:"Total,omitempty"`
 	TaxRule     string  `json:"TaxRule,omitempty"`
 	Comment     string  `json:"Comment,omitempty"`
 }
 
 type SaleInvoiceAdditionalChargeModel struct {
 	Description string  `json:"Description,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Price       float32 `json:"Price,omitempty"`
-	Discount    float32 `json:"Discount,omitempty"`
-	Tax         float32 `json:"Tax,omitempty"`
-	Total       float32 `json:"Total,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
+	Price       float64 `json:"Price,omitempty"`
+	Discount    float64 `json:"Discount,omitempty"`
+	Tax         float64 `json:"Tax,omitempty"`
+	Total       float64 `json:"Total,omitempty"`
 	TaxRule     string  `json:"TaxRule,omitempty"`
 	Account     string  `json:"Account,omitempty"`
 	Comment     string  `json:"Comment,omitempty"`
@@ -2334,12 +2036,12 @@ type SaleInvoiceLineModel struct {
 	ProductID   string  `json:"ProductID,omitempty"`
 	SKU         string  `json:"SKU,omitempty"`
 	Name        string  `json:"Name,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Price       float32 `json:"Price,omitempty"`
-	Discount    float32 `json:"Discount,omitempty"`
-	Tax         float32 `json:"Tax,omitempty"`
-	Total       float32 `json:"Total,omitempty"`
-	AverageCost float32 `json:"AverageCost,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
+	Price       float64 `json:"Price,omitempty"`
+	Discount    float64 `json:"Discount,omitempty"`
+	Tax         float64 `json:"Tax,omitempty"`
+	Total       float64 `json:"Total,omitempty"`
+	AverageCost float64 `json:"AverageCost,omitempty"`
 	TaxRule     string  `json:"TaxRule,omitempty"`
 	Account     string  `json:"Account,omitempty"`
 	Comment     string  `json:"Comment,omitempty"`
@@ -2352,23 +2054,23 @@ type SaleCreditNoteModel struct {
 	Status                   string                             `json:"Status,omitempty"`
 	CreditNoteDate           string                             `json:"CreditNoteDate,omitempty"`
 	CreditNoteNumber         string                             `json:"CreditNoteNumber,omitempty"`
-	CreditNoteConversionRate float32                            `json:"CreditNoteConversionRate,omitempty"`
+	CreditNoteConversionRate float64                            `json:"CreditNoteConversionRate,omitempty"`
 	Lines                    []SaleInvoiceLineModel             `json:"Lines,omitempty"`
 	AdditionalCharges        []SaleInvoiceAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
 	Refunds                  []SalePaymentLineModel             `json:"Refunds,omitempty"`
 	Restock                  []SaleFulfilmentPickPackLineModel  `json:"Restock,omitempty"`
-	TotalBeforeTax           float32                            `json:"TotalBeforeTax,omitempty"`
-	Tax                      float32                            `json:"Tax,omitempty"`
-	Total                    float32                            `json:"Total,omitempty"`
+	TotalBeforeTax           float64                            `json:"TotalBeforeTax,omitempty"`
+	Tax                      float64                            `json:"Tax,omitempty"`
+	Total                    float64                            `json:"Total,omitempty"`
 }
 
 type SalePaymentLineModel struct {
 	ID           string  `json:"ID,omitempty"`
 	Reference    string  `json:"Reference,omitempty"`
-	Amount       float32 `json:"Amount,omitempty"`
+	Amount       float64 `json:"Amount,omitempty"`
 	DatePaid     string  `json:"DatePaid,omitempty"`
 	Account      string  `json:"Account,omitempty"`
-	CurrencyRate float32 `json:"CurrencyRate,omitempty"`
+	CurrencyRate float64 `json:"CurrencyRate,omitempty"`
 	DateCreated  string  `json:"DateCreated,omitempty"`
 }
 
@@ -2379,7 +2081,7 @@ type SaleManualJournalModel struct {
 
 type SaleManualJournalLineModel struct {
 	Reference string  `json:"Reference,omitempty"`
-	Amount    float32 `json:"Amount,omitempty"`
+	Amount    float64 `json:"Amount,omitempty"`
 	Date      string  `json:"Date,omitempty"`
 	Debit     string  `json:"Debit,omitempty"`
 	Credit    string  `json:"Credit,omitempty"`
@@ -2406,7 +2108,7 @@ type InventoryMovementLineModel struct {
 	TaskID    string  `json:"TaskID,omitempty"`
 	ProductID string  `json:"ProductID,omitempty"`
 	Date      string  `json:"Date,omitempty"`
-	COGS      float32 `json:"COGS,omitempty"`
+	COGS      float64 `json:"COGS,omitempty"`
 }
 
 type SaleTransactionLineModel struct {
@@ -2415,7 +2117,7 @@ type SaleTransactionLineModel struct {
 	Debit         string  `json:"Debit,omitempty"`
 	Credit        string  `json:"Credit,omitempty"`
 	Description   string  `json:"Description,omitempty"`
-	Amount        float32 `json:"Amount,omitempty"`
+	Amount        float64 `json:"Amount,omitempty"`
 	EffectiveDate string  `json:"EffectiveDate,omitempty"`
 }
 
@@ -2426,7 +2128,7 @@ type PurchaseManualJournalModel struct {
 
 type PurchaseManualJournalLineModel struct {
 	Reference string  `json:"Reference,omitempty"`
-	Amount    float32 `json:"Amount,omitempty"`
+	Amount    float64 `json:"Amount,omitempty"`
 	Date      string  `json:"Date,omitempty"`
 	Debit     string  `json:"Debit,omitempty"`
 	Credit    string  `json:"Credit,omitempty"`
@@ -2439,33 +2141,33 @@ type PurchaseOrderModel struct {
 	Lines             []PurchaseOrderLineModel        `json:"Lines,omitempty"`
 	AdditionalCharges []PurchaseAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
 	Prepayments       []SalePaymentLineModel          `json:"Prepayments,omitempty"`
-	TotalBeforeTax    float32                         `json:"TotalBeforeTax,omitempty"`
-	Tax               float32                         `json:"Tax,omitempty"`
-	Total             float32                         `json:"Total,omitempty"`
+	TotalBeforeTax    float64                         `json:"TotalBeforeTax,omitempty"`
+	Tax               float64                         `json:"Tax,omitempty"`
+	Total             float64                         `json:"Total,omitempty"`
 }
 
 type PurchaseOrderLineModel struct {
 	ProductID   string  `json:"ProductID,omitempty"`
 	SKU         string  `json:"SKU,omitempty"`
 	Name        string  `json:"Name,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Price       float32 `json:"Price,omitempty"`
-	Discount    float32 `json:"Discount,omitempty"`
-	Tax         float32 `json:"Tax,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
+	Price       float64 `json:"Price,omitempty"`
+	Discount    float64 `json:"Discount,omitempty"`
+	Tax         float64 `json:"Tax,omitempty"`
 	TaxRule     string  `json:"TaxRule,omitempty"`
 	SupplierSKU string  `json:"SupplierSKU,omitempty"`
 	Comment     string  `json:"Comment,omitempty"`
-	Total       float32 `json:"Total,omitempty"`
+	Total       float64 `json:"Total,omitempty"`
 }
 
 type PurchaseAdditionalChargeModel struct {
 	Description string  `json:"Description,omitempty"`
 	Reference   string  `json:"Reference,omitempty"`
-	Price       float32 `json:"Price,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Discount    float32 `json:"Discount,omitempty"`
-	Tax         float32 `json:"Tax,omitempty"`
-	Total       float32 `json:"Total,omitempty"`
+	Price       float64 `json:"Price,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
+	Discount    float64 `json:"Discount,omitempty"`
+	Tax         float64 `json:"Tax,omitempty"`
+	Total       float64 `json:"Total,omitempty"`
 	TaxRule     string  `json:"TaxRule,omitempty"`
 }
 
@@ -2476,7 +2178,7 @@ type PurchaseStockModel struct {
 
 type PurchaseStockLineModel struct {
 	Date        string  `json:"Date,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
 	ProductID   string  `json:"ProductID,omitempty"`
 	SKU         string  `json:"SKU,omitempty"`
 	Name        string  `json:"Name,omitempty"`
@@ -2492,7 +2194,7 @@ type PurchaseStockLineModel struct {
 type PurchaseUnStockLineModel struct {
 	CardID     string  `json:"CardID,omitempty"`
 	Date       string  `json:"Date,omitempty"`
-	Quantity   float32 `json:"Quantity,omitempty"`
+	Quantity   float64 `json:"Quantity,omitempty"`
 	ProductID  string  `json:"ProductID,omitempty"`
 	SKU        string  `json:"SKU,omitempty"`
 	Name       string  `json:"Name,omitempty"`
@@ -2509,10 +2211,10 @@ type PurchaseInvoiceModel struct {
 	Lines             []PurchaseInvoiceLineModel             `json:"Lines,omitempty"`
 	AdditionalCharges []PurchaseInvoiceAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
 	Payments          []SalePaymentLineModel                 `json:"Payments,omitempty"`
-	TotalBeforeTax    float32                                `json:"TotalBeforeTax,omitempty"`
-	Tax               float32                                `json:"Tax,omitempty"`
-	Total             float32                                `json:"Total,omitempty"`
-	Paid              float32                                `json:"Paid,omitempty"`
+	TotalBeforeTax    float64                                `json:"TotalBeforeTax,omitempty"`
+	Tax               float64                                `json:"Tax,omitempty"`
+	Total             float64                                `json:"Total,omitempty"`
+	Paid              float64                                `json:"Paid,omitempty"`
 }
 
 type PurchaseCreditNoteModel struct {
@@ -2523,53 +2225,53 @@ type PurchaseCreditNoteModel struct {
 	AdditionalCharges []PurchaseInvoiceAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
 	Refunds           []SalePaymentLineModel                 `json:"Refunds,omitempty"`
 	Unstock           []PurchaseUnStockLineModel             `json:"Unstock,omitempty"`
-	TotalBeforeTax    float32                                `json:"TotalBeforeTax,omitempty"`
-	Tax               float32                                `json:"Tax,omitempty"`
-	Total             float32                                `json:"Total,omitempty"`
+	TotalBeforeTax    float64                                `json:"TotalBeforeTax,omitempty"`
+	Tax               float64                                `json:"Tax,omitempty"`
+	Total             float64                                `json:"Total,omitempty"`
 }
 
 type PurchaseInvoiceLineModel struct {
 	ProductID string  `json:"ProductID,omitempty"`
 	SKU       string  `json:"SKU,omitempty"`
 	Name      string  `json:"Name,omitempty"`
-	Quantity  float32 `json:"Quantity,omitempty"`
-	Price     float32 `json:"Price,omitempty"`
-	Discount  float32 `json:"Discount,omitempty"`
-	Tax       float32 `json:"Tax,omitempty"`
+	Quantity  float64 `json:"Quantity,omitempty"`
+	Price     float64 `json:"Price,omitempty"`
+	Discount  float64 `json:"Discount,omitempty"`
+	Tax       float64 `json:"Tax,omitempty"`
 	TaxRule   string  `json:"TaxRule,omitempty"`
 	Account   string  `json:"Account,omitempty"`
 	Comment   string  `json:"Comment,omitempty"`
-	Total     float32 `json:"Total,omitempty"`
+	Total     float64 `json:"Total,omitempty"`
 }
 
 type PurchaseInvoiceAdditionalChargeModel struct {
 	Description string  `json:"Description,omitempty"`
 	Reference   string  `json:"Reference,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Price       float32 `json:"Price,omitempty"`
-	Discount    float32 `json:"Discount,omitempty"`
-	Tax         float32 `json:"Tax,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
+	Price       float64 `json:"Price,omitempty"`
+	Discount    float64 `json:"Discount,omitempty"`
+	Tax         float64 `json:"Tax,omitempty"`
 	TaxRule     string  `json:"TaxRule,omitempty"`
 	Account     string  `json:"Account,omitempty"`
-	Total       float32 `json:"Total,omitempty"`
+	Total       float64 `json:"Total,omitempty"`
 }
 
 type ExistingStockLineModel struct {
 	ProductID            string                `json:"ProductID,omitempty"`
 	SKU                  string                `json:"SKU,omitempty"`
 	ProductName          string                `json:"ProductName,omitempty"`
-	QuantityOnHand       float32               `json:"QuantityOnHand,omitempty"`
-	Available            float32               `json:"Available,omitempty"`
-	Adjustment           float32               `json:"Adjustment,omitempty"`
+	QuantityOnHand       float64               `json:"QuantityOnHand,omitempty"`
+	Available            float64               `json:"Available,omitempty"`
+	Adjustment           float64               `json:"Adjustment,omitempty"`
 	LocationID           string                `json:"LocationID,omitempty"`
 	Location             string                `json:"Location,omitempty"`
 	BatchSN              string                `json:"BatchSN,omitempty"`
 	ExpiryDate           string                `json:"ExpiryDate,omitempty"`
 	Comments             string                `json:"Comments,omitempty"`
-	ProductLength        float32               `json:"ProductLength,omitempty"`
-	ProductWidth         float32               `json:"ProductWidth,omitempty"`
-	ProductHeight        float32               `json:"ProductHeight,omitempty"`
-	ProductWeight        float32               `json:"ProductWeight,omitempty"`
+	ProductLength        float64               `json:"ProductLength,omitempty"`
+	ProductWidth         float64               `json:"ProductWidth,omitempty"`
+	ProductHeight        float64               `json:"ProductHeight,omitempty"`
+	ProductWeight        float64               `json:"ProductWeight,omitempty"`
 	WeightUnits          string                `json:"WeightUnits,omitempty"`
 	DimensionsUnits      string                `json:"DimensionsUnits,omitempty"`
 	ProductCustomField1  string                `json:"ProductCustomField1,omitempty"`
@@ -2593,18 +2295,18 @@ type NewStockLineModel struct {
 	ProductID            string                `json:"ProductID,omitempty"`
 	SKU                  string                `json:"SKU,omitempty"`
 	ProductName          string                `json:"ProductName,omitempty"`
-	Quantity             float32               `json:"Quantity,omitempty"`
-	UnitCost             float32               `json:"UnitCost,omitempty"`
+	Quantity             float64               `json:"Quantity,omitempty"`
+	UnitCost             float64               `json:"UnitCost,omitempty"`
 	LocationID           string                `json:"LocationID,omitempty"`
 	Location             string                `json:"Location,omitempty"`
 	BatchSN              string                `json:"BatchSN,omitempty"`
 	ExpiryDate           string                `json:"ExpiryDate,omitempty"`
 	ReceivedDate         string                `json:"ReceivedDate,omitempty"`
 	Comments             string                `json:"Comments,omitempty"`
-	ProductLength        float32               `json:"ProductLength,omitempty"`
-	ProductWidth         float32               `json:"ProductWidth,omitempty"`
-	ProductHeight        float32               `json:"ProductHeight,omitempty"`
-	ProductWeight        float32               `json:"ProductWeight,omitempty"`
+	ProductLength        float64               `json:"ProductLength,omitempty"`
+	ProductWidth         float64               `json:"ProductWidth,omitempty"`
+	ProductHeight        float64               `json:"ProductHeight,omitempty"`
+	ProductWeight        float64               `json:"ProductWeight,omitempty"`
 	WeightUnits          string                `json:"WeightUnits,omitempty"`
 	DimensionsUnits      string                `json:"DimensionsUnits,omitempty"`
 	ProductCustomField1  string                `json:"ProductCustomField1,omitempty"`
@@ -2628,7 +2330,7 @@ type TransactionStockLineModel struct {
 	ID            string  `json:"ID,omitempty"`
 	Debit         string  `json:"Debit,omitempty"`
 	Credit        string  `json:"Credit,omitempty"`
-	Amount        float32 `json:"Amount,omitempty"`
+	Amount        float64 `json:"Amount,omitempty"`
 	EffectiveDate string  `json:"EffectiveDate,omitempty"`
 }
 
@@ -2636,16 +2338,16 @@ type StockTransferLineModel struct {
 	ProductID            string  `json:"ProductID,omitempty"`
 	SKU                  string  `json:"SKU,omitempty"`
 	ProductName          string  `json:"ProductName,omitempty"`
-	QuantityOnHand       float32 `json:"QuantityOnHand,omitempty"`
-	QuantityAvailable    float32 `json:"QuantityAvailable,omitempty"`
-	TransferQuantity     float32 `json:"TransferQuantity,omitempty"`
+	QuantityOnHand       float64 `json:"QuantityOnHand,omitempty"`
+	QuantityAvailable    float64 `json:"QuantityAvailable,omitempty"`
+	TransferQuantity     float64 `json:"TransferQuantity,omitempty"`
 	BatchSN              string  `json:"BatchSN,omitempty"`
 	ExpiryDate           string  `json:"ExpiryDate,omitempty"`
 	Comments             string  `json:"Comments,omitempty"`
-	ProductLength        float32 `json:"ProductLength,omitempty"`
-	ProductWidth         float32 `json:"ProductWidth,omitempty"`
-	ProductHeight        float32 `json:"ProductHeight,omitempty"`
-	ProductWeight        float32 `json:"ProductWeight,omitempty"`
+	ProductLength        float64 `json:"ProductLength,omitempty"`
+	ProductWidth         float64 `json:"ProductWidth,omitempty"`
+	ProductHeight        float64 `json:"ProductHeight,omitempty"`
+	ProductWeight        float64 `json:"ProductWeight,omitempty"`
 	WeightUnits          string  `json:"WeightUnits,omitempty"`
 	DimensionsUnits      string  `json:"DimensionsUnits,omitempty"`
 	ProductCustomField1  string  `json:"ProductCustomField1,omitempty"`
@@ -2661,7 +2363,7 @@ type StockTransferLineModel struct {
 }
 
 type PriceTierModel struct {
-	Price Tier `json:"Price,omitempty"`
+	Price float64 `json:"Price,omitempty"`
 }
 
 type ProductSupplierModel struct {
@@ -2672,8 +2374,8 @@ type ProductSupplierModel struct {
 	ProductSupplierID      string                        `json:"ProductSupplierID,omitempty"`
 	SupplierInventoryCode  string                        `json:"SupplierInventoryCode,omitempty"`
 	SupplierProductName    string                        `json:"SupplierProductName,omitempty"`
-	Cost                   float32                       `json:"Cost,omitempty"`
-	FixedCost              float32                       `json:"FixedCost,omitempty"`
+	Cost                   float64                       `json:"Cost,omitempty"`
+	FixedCost              float64                       `json:"FixedCost,omitempty"`
 	Currency               string                        `json:"Currency,omitempty"`
 	DropShip               bool                          `json:"DropShip,omitempty"`
 	SupplierProductURL     string                        `json:"SupplierProductURL,omitempty"`
@@ -2685,17 +2387,17 @@ type ProductSupplierOptionsModel struct {
 	ID               string                                `json:"ID,omitempty"`
 	LocationID       string                                `json:"LocationID,omitempty"`
 	LocationName     string                                `json:"LocationName,omitempty"`
-	ReorderQuantity  float32                               `json:"ReorderQuantity,omitempty"`
-	Lead             int32                                 `json:"Lead,omitempty"`
-	Safety           int32                                 `json:"Safety,omitempty"`
-	MinimumToReorder float32                               `json:"MinimumToReorder,omitempty"`
+	ReorderQuantity  float64                               `json:"ReorderQuantity,omitempty"`
+	Lead             int                                   `json:"Lead,omitempty"`
+	Safety           int                                   `json:"Safety,omitempty"`
+	MinimumToReorder float64                               `json:"MinimumToReorder,omitempty"`
 	SupplyIntervals  []ProductSupplierOptionsIntervalModel `json:"SupplyIntervals,omitempty"`
 }
 
 type ProductSupplierOptionsIntervalModel struct {
 	ID                string `json:"ID,omitempty"`
 	DeliveryMethod    string `json:"DeliveryMethod,omitempty"`
-	IntervalDays      int32  `json:"IntervalDays,omitempty"`
+	IntervalDays      int    `json:"IntervalDays,omitempty"`
 	IntervalStartDate string `json:"IntervalStartDate,omitempty"`
 	IsMonday          bool   `json:"IsMonday,omitempty"`
 	IsTuesday         bool   `json:"IsTuesday,omitempty"`
@@ -2709,8 +2411,8 @@ type ProductSupplierOptionsIntervalModel struct {
 type ReorderLevelModel struct {
 	LocationID           string  `json:"LocationID,omitempty"`
 	LocationName         string  `json:"LocationName,omitempty"`
-	MinimumBeforeReorder float32 `json:"MinimumBeforeReorder,omitempty"`
-	ReorderQuantity      float32 `json:"ReorderQuantity,omitempty"`
+	MinimumBeforeReorder float64 `json:"MinimumBeforeReorder,omitempty"`
+	ReorderQuantity      float64 `json:"ReorderQuantity,omitempty"`
 	StockLocator         string  `json:"StockLocator,omitempty"`
 	PickZones            string  `json:"PickZones,omitempty"`
 }
@@ -2719,18 +2421,18 @@ type BillOfMaterialProductModel struct {
 	ComponentProductID string  `json:"ComponentProductID,omitempty"`
 	ProductCode        string  `json:"ProductCode,omitempty"`
 	Name               string  `json:"Name,omitempty"`
-	Quantity           float32 `json:"Quantity,omitempty"`
-	WastagePercent     float32 `json:"WastagePercent,omitempty"`
-	WastageQuantity    float32 `json:"WastageQuantity,omitempty"`
-	CostPercentage     float32 `json:"CostPercentage,omitempty"`
+	Quantity           float64 `json:"Quantity,omitempty"`
+	WastagePercent     float64 `json:"WastagePercent,omitempty"`
+	WastageQuantity    float64 `json:"WastageQuantity,omitempty"`
+	CostPercentage     float64 `json:"CostPercentage,omitempty"`
 }
 
 type BillOfMaterialServiceModel struct {
 	ComponentProductID string  `json:"ComponentProductID,omitempty"`
 	Name               string  `json:"Name,omitempty"`
-	Quantity           float32 `json:"Quantity,omitempty"`
+	Quantity           float64 `json:"Quantity,omitempty"`
 	ExpenseAccount     string  `json:"ExpenseAccount,omitempty"`
-	PriceTier          int32   `json:"PriceTier,omitempty"`
+	PriceTier          int     `json:"PriceTier,omitempty"`
 }
 
 type ProductMovementModel struct {
@@ -2738,11 +2440,11 @@ type ProductMovementModel struct {
 	Type       string  `json:"Type,omitempty"`
 	Date       string  `json:"Date,omitempty"`
 	Number     string  `json:"Number,omitempty"`
-	Status     int32   `json:"Status,omitempty"`
-	Quantity   float32 `json:"Quantity,omitempty"`
-	Amount     float32 `json:"Amount,omitempty"`
-	Location   float32 `json:"Location,omitempty"`
-	BatchSN    float32 `json:"BatchSN,omitempty"`
+	Status     int     `json:"Status,omitempty"`
+	Quantity   float64 `json:"Quantity,omitempty"`
+	Amount     float64 `json:"Amount,omitempty"`
+	Location   float64 `json:"Location,omitempty"`
+	BatchSN    float64 `json:"BatchSN,omitempty"`
 	ExpiryDate string  `json:"ExpiryDate,omitempty"`
 	FromTo     string  `json:"FromTo,omitempty"`
 }
@@ -2754,7 +2456,7 @@ type AttributeSetLineModel struct {
 }
 
 type ErrorModel struct {
-	ErrorCode int32  `json:"ErrorCode,omitempty"`
+	ErrorCode int    `json:"ErrorCode,omitempty"`
 	Exception string `json:"Exception,omitempty"`
 }
 
@@ -2764,10 +2466,10 @@ type DisassemblyPickLineModel struct {
 	Date       string  `json:"Date,omitempty"`
 	BatchSN    string  `json:"BatchSN,omitempty"`
 	ExpiryDate string  `json:"ExpiryDate,omitempty"`
-	Available  float32 `json:"Available,omitempty"`
-	UnitCost   float32 `json:"UnitCost,omitempty"`
-	Quantity   float32 `json:"Quantity,omitempty"`
-	TotalCost  float32 `json:"TotalCost,omitempty"`
+	Available  float64 `json:"Available,omitempty"`
+	UnitCost   float64 `json:"UnitCost,omitempty"`
+	Quantity   float64 `json:"Quantity,omitempty"`
+	TotalCost  float64 `json:"TotalCost,omitempty"`
 }
 
 type FinishedGoodsPickLineModel struct {
@@ -2778,9 +2480,9 @@ type FinishedGoodsPickLineModel struct {
 	Bin         string  `json:"Bin,omitempty"`
 	BatchSN     string  `json:"BatchSN,omitempty"`
 	ExpiryDate  string  `json:"ExpiryDate,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
 	Unit        string  `json:"Unit,omitempty"`
-	Cost        float32 `json:"Cost,omitempty"`
+	Cost        float64 `json:"Cost,omitempty"`
 }
 
 type FinishedGoodsOrderLineModel struct {
@@ -2788,12 +2490,12 @@ type FinishedGoodsOrderLineModel struct {
 	ProductCode     string  `json:"ProductCode,omitempty"`
 	Name            string  `json:"Name,omitempty"`
 	ExpenseAccount  string  `json:"ExpenseAccount,omitempty"`
-	Quantity        float32 `json:"Quantity,omitempty"`
+	Quantity        float64 `json:"Quantity,omitempty"`
 	Unit            string  `json:"Unit,omitempty"`
-	WastagePercent  float32 `json:"WastagePercent,omitempty"`
-	WastageQuantity float32 `json:"WastageQuantity,omitempty"`
-	TotalQuantity   float32 `json:"TotalQuantity,omitempty"`
-	TotalCost       float32 `json:"TotalCost,omitempty"`
+	WastagePercent  float64 `json:"WastagePercent,omitempty"`
+	WastageQuantity float64 `json:"WastageQuantity,omitempty"`
+	TotalQuantity   float64 `json:"TotalQuantity,omitempty"`
+	TotalCost       float64 `json:"TotalCost,omitempty"`
 }
 
 type DisassemblyOrderLineModel struct {
@@ -2806,8 +2508,8 @@ type DisassemblyOrderLineModel struct {
 	BatchSN     string  `json:"BatchSN,omitempty"`
 	ExpiryDate  string  `json:"ExpiryDate,omitempty"`
 	Account     string  `json:"Account,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
-	Cost        float32 `json:"Cost,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
+	Cost        float64 `json:"Cost,omitempty"`
 }
 
 type DisassemblyOrderServiceLineModel struct {
@@ -2815,7 +2517,7 @@ type DisassemblyOrderServiceLineModel struct {
 	Name      string  `json:"Name,omitempty"`
 	Account   string  `json:"Account,omitempty"`
 	Comments  string  `json:"Comments,omitempty"`
-	Amount    float32 `json:"Amount,omitempty"`
+	Amount    float64 `json:"Amount,omitempty"`
 }
 
 type InventoryWriteOffLineModel struct {
@@ -2827,28 +2529,28 @@ type InventoryWriteOffLineModel struct {
 	BatchSN        string  `json:"BatchSN,omitempty"`
 	ExpiryDate     string  `json:"ExpiryDate,omitempty"`
 	ExpenseAccount string  `json:"ExpenseAccount,omitempty"`
-	Quantity       float32 `json:"Quantity,omitempty"`
-	Cost           float32 `json:"Cost,omitempty"`
-	TotalCost      float32 `json:"TotalCost,omitempty"`
+	Quantity       float64 `json:"Quantity,omitempty"`
+	Cost           float64 `json:"Cost,omitempty"`
+	TotalCost      float64 `json:"TotalCost,omitempty"`
 }
 
 type TaxComponentModel struct {
 	Name           string  `json:"Name,omitempty"`
-	Percent        float32 `json:"Percent,omitempty"`
+	Percent        float64 `json:"Percent,omitempty"`
 	AccountCode    string  `json:"AccountCode,omitempty"`
-	ComponentOrder int32   `json:"ComponentOrder,omitempty"`
+	ComponentOrder int     `json:"ComponentOrder,omitempty"`
 }
 
 type MoneyTaskLineModel struct {
 	Name     string  `json:"Name,omitempty"`
 	Comment  string  `json:"Comment,omitempty"`
-	Quantity float32 `json:"Quantity,omitempty"`
-	Price    float32 `json:"Price,omitempty"`
-	Discount float32 `json:"Discount,omitempty"`
-	Tax      float32 `json:"Tax,omitempty"`
+	Quantity float64 `json:"Quantity,omitempty"`
+	Price    float64 `json:"Price,omitempty"`
+	Discount float64 `json:"Discount,omitempty"`
+	Tax      float64 `json:"Tax,omitempty"`
 	TaxRule  string  `json:"TaxRule,omitempty"`
 	Account  string  `json:"Account,omitempty"`
-	Total    float32 `json:"Total,omitempty"`
+	Total    float64 `json:"Total,omitempty"`
 }
 
 type SupplierAddressModel struct {
@@ -2882,15 +2584,15 @@ type ProductPriceModel struct {
 	CustomerName string  `json:"CustomerName,omitempty"`
 	ProductSKU   string  `json:"ProductSKU,omitempty"`
 	ProductName  string  `json:"ProductName,omitempty"`
-	Price        float32 `json:"Price,omitempty"`
+	Price        float64 `json:"Price,omitempty"`
 }
 
 type JournalLineModel struct {
 	Debit      string  `json:"Debit,omitempty"`
 	Credit     string  `json:"Credit,omitempty"`
 	Reference  string  `json:"Reference,omitempty"`
-	Amount     float32 `json:"Amount,omitempty"`
-	BaseAmount float32 `json:"BaseAmount,omitempty"`
+	Amount     float64 `json:"Amount,omitempty"`
+	BaseAmount float64 `json:"BaseAmount,omitempty"`
 }
 
 type PurchasePaymentLineModel struct {
@@ -2898,10 +2600,10 @@ type PurchasePaymentLineModel struct {
 	TaskID       string  `json:"TaskID,omitempty"`
 	ID           string  `json:"ID,omitempty"`
 	Reference    string  `json:"Reference,omitempty"`
-	Amount       float32 `json:"Amount,omitempty"`
+	Amount       float64 `json:"Amount,omitempty"`
 	DatePaid     string  `json:"DatePaid,omitempty"`
 	Account      string  `json:"Account,omitempty"`
-	CurrencyRate float32 `json:"CurrencyRate,omitempty"`
+	CurrencyRate float64 `json:"CurrencyRate,omitempty"`
 	DateCreated  string  `json:"DateCreated,omitempty"`
 }
 
@@ -2913,7 +2615,7 @@ type AdvancedPurchaseStockModel struct {
 
 type AdvancedPurchaseStockLineModel struct {
 	Date        string  `json:"Date,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
 	ProductID   string  `json:"ProductID,omitempty"`
 	SKU         string  `json:"SKU,omitempty"`
 	Name        string  `json:"Name,omitempty"`
@@ -2933,7 +2635,7 @@ type AdvancedPurchasePutAwayModel struct {
 
 type AdvancedPurchasePutAwayLineModel struct {
 	Date        string  `json:"Date,omitempty"`
-	Quantity    float32 `json:"Quantity,omitempty"`
+	Quantity    float64 `json:"Quantity,omitempty"`
 	ProductID   string  `json:"ProductID,omitempty"`
 	SKU         string  `json:"SKU,omitempty"`
 	Name        string  `json:"Name,omitempty"`
@@ -2955,10 +2657,10 @@ type AdvancedPurchaseInvoiceModel struct {
 	Lines             []PurchaseInvoiceLineModel             `json:"Lines,omitempty"`
 	AdditionalCharges []PurchaseInvoiceAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
 	Payments          []PurchasePaymentLineModel             `json:"Payments,omitempty"`
-	TotalBeforeTax    float32                                `json:"TotalBeforeTax,omitempty"`
-	Tax               float32                                `json:"Tax,omitempty"`
-	Total             float32                                `json:"Total,omitempty"`
-	Paid              float32                                `json:"Paid,omitempty"`
+	TotalBeforeTax    float64                                `json:"TotalBeforeTax,omitempty"`
+	Tax               float64                                `json:"Tax,omitempty"`
+	Total             float64                                `json:"Total,omitempty"`
+	Paid              float64                                `json:"Paid,omitempty"`
 }
 
 type AdvancedPurchaseCreditNoteModel struct {
@@ -2970,9 +2672,9 @@ type AdvancedPurchaseCreditNoteModel struct {
 	AdditionalCharges []PurchaseInvoiceAdditionalChargeModel `json:"AdditionalCharges,omitempty"`
 	Refunds           []PurchasePaymentLineModel             `json:"Refunds,omitempty"`
 	Unstock           []PurchaseUnStockLineModel             `json:"Unstock,omitempty"`
-	TotalBeforeTax    float32                                `json:"TotalBeforeTax,omitempty"`
-	Tax               float32                                `json:"Tax,omitempty"`
-	Total             float32                                `json:"Total,omitempty"`
+	TotalBeforeTax    float64                                `json:"TotalBeforeTax,omitempty"`
+	Tax               float64                                `json:"Tax,omitempty"`
+	Total             float64                                `json:"Total,omitempty"`
 }
 
 type AdvancedPurchaseManualJournalModel struct {
@@ -2995,14 +2697,14 @@ type StockTransferOrderLineModel struct {
 	ProductID            string  `json:"ProductID,omitempty"`
 	SKU                  string  `json:"SKU,omitempty"`
 	ProductName          string  `json:"ProductName,omitempty"`
-	QuantityOnHand       float32 `json:"QuantityOnHand,omitempty"`
-	QuantityAvailable    float32 `json:"QuantityAvailable,omitempty"`
-	TransferQuantity     float32 `json:"TransferQuantity,omitempty"`
+	QuantityOnHand       float64 `json:"QuantityOnHand,omitempty"`
+	QuantityAvailable    float64 `json:"QuantityAvailable,omitempty"`
+	TransferQuantity     float64 `json:"TransferQuantity,omitempty"`
 	Comments             string  `json:"Comments,omitempty"`
-	ProductLength        float32 `json:"ProductLength,omitempty"`
-	ProductWidth         float32 `json:"ProductWidth,omitempty"`
-	ProductHeight        float32 `json:"ProductHeight,omitempty"`
-	ProductWeight        float32 `json:"ProductWeight,omitempty"`
+	ProductLength        float64 `json:"ProductLength,omitempty"`
+	ProductWidth         float64 `json:"ProductWidth,omitempty"`
+	ProductHeight        float64 `json:"ProductHeight,omitempty"`
+	ProductWeight        float64 `json:"ProductWeight,omitempty"`
 	WeightUnits          string  `json:"WeightUnits,omitempty"`
 	DimensionsUnits      string  `json:"DimensionsUnits,omitempty"`
 	ProductCustomField1  string  `json:"ProductCustomField1,omitempty"`
@@ -3017,58 +2719,6 @@ type StockTransferOrderLineModel struct {
 	ProductCustomField10 string  `json:"ProductCustomField10,omitempty"`
 }
 
-type Disassembly struct {
-	TaskID                 string                             `json:"TaskID,omitempty"`
-	DisassemblyNumber      string                             `json:"DisassemblyNumber,omitempty"`
-	Status                 string                             `json:"Status,omitempty"`
-	ProductID              string                             `json:"ProductID,omitempty"`
-	ProductCode            string                             `json:"ProductCode,omitempty"`
-	ProductName            string                             `json:"ProductName,omitempty"`
-	LocationID             string                             `json:"LocationID,omitempty"`
-	Location               float32                            `json:"Location,omitempty"`
-	WIPAccount             string                             `json:"WIPAccount,omitempty"`
-	Quantity               float32                            `json:"Quantity,omitempty"`
-	AssemblyInstructionURL string                             `json:"AssemblyInstructionURL,omitempty"`
-	PickLines              []DisassemblyPickLineModel         `json:"PickLines,omitempty"`
-	OrderLines             []DisassemblyOrderLineModel        `json:"OrderLines,omitempty"`
-	OrderServiceLines      []DisassemblyOrderServiceLineModel `json:"OrderServiceLines,omitempty"`
-	Transactions           []TransactionStockLineModel        `json:"Transactions,omitempty"`
-	Errors                 []ErrorModel                       `json:"Errors,omitempty"`
-}
-
-type DisassemblyOrder struct {
-	TaskID     string                      `json:"TaskID,omitempty"`
-	Status     string                      `json:"Status,omitempty"`
-	OrderLines []DisassemblyOrderLineModel `json:"OrderLines,omitempty"`
-}
-
-type FinishedGoodsList struct {
-	TaskID         string  `json:"TaskID,omitempty"`
-	AssemblyNumber string  `json:"AssemblyNumber,omitempty"`
-	BatchSN        string  `json:"BatchSN,omitempty"`
-	ExpiryDate     string  `json:"ExpiryDate,omitempty"`
-	ProductID      string  `json:"ProductID,omitempty"`
-	ProductCode    string  `json:"ProductCode,omitempty"`
-	ProductName    string  `json:"ProductName,omitempty"`
-	Quantity       float32 `json:"Quantity,omitempty"`
-	LocationID     string  `json:"LocationID,omitempty"`
-	Location       float32 `json:"Location,omitempty"`
-	Date           string  `json:"Date,omitempty"`
-	Status         string  `json:"Status,omitempty"`
-	UnitCost       float32 `json:"UnitCost,omitempty"`
-	Notes          string  `json:"Notes,omitempty"`
-	CustomField1   string  `json:"CustomField1,omitempty"`
-	CustomField2   string  `json:"CustomField2,omitempty"`
-	CustomField3   string  `json:"CustomField3,omitempty"`
-	CustomField4   string  `json:"CustomField4,omitempty"`
-	CustomField5   string  `json:"CustomField5,omitempty"`
-	CustomField6   string  `json:"CustomField6,omitempty"`
-	CustomField7   string  `json:"CustomField7,omitempty"`
-	CustomField8   string  `json:"CustomField8,omitempty"`
-	CustomField9   string  `json:"CustomField9,omitempty"`
-	CustomField10  string  `json:"CustomField10,omitempty"`
-}
-
 type FinishedGoods struct {
 	TaskID                 string                        `json:"TaskID,omitempty"`
 	AssemblyNumber         string                        `json:"AssemblyNumber,omitempty"`
@@ -3077,13 +2727,13 @@ type FinishedGoods struct {
 	ProductCode            string                        `json:"ProductCode,omitempty"`
 	ProductName            string                        `json:"ProductName,omitempty"`
 	LocationID             string                        `json:"LocationID,omitempty"`
-	Location               float32                       `json:"Location,omitempty"`
+	Location               float64                       `json:"Location,omitempty"`
 	BinID                  string                        `json:"BinID,omitempty"`
-	Bin                    float32                       `json:"Bin,omitempty"`
+	Bin                    float64                       `json:"Bin,omitempty"`
 	WIPAccount             string                        `json:"WIPAccount,omitempty"`
 	WIPDate                string                        `json:"WIPDate,omitempty"`
 	Account                string                        `json:"Account,omitempty"`
-	Quantity               float32                       `json:"Quantity,omitempty"`
+	Quantity               float64                       `json:"Quantity,omitempty"`
 	AssemblyInstructionURL string                        `json:"AssemblyInstructionURL,omitempty"`
 	CompletionDate         string                        `json:"CompletionDate,omitempty"`
 	BatchSN                string                        `json:"BatchSN,omitempty"`
@@ -3109,23 +2759,6 @@ type DisassemblyOrder struct {
 	TaskID     string                      `json:"TaskID,omitempty"`
 	Status     string                      `json:"Status,omitempty"`
 	OrderLines []DisassemblyOrderLineModel `json:"OrderLines,omitempty"`
-}
-
-type Lead struct {
-	ID                  string                 `json:"ID,omitempty"`
-	LeadStatus          string                 `json:"LeadStatus,omitempty"`
-	Name                string                 `json:"Name,omitempty"`
-	Currency            string                 `json:"Currency,omitempty"`
-	PaymentTerm         int                    `json:"PaymentTerm,omitempty"`
-	PriceTier           string                 `json:"PriceTier,omitempty"`
-	SalesRepresentative string                 `json:"SalesRepresentative,omitempty"`
-	TaxRule             string                 `json:"TaxRule,omitempty"`
-	Amount              decimal                `json:"Amount,omitempty"`
-	CloseChance         int                    `json:"CloseChance,omitempty"`
-	CloseDate           string                 `json:"CloseDate,omitempty"`
-	Comments            string                 `json:"Comments,omitempty"`
-	Contacts            []SupplierContactModel `json:"Contacts,omitempty"`
-	Addresses           []SupplierAddressModel `json:"Addresses,omitempty"`
 }
 
 type Webhooks struct {
@@ -3149,12 +2782,12 @@ type FinishedGoodsList struct {
 	ProductID      string  `json:"ProductID,omitempty"`
 	ProductCode    string  `json:"ProductCode,omitempty"`
 	ProductName    string  `json:"ProductName,omitempty"`
-	Quantity       float32 `json:"Quantity,omitempty"`
+	Quantity       float64 `json:"Quantity,omitempty"`
 	LocationID     string  `json:"LocationID,omitempty"`
-	Location       float32 `json:"Location,omitempty"`
+	Location       float64 `json:"Location,omitempty"`
 	Date           string  `json:"Date,omitempty"`
 	Status         string  `json:"Status,omitempty"`
-	UnitCost       float32 `json:"UnitCost,omitempty"`
+	UnitCost       float64 `json:"UnitCost,omitempty"`
 	Notes          string  `json:"Notes,omitempty"`
 	CustomField1   string  `json:"CustomField1,omitempty"`
 	CustomField2   string  `json:"CustomField2,omitempty"`
@@ -3168,64 +2801,12 @@ type FinishedGoodsList struct {
 	CustomField10  string  `json:"CustomField10,omitempty"`
 }
 
-type FinishedGoods struct {
-	TaskID                 string                        `json:"TaskID,omitempty"`
-	AssemblyNumber         string                        `json:"AssemblyNumber,omitempty"`
-	Status                 string                        `json:"Status,omitempty"`
-	ProductID              string                        `json:"ProductID,omitempty"`
-	ProductCode            string                        `json:"ProductCode,omitempty"`
-	ProductName            string                        `json:"ProductName,omitempty"`
-	LocationID             string                        `json:"LocationID,omitempty"`
-	Location               float32                       `json:"Location,omitempty"`
-	BinID                  string                        `json:"BinID,omitempty"`
-	Bin                    float32                       `json:"Bin,omitempty"`
-	WIPAccount             string                        `json:"WIPAccount,omitempty"`
-	WIPDate                string                        `json:"WIPDate,omitempty"`
-	Account                string                        `json:"Account,omitempty"`
-	Quantity               float32                       `json:"Quantity,omitempty"`
-	AssemblyInstructionURL string                        `json:"AssemblyInstructionURL,omitempty"`
-	CompletionDate         string                        `json:"CompletionDate,omitempty"`
-	BatchSN                string                        `json:"BatchSN,omitempty"`
-	ExpiryDate             string                        `json:"ExpiryDate,omitempty"`
-	Notes                  string                        `json:"Notes,omitempty"`
-	OrderLines             []FinishedGoodsOrderLineModel `json:"OrderLines,omitempty"`
-	PickLines              []FinishedGoodsPickLineModel  `json:"PickLines,omitempty"`
-	Transactions           []TransactionStockLineModel   `json:"Transactions,omitempty"`
-	Errors                 []ErrorModel                  `json:"Errors,omitempty"`
-	CustomField1           string                        `json:"CustomField1,omitempty"`
-	CustomField2           string                        `json:"CustomField2,omitempty"`
-	CustomField3           string                        `json:"CustomField3,omitempty"`
-	CustomField4           string                        `json:"CustomField4,omitempty"`
-	CustomField5           string                        `json:"CustomField5,omitempty"`
-	CustomField6           string                        `json:"CustomField6,omitempty"`
-	CustomField7           string                        `json:"CustomField7,omitempty"`
-	CustomField8           string                        `json:"CustomField8,omitempty"`
-	CustomField9           string                        `json:"CustomField9,omitempty"`
-	CustomField10          string                        `json:"CustomField10,omitempty"`
-}
-
-type FinishedGoodsOrder struct {
-	TaskID     string                        `json:"TaskID,omitempty"`
-	Status     string                        `json:"Status,omitempty"`
-	OrderLines []FinishedGoodsOrderLineModel `json:"OrderLines,omitempty"`
-}
-
-type FinishedGoodsPick struct {
-	TaskID         string                       `json:"TaskID,omitempty"`
-	Status         string                       `json:"Status,omitempty"`
-	WIPAccount     string                       `json:"WIPAccount,omitempty"`
-	WIPDate        string                       `json:"WIPDate,omitempty"`
-	Account        string                       `json:"Account,omitempty"`
-	CompletionDate string                       `json:"CompletionDate,omitempty"`
-	PickLines      []FinishedGoodsPickLineModel `json:"PickLines,omitempty"`
-}
-
 type InventoryWriteOffList struct {
 	TaskID                  string  `json:"TaskID,omitempty"`
 	InventoryWriteOffNumber string  `json:"InventoryWriteOffNumber,omitempty"`
 	Status                  string  `json:"Status,omitempty"`
 	LocationID              string  `json:"LocationID,omitempty"`
-	Location                float32 `json:"Location,omitempty"`
+	Location                float64 `json:"Location,omitempty"`
 	Date                    string  `json:"Date,omitempty"`
 	Notes                   string  `json:"Notes,omitempty"`
 }
@@ -3235,21 +2816,7 @@ type InventoryWriteOff struct {
 	InventoryWriteOffNumber string                       `json:"InventoryWriteOffNumber,omitempty"`
 	Status                  string                       `json:"Status,omitempty"`
 	LocationID              string                       `json:"LocationID,omitempty"`
-	Location                float32                      `json:"Location,omitempty"`
-	Account                 string                       `json:"Account,omitempty"`
-	EffectiveDate           string                       `json:"EffectiveDate,omitempty"`
-	Notes                   string                       `json:"Notes,omitempty"`
-	Lines                   []InventoryWriteOffLineModel `json:"Lines,omitempty"`
-	Transactions            []TransactionStockLineModel  `json:"Transactions,omitempty"`
-	Errors                  []ErrorModel                 `json:"Errors,omitempty"`
-}
-
-type InventoryWriteOff struct {
-	TaskID                  string                       `json:"TaskID,omitempty"`
-	InventoryWriteOffNumber string                       `json:"InventoryWriteOffNumber,omitempty"`
-	Status                  string                       `json:"Status,omitempty"`
-	LocationID              string                       `json:"LocationID,omitempty"`
-	Location                float32                      `json:"Location,omitempty"`
+	Location                float64                      `json:"Location,omitempty"`
 	Account                 string                       `json:"Account,omitempty"`
 	EffectiveDate           string                       `json:"EffectiveDate,omitempty"`
 	Notes                   string                       `json:"Notes,omitempty"`
@@ -3263,7 +2830,7 @@ type Journal struct {
 	Status                 string                `json:"Status,omitempty"`
 	JournalNumber          string                `json:"JournalNumber,omitempty"`
 	Currency               string                `json:"Currency,omitempty"`
-	CurrencyConversionRate float32               `json:"CurrencyConversionRate,omitempty"`
+	CurrencyConversionRate float64               `json:"CurrencyConversionRate,omitempty"`
 	EffectiveDate          string                `json:"EffectiveDate,omitempty"`
 	Narration              string                `json:"Narration,omitempty"`
 	Notes                  string                `json:"Notes,omitempty"`
@@ -3272,23 +2839,11 @@ type Journal struct {
 }
 
 type MoneyTaskList struct {
-	TaskID               string  `json:"TaskID,omitempty"`
-	Date                 string  `json:"Date,omitempty"`
-	TaskType             string  `json:"TaskType,omitempty"`
-	Status               string  `json:"Status,omitempty"`
-	SupplierCustomerName string  `json:"SupplierCustomerName,omitempty"`
-	SupplierID           string  `json:"SupplierID,omitempty"`
-	CustomerID           string  `json:"CustomerID,omitempty"`
-	Reference            float32 `json:"Reference,omitempty"`
-	TotalAmount          string  `json:"TotalAmount,omitempty"`
-}
-
-type MoneyTaskList struct {
 	TaskID                 string                      `json:"TaskID,omitempty"`
 	TaskType               string                      `json:"TaskType,omitempty"`
 	Status                 string                      `json:"Status,omitempty"`
 	BankAccount            string                      `json:"BankAccount,omitempty"`
-	CurrencyConversionRate float32                     `json:"CurrencyConversionRate,omitempty"`
+	CurrencyConversionRate float64                     `json:"CurrencyConversionRate,omitempty"`
 	SupplierCustomerName   string                      `json:"SupplierCustomerName,omitempty"`
 	SupplierID             string                      `json:"SupplierID,omitempty"`
 	CustomerID             string                      `json:"CustomerID,omitempty"`
@@ -3310,11 +2865,6 @@ type PurchaseManualJournal struct {
 type PurchaseAttachments struct {
 	TaskID string                `json:"TaskID,omitempty"`
 	Lines  []AttachmentLineModel `json:"Lines,omitempty"`
-}
-
-type PurchaseManualJournal struct {
-	PurchaseID     string                             `json:"PurchaseID,omitempty"`
-	ManualJournals []AdvancedPurchasePartialMAnJModel `json:"ManualJournals,omitempty"`
 }
 
 type AdvancedPurchasePartialMAnJModel struct {
@@ -3382,7 +2932,7 @@ type Transactions struct {
 	TaskID            string  `json:"TaskID,omitempty"`
 	DebitAccountCode  string  `json:"DebitAccountCode,omitempty"`
 	CreditAccountCode string  `json:"CreditAccountCode,omitempty"`
-	Amount            float32 `json:"Amount,omitempty"`
+	Amount            float64 `json:"Amount,omitempty"`
 	EffectiveDate     string  `json:"EffectiveDate,omitempty"`
 	Reference         string  `json:"Reference,omitempty"`
 	Transaction       string  `json:"Transaction,omitempty"`
