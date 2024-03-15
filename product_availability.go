@@ -60,7 +60,6 @@ func (s *ProductAvailabilityOp) ListAll(options map[string]string) ([]ProductAva
 			return nil, err
 		}
 		remainder := cin7_resp.Total - (int(set_limit) * cin7_resp.Page)
-		fmt.Println(remainder)
 		if remainder < 1 {
 			// got all records
 			return product_availability, nil
