@@ -82,7 +82,7 @@ func (s *ProductAvailabilityOp) ListAll(options map[string]string) ([]ProductAva
 		product_availability = append(product_availability, cin7_resp.ProductAvailabilityList...)
 
 		if count > 4 {
-			return nil, fmt.Errorf("Shit got round too many times during testing, stop battering API")
+			return product_availability, fmt.Errorf("Pagination is greater than 4, error sent to communicate that no more runs have been sent. Stopped to prevent to many requests. Data collected so far is still returned")
 		}
 	}
 }
