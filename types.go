@@ -332,7 +332,7 @@ type Product struct {
 	PriceTier8                   float64                      `json:"PriceTier8,omitempty"`
 	PriceTier9                   float64                      `json:"PriceTier9,omitempty"`
 	PriceTier10                  float64                      `json:"PriceTier10,omitempty"`
-	PriceTiers                   []PriceTierModel             `json:"PriceTiers,omitempty"`
+	PriceTiers                   PriceTierModel               `json:"PriceTiers,omitempty"`
 	AverageCost                  float64                      `json:"AverageCost,omitempty"`
 	ShortDescription             string                       `json:"ShortDescription,omitempty"`
 	Description                  string                       `json:"Description,omitempty"`
@@ -395,6 +395,12 @@ type ProductAvailability struct {
 	OnOrder     float64 `json:"OnOrder,omitempty"`
 	StockOnHand float64 `json:"StockOnHand,omitempty"`
 	InTransit   float64 `json:"InTransit,omitempty"`
+}
+
+type ProductPaginatedResponse struct {
+	Total    int       `json:"Total,omitempty"`
+	Page     int       `json:"Page,omitempty"`
+	Products []Product `json:"Products,omitempty"`
 }
 
 type ProductAvailablityPaginatedResponse struct {
@@ -2362,9 +2368,7 @@ type StockTransferLineModel struct {
 	ProductCustomField10 string  `json:"ProductCustomField10,omitempty"`
 }
 
-type PriceTierModel struct {
-	Price float64 `json:"Price,omitempty"`
-}
+type PriceTierModel map[string]float64
 
 type ProductSupplierModel struct {
 	SupplierID             string                        `json:"SupplierID,omitempty"`

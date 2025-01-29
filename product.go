@@ -7,21 +7,20 @@ import (
 	"strconv"
 )
 
-const product_availability_url_slug = "ref/productavailability"
+const product_url_slug = "product"
 
-
-type ProductAvailabilityService interface {
-	List(options map[string]string) ([]ProductAvailability, error)
-	ListAll(options map[string]string) ([]ProductAvailability, error)
+type ProductService interface {
+	List(options map[string]string) ([]Product, error)
+	ListAll(options map[string]string) ([]Product, error)
 }
 
-type ProductAvailabilityOp struct {
+type ProductOp struct {
 	client *Client
 }
 
-func (s *ProductAvailabilityOp) List(options map[string]string) ([]ProductAvailability, error) {
-	var product_availability []ProductAvailability
-	endpoint := s.client.BuildCin7Endpoint(product_availability_url_slug, options)
+func (s *ProductOp) List(options map[string]string) ([]Product, error) {
+	var products []Product
+	endpoint := s.client.BuildCin7Endpoint(product_url_slug, options)
 	req, err := s.client.BuildCin7Request("GET", endpoint, nil)
 	if err != nil {
 		return nil, err
@@ -30,13 +29,13 @@ func (s *ProductAvailabilityOp) List(options map[string]string) ([]ProductAvaila
 	if err != nil {
 		return nil, err
 	}
-	product_availability = cin7_resp.ProductAvailabilityList
-	return product_availability, nil
+	products = cin7_resp.Products
+	return products, nil
 }
 
-func (s *ProductAvailabilityOp) ListAll(options map[string]string) ([]ProductAvailability, error) {
-	var product_availability []ProductAvailability
-	endpoint := s.client.BuildCin7Endpoint(product_availability_url_slug, options)
+func (s *ProductOp) ListAll(options map[string]string) ([]Product, error) {
+	var products []Product
+	endpoint := s.client.BuildCin7Endpoint(product_url_slug, options)
 	req, err := s.client.BuildCin7Request("GET", endpoint, nil)
 	if err != nil {
 		return nil, err
@@ -45,12 +44,13 @@ func (s *ProductAvailabilityOp) ListAll(options map[string]string) ([]ProductAva
 	if err != nil {
 		return nil, err
 	}
-	product_availability = cin7_resp.ProductAvailabilityList // Block to loop through requests and get paginated data
+	products = cin7_resp.Products // Block to loop through requests and get paginated data
 
 	// Check if limit is explicit, set to default for cin7 otherwise
 	if _, ok := options["Limit"]; !ok {
 		options["Limit"] = "100"
 	}
+
 	// limit of loops here in case  something bad happens
 	count := 0
 	for {
@@ -63,14 +63,14 @@ func (s *ProductAvailabilityOp) ListAll(options map[string]string) ([]ProductAva
 		remainder := cin7_resp.Total - (int(set_limit) * cin7_resp.Page)
 		if remainder < 1 {
 			// got all records
-			return product_availability, nil
+			return products, nil
 		} else {
 			// set options to next page for request
 			options["Page"] = strconv.Itoa(cin7_resp.Page + 1)
 		}
 
 		// do the request loop again
-		endpoint := s.client.BuildCin7Endpoint(product_availability_url_slug, options)
+		endpoint := s.client.BuildCin7Endpoint(product_url_slug, options)
 		req, err := s.client.BuildCin7Request("GET", endpoint, nil)
 		if err != nil {
 			return nil, err
@@ -80,16 +80,16 @@ func (s *ProductAvailabilityOp) ListAll(options map[string]string) ([]ProductAva
 			return nil, err
 		}
 		// append our list of paginated values
-		product_availability = append(product_availability, cin7_resp.ProductAvailabilityList...)
+		products = append(products, cin7_resp.Products...)
 
 		if count > 4 {
-			return product_availability, fmt.Errorf("Pagination is greater than 4, error sent to communicate that no more runs have been sent. Stopped to prevent to many requests. Data collected so far is still returned")
+			return products, fmt.Errorf("Pagination is greater than 4, error sent to communicate that no more runs have been sent. Stopped to prevent to many requests. Data collected so far is still returned")
 		}
 	}
 }
 
-func (s *ProductAvailabilityOp) ReturnPaginatedCin7Data(req *http.Request) (*ProductAvailablityPaginatedResponse, error) {
-	var paginated_response *ProductAvailablityPaginatedResponse
+func (s *ProductOp) ReturnPaginatedCin7Data(req *http.Request) (*ProductPaginatedResponse, error) {
+	var paginated_response *ProductPaginatedResponse
 	resp, err := s.client.httpClient.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("Error encountered during request: %v", err)

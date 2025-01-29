@@ -13,6 +13,7 @@ type Client struct {
 	baseUrl             string
 	httpClient          *http.Client
 	ProductAvailablilty ProductAvailabilityService
+	Product             ProductService
 }
 
 /*
@@ -37,6 +38,7 @@ func NewClient(url string, httpClient *http.Client) (*Client, error) {
 		httpClient: httpClient,
 	}
 	c.ProductAvailablilty = &ProductAvailabilityOp{client: c}
+	c.Product = &ProductOp{client: c}
 	return c, nil
 }
 
