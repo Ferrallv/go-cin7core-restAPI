@@ -2806,13 +2806,9 @@ type FinishedGoodsList struct {
 }
 
 type InventoryWriteOffList struct {
-	TaskID                  string  `json:"TaskID,omitempty"`
-	InventoryWriteOffNumber string  `json:"InventoryWriteOffNumber,omitempty"`
-	Status                  string  `json:"Status,omitempty"`
-	LocationID              string  `json:"LocationID,omitempty"`
-	Location                float64 `json:"Location,omitempty"`
-	Date                    string  `json:"Date,omitempty"`
-	Notes                   string  `json:"Notes,omitempty"`
+	Total              int                 `json:"Total,omitempty"`
+	Page               int                 `json:"Page,omitempty"`
+	InventoryWriteOffs []InventoryWriteOff `json:"InventoryWriteOffs,omitempty"`
 }
 
 type InventoryWriteOff struct {
