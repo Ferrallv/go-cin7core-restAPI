@@ -10,10 +10,11 @@ import (
 )
 
 type Client struct {
-	baseUrl             string
-	httpClient          *http.Client
-	ProductAvailablilty ProductAvailabilityService
-	Product             ProductService
+	baseUrl               string
+	httpClient            *http.Client
+	ProductAvailablilty   ProductAvailabilityService
+	Product               ProductService
+	InventoryWriteOffList InventoryWriteOffListService
 }
 
 /*
@@ -39,6 +40,7 @@ func NewClient(url string, httpClient *http.Client) (*Client, error) {
 	}
 	c.ProductAvailablilty = &ProductAvailabilityOp{client: c}
 	c.Product = &ProductOp{client: c}
+	c.InventoryWriteOffList = &InventoryWriteOffListOp{client: c}
 	return c, nil
 }
 

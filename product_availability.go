@@ -9,7 +9,6 @@ import (
 
 const product_availability_url_slug = "ref/productavailability"
 
-
 type ProductAvailabilityService interface {
 	List(options map[string]string) ([]ProductAvailability, error)
 	ListAll(options map[string]string) ([]ProductAvailability, error)
